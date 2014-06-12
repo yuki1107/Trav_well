@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/* CSS Document */
+#logo{
+	width:150px;
+	margin:5px;
+}
+
+#login{
+	margin-top:15px;
+	margin-right: 20px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size:18px;
+}
