@@ -12,9 +12,6 @@
 	
 }
 
-.bigImage{
-}
-
 .icon {
 	width:200px;
 	margin:5px;
@@ -31,59 +28,22 @@
 	text-align:center;
 	margin:20px auto;
 }
-
-#footer{
-	text-align:center;
-	background-color:black;
-	color:white;
-}
-</style>
 </style>
 </head>
 
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          
-          <img id="logo" src='<?= base_url()?>/images/logo.gif' />
-        </div>
-        
-        <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-          	<a id="login" href="" >Login</a>
-            
-            <div class="form-group">
-              <input type="keyword" placeholder="Search" class="form-control">
-            </div>
-            
-            <button type="submit" class="btn btn-info">Search</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-        
-      </div>
-    </div>
+	<?=$this->load->view("Template/header")?>
     
     <div class="bigImageBar">
         <img class="bigImage" src="<?= base_url()?>/images/TorontoImg.jpg" />
     </div>
     
     <div class="iconBar">
-    	<img class="icon" src="<?= base_url()?>/images/Toronto.gif" />
+    	<?php echo anchor('home/cityInfoPage', '<img src="'.base_url().'/images/Toronto.gif" class="icon"/>')?>
         <img class="icon" src="<?= base_url()?>/images/Ottawa.gif" />
         <img class="icon" src="<?= base_url()?>/images/Vancouver.gif" />
         <img class="icon" src="<?= base_url()?>/images/HongKong.gif" />
         <img class="icon" src="<?= base_url()?>/images/ShangHai.gif" />
     </div>
       
-    <footer id="footer">
-    	<p>@trav_well.com 2014</p>
-    </footer>
-</body>
-</html>
+<?=$this->load->view("Template/footer")?>

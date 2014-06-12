@@ -25,6 +25,15 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('home_page');
 	}
+	
+	public function loginPage()
+	{
+		$this->load->view('login_page');
+	}
+	
+	public function cityInfoPage(){
+		$this->load->view('city_info_page');
+	}
 }
 
 /* End of file welcome.php */

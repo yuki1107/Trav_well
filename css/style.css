@@ -11,3 +11,9 @@
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size:18px;
 }
+
+#footer{
+	text-align:center;
+	background-color:black;
+	color:white;
+}
