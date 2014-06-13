@@ -40,7 +40,7 @@
     
     <div class="iconBar">
     	<?php echo anchor('home/cityInfoPage', '<img src="'.base_url().'/images/Toronto.gif" class="icon"/>')?>
-        <img class="icon" src="<?= base_url()?>/images/Ottawa.gif" />
+        <?php echo anchor('cityInfo/restaurantPage', '<img src="'.base_url().'/images/Ottawa.gif" class="icon"/>')?>
         <img class="icon" src="<?= base_url()?>/images/Vancouver.gif" />
         <img class="icon" src="<?= base_url()?>/images/HongKong.gif" />
         <img class="icon" src="<?= base_url()?>/images/ShangHai.gif" />
