@@ -6,6 +6,7 @@
 <link href="<?= base_url()?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= base_url()?>/css/style.css" rel="stylesheet">
 <link href="<?= base_url()?>/css/rating.css" rel="stylesheet">
+<link href="<?= base_url()?>/css/buttons.css" rel="stylesheet">
 <style>
 .row{
 	padding-top:55px;	
@@ -61,10 +62,11 @@ h2{ font-family:"Comic Sans MS", cursive;}
             </div>
 
             <div class="col-xs-6 col-sm-9 description">
-              <h3>MillieCreerie</h3>
-             <span >address: 161 Baldwin street </span> 
+              <h4><a href="#">MillieCreerie</a></h4>
+             <span >Address: 161 Baldwin street </span> 
              <p class="b">Toronto, ON M5T 1L9</p>
              <p>Contact:(416) 977-1922 </p> 
+             <?=$this->load->view("Template/buttons")?>
 			 <?=$this->load->view("Template/rating")?>
             </div>
           </div>      
@@ -75,10 +77,11 @@ h2{ font-family:"Comic Sans MS", cursive;}
             </div>
 
             <div class="col-xs-6 col-sm-9 description">
-              <h3>La Carnita</h3>
-             <span >address: 501 College street </span> 
+              <h4><a href="#">La Carnita</a></h4>
+             <span >Address: 501 College street </span> 
              <p class="b">Toronto, ON M5S 2K2</p>
              <p>Contact:(416）964-1555 </p> 
+             <?=$this->load->view("Template/buttons")?>
 			 <?=$this->load->view("Template/rating")?>
             </div>
           </div> 
