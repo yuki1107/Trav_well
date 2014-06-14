@@ -9,6 +9,7 @@
 .bigImageBar{
 	text-align:center;
 	padding-top:48px;
+	background-color: #b0c4de;
 	
 }
 
