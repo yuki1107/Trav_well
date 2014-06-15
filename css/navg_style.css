@@ -5,19 +5,32 @@
 }
 
 .sidebar{
-	background-color:#339;
-	padding-top:20px;
+	background-color:#306;
+	padding-bottom:300px;
+	color:white;
 }
 
-.active a{
-	font-weight:bold;
-	font-size:22px;
-	color:#CCC;
-	font-family:"Times New Roman", Times, serif;
+.active > a{
+	color:#306;
+	background-color:white;
+	width:208.182px;
+}
+
+a.sidebar{
+	color:#428bca;
+}
+
+a.sidebar:hover{
+	color:black;
 }
 
 .nav-sidebar{
-	color:#339;	
-	line-height:350%;
+	font-weight:bold;
+	font-size:22px;
+	font-family:"Times New Roman", Times, serif;
+}
+
+.nav-sidebar:hover{
+	width:208.182px;
 }
 
