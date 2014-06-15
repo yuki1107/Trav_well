@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
           </button>
           
-          <img id="logo" src='<?= base_url()?>/images/logo.gif' />
+          <?php echo anchor('home/index', '<img src="'.base_url().'/images/logo.gif" id="logo"/>')?>
         </div>
         
         <div class="navbar-collapse collapse">

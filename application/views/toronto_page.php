@@ -43,7 +43,7 @@ p {
             <div class="col-sm-3 col-md-2 sidebar">
               <ul class="nav nav-sidebar">
                 <li class="active"><a href="#">Overview</a></li>
-                <li><a href="#">Restaurants</a></li>
+                <li><?php echo anchor('sidebar/restaurantPage', 'Restaurants')?></li>
                 <li><a href="#">Landmarks</a></li>
                 <li><a href="#">Shopping Malls</a></li>
                 <li><a href="#">Hotels</a></li>
