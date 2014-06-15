@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Sidebar extends CI_Controller {
     function __construct() {
     		// Call the Controller constructor
 	    	parent::__construct();
@@ -21,18 +21,12 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		$this->load->view('home_page');
+	public function overviewPage(){
+		 $this->load->view('toronto_page');
 	}
-	
-	public function loginPage()
-	{
-		$this->load->view('login_page');
-	}
-	
-	public function torontoPage(){
-		$this->load->view('toronto_page');
+	 
+	public function restaurantPage(){
+		$this->load->view('restaurant_page');
 	}
 }
 
