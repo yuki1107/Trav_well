@@ -13,8 +13,6 @@
     max-width: 300px;
     padding: 19px 29px 29px;
 	float:left;
-	margin-left:450px;
-	margin-top: 150px;
     background-color: #fff;
     border: 1px solid #e5e5e5;
     border-radius: 20px;
@@ -30,34 +28,36 @@
     border: 1px solid #e5e5e5;
     border-radius: 20px;
     box-shadow: 0 1px 2px rgba(0,0,0,.05);
-	float:right;
-	margin-top:150px;
-	margin-right: 500px;
-	margin-bottom:30px;
+	float:left;
 }
 
-
+.row{
+	margin:150px auto;
+}
 
 .signin_text {
 	font:bold;
 	margin-top:100px;
 	margin-bottom:50px;
 }
+
 .login_button {
 	margin-top:120px;
 	margin-bottom:45px;
 	margin-right:200px;
 	
 }
+
 .reg_button{
 	margin-top:50px;
-	margin-bottom:40px;
+	margin-bottom:45px;
 }
 	
 body {
-	background-color: #000;
+	background-color: #306;
    
 }
+
 </style>
 </head>
 
@@ -65,28 +65,24 @@ body {
 <body>
 	<?=$this->load->view("Template/header")?>
 
-   
-    <form class="form-signin" role="form">
-          <h2 class="signin_text">Please sign in</h2>
-          <p><input type="email" name="login" value="" placeholder="Email"></p>
-          <p><input type="password" name="password" value="" placeholder="Password"></p>
-
-          <p class="login_button"><button type="submit" class="btn btn-info">Login</button></p>
-    </form>
-
+ 	<div class="row">
+        <form class="form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-3" role="form">
+              <h2 class="signin_text">Please sign in</h2>
+              <p><input type="email" name="login" value="" placeholder="Email"></p>
+              <p><input type="password" name="password" value="" placeholder="Password"></p>
     
-    <form class="form-reg" role="form">
-    	<h2 class="signin_text">If not a user yet...</h2>
-        <p><input type="text" name="Username" value="" placeholder="Create a Username"></p>
-        <p><input type="email" name="email" value="" placeholder="Email"></p>
-        <p><input type="password" name="password1" value="" placeholder="Create a Password"></p>
-        <p><input type="password" name="password2" value="" placeholder="Confirm your Password"></p>
-        <p class="reg_button"><button type="submit" class="btn btn-info">Create Your Account</button></p>
-     </form>
-
- 
-
+              <p class="login_button"><button type="submit" class="btn btn-info">Login</button></p>
+        </form>
         
-</body>
+        <form class="form-reg col-lg-3 col-md-5 col-sm-12 col-lg-offset-1 col-md-offset-1" role="form">
+            <h2 class="signin_text">If not a user yet...</h2>
+            <p><input type="text" name="Username" value="" placeholder="Create a Username"></p>
+            <p><input type="email" name="email" value="" placeholder="Email"></p>
+            <p><input type="password" name="password1" value="" placeholder="Create a Password"></p>
+            <p><input type="password" name="password2" value="" placeholder="Confirm your Password"></p>
+            <p class="reg_button"><button type="submit" class="btn btn-info">Create Your Account</button></p>
+         </form>
+	</div>
+ 
 
 <?=$this->load->view("Template/footer")?>
