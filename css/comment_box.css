@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+textarea.html-text-box {
+	background-color:#FFF;
+	border-style:double;
+	border-width:medium;
+	border-color:#90F;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:16px;
+	color:#333;
+}
+
+input.html-text-box {
+	background-color:#90F;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:14pt;
+	color:#FFF;
+}
+
+p.style{
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size:20px;
+}
+
+.distance {
+	padding-top:80px;
+	padding-left:20px
+}
+
+
