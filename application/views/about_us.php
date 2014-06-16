@@ -13,6 +13,7 @@
 
 <body>
 <?=$this->load->view("Template/header")?>
+<h1>sdfsdf</h1>
 <?=$this->load->view("Template/footer")?>
 
 </body>
