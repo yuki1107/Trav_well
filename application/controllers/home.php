@@ -34,6 +34,7 @@ class Home extends CI_Controller {
 	public function torontoPage(){
 		$this->load->view('toronto_page');
 	}
+
 }
 
 /* End of file welcome.php */
