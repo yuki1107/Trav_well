@@ -15,7 +15,7 @@
 .description{
 	padding-left:48px;
 }
-h2{ font-family:"Comic Sans MS", cursive;}
+h1{ font-family:"Comic Sans MS", cursive;}
 </style>
 </head>
 
@@ -38,7 +38,24 @@ h2{ font-family:"Comic Sans MS", cursive;}
         </div>
         
         <div class="col-sm-9 col-md-10 main">
-      	  <h2>Restaunants</h2>
+      	  <h1>Restaunants</h1>
+     
+            
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img class="1strest" src="<?= base_url()?>/images/lacarnita.jpg" />
+            </div>
+
+            <div class="col-xs-6 col-sm-9 description">
+              
+              <h4><a href="#"><?php echo anchor('restaurant/lacarnitaPage', 'La Carnita')?></a></h4>
+             <span >Address: 501 College street </span> 
+             <p class="b">Toronto, ON M5S 2K2</p>
+             <p>Contact:(416）964-1555 </p> 
+             <?=$this->load->view("Template/buttons")?>
+			 <?=$this->load->view("Template/rating")?>
+            </div>
+          </div> 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
               <img class="1strest" src="<?= base_url()?>/images/MillieCreperie.jpg" />
@@ -52,30 +69,8 @@ h2{ font-family:"Comic Sans MS", cursive;}
              <?=$this->load->view("Template/buttons")?>
 			 <?=$this->load->view("Template/rating")?>
             </div>
-          </div>      
-            
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img class="1strest" src="<?= base_url()?>/images/lacarnita.jpg" />
-            </div>
-
-            <div class="col-xs-6 col-sm-9 description">
-              <h4><a href="#">La Carnita</a></h4>
-             <span >Address: 501 College street </span> 
-             <p class="b">Toronto, ON M5S 2K2</p>
-             <p>Contact:(416）964-1555 </p> 
-             <?=$this->load->view("Template/buttons")?>
-			 <?=$this->load->view("Template/rating")?>
-            </div>
-          </div> 
-             
-            </div>
-
-         </div>
-
-
+          </div>
       </div>
 </div>
 
-</body>
-</html>
+<?=$this->load->view("Template/footer")?>
