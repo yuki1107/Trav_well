@@ -4,14 +4,14 @@ textarea.html-text-box {
 	background-color:#FFF;
 	border-style:double;
 	border-width:medium;
-	border-color:#90F;
+	border-color:#06F;
 	font-family:Georgia, "Times New Roman", Times, serif;
 	font-size:16px;
 	color:#333;
 }
 
 input.html-text-box {
-	background-color:#90F;
+	background-color:#06F;
 	font-family:Georgia, "Times New Roman", Times, serif;
 	font-size:14pt;
 	color:#FFF;
