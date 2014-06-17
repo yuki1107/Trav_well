@@ -42,7 +42,7 @@
     <div class="iconBar">
     	<?php echo anchor('home/torontoPage', '<img src="'.base_url().'/images/Toronto.gif" class="icon"/>')?>
         <?php echo anchor('sidebar/restaurantPage', '<img src="'.base_url().'/images/Ottawa.gif" class="icon"/>')?>
-        <img class="icon" src="<?= base_url()?>/images/Vancouver.gif" />
+        <?php echo anchor('home/profile', '<img src="'.base_url().'/images/Vancouver.gif" class="icon"/>')?>
         <img class="icon" src="<?= base_url()?>/images/HongKong.gif" />
         <img class="icon" src="<?= base_url()?>/images/ShangHai.gif" />
     </div>
