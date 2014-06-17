@@ -10,19 +10,20 @@ body {
 	background-color: #306;
    
 }
-.iconBar{
-	text-align:center;
-	margin:20px auto;
-	margin-top: 200px;
-	margin-right:20px;
+
+.photo{
+	width:200px;
+	margin:5px;
 }
 
-.member {
-    float: left;
-    width: 31%;
-    margin: 1% 1% 45px 1%;
-	margin-right:20px;
+.intro{
+	margin-top:90px;
 }
+
+.left{
+	float:left;
+}
+
 
 </style>
 
@@ -31,29 +32,59 @@ body {
 
 <body>
 <?=$this->load->view("Template/header")?>
-    <div class="iconBar">
-        <div class="member">
-            <img class="icon" src="<?= base_url()?>/images/1.gif" width="304" height="350"/>
-            <h3 style="background-color:white;">FuJun Shen</h3> 
-        </div>
-        <div class ="member">
-            <img class="icon" src="<?= base_url()?>/images/2.gif" width="304" height="350"/>
-        	<h3 style="background-color:white;">Sean Gallagher</h3>
-        </div>
-        <div class="member"> 
-        	<img class="icon" src="<?= base_url()?>/images/3.gif" width="304" height="350"/>
-       		<h3 style="background-color:white;">Sophie Ding</h3>
-        </div>
-        <div class="member"> 
-        	<img class="icon" src="<?= base_url()?>/images/4.gif" width="304" height="350"/>
-        	<h3 style="background-color:white;">Emmy Wang</h3>
-        </div> 
-        <div class="member"> 
-        	<img class="icon" src="<?= base_url()?>/images/5.gif" width="304" height="350"/>
-        	<h3 style="background-color:white;">Yuki He</h3>
-        </div> 
+
+	<div class="container">
+    	<div class="intro">
+            <div class="jumbotron row">
+            	<div class="col-xs-6 col-sm-3 placeholder">
+                    <img class="photo" src="<?= base_url()?>/images/1.gif"/>
+                </div>
+                <div class="col-xs-6 col-sm-9 description">
+                	<p><b>Fujun Shen</b></p>
+                    <p>I was born in Harbin, which located in the North-East of China. In 2008, I was first time landed in Canada. During my leisure time, I enjoy playing tennis, watching movies and also going for a trip.</p>
+                </div>
+            </div>
+            
+            <div class ="jumbotron row">
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <img class="photo" src="<?= base_url()?>/images/2.gif"/>
+                </div>
+                <div class="col-xs-6 col-sm-9 description">
+                	<p><b>Sean Gallagher</b></p>
+                    <p>I was born and raised in Toronto and am currently a 3rd year student at UofT. I really enjoy all aspects of comp sci and have a wide range of experience working for companies like Scotiabank, Ontario Teachers' Pension Plan and Statistics Canada. When I'm not writing code, I can be found competing in chess tournaments, going for runs, or eating sushi at local restaurants.</p>
+                </div>
+            </div>
+            
+            <div class="jumbotron row"> 
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <img class="photo" src="<?= base_url()?>/images/3.gif"/>
+                </div>
+                <div class="col-xs-6 col-sm-9 description">
+                	<p><b>Feifei Ding (Sophie)</b></p>
+                    <p>I was born in China moved to Canada few years ago. I have travelled some cities in both countries, such as Vancouver, Toronto, and Shanghai, and I really enjoy the moment of travelling. I like outdoor activities, psychology, and detective novel.</p>
+                </div>
+            </div>
+            
+            <div class="jumbotron row"> 
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <img class="photo" src="<?= base_url()?>/images/4.gif"/>
+                </div>
+                <div class="col-xs-6 col-sm-9 description">
+                	<p><b>Yuxiu Wang (Emmy)</b></p>
+                    <p>I was born in china and moved to Canada four years ago. I am second year  student at University of Toronto. I am interested computer programing  environment science and designing and enjoy in learning them. when I am  free, I love to have small trip and also travel with my friends! </p>
+                </div>
+            </div> 
+            
+            <div class="jumbotron row"> 
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <img class="photo" src="<?= base_url()?>/images/5.gif"/>
+                </div>
+                <div class="col-xs-6 col-sm-9 description">
+                	<p><b>Ying qi He (Yuki) </b></p>
+                    <p>I am currently 2nd years Computer Science Student in U of T. I was born in China and moved to Canada few years ago. I like drawing and designing. I am familiar with using Adobe design software. Building website about traveling is fun, remains me about my hometown. </p>
+                </div>
+            </div> 
+    	</div>
     </div>
 
-
-</body>
-</html>
+<?=$this->load->view("Template/footer")?>
