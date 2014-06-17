@@ -35,6 +35,11 @@ class Home extends CI_Controller {
 		$this->load->view('toronto_page');
 	}
 
+	public function profile()
+	{
+		$this->load->view('member_info_page');
+	}
+
 }
 
 /* End of file welcome.php */
