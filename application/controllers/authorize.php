@@ -9,7 +9,7 @@ class Authorize extends CI_Controller {
 			$this->load->model('user');
 			$this->load->model('user_model');
 			$this->load->helper(array('form','url'));
-	    	//session_start();
+	    	session_start();
     }
 
 	
@@ -44,13 +44,12 @@ class Authorize extends CI_Controller {
 		}	
 	}
 	
-	/*
 	public function login(){
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('home_page');
+			$this->load->view('login_page');
 		}
 		else  
 		{
@@ -61,15 +60,13 @@ class Authorize extends CI_Controller {
 			$user = $this->user_model->read($username);
 			if(isset($user) && $user->comparePassword($enterPwd)){
 				$_SESSION['user'] = $user;				
-				redirect('base/index');
+				redirect('home/index');
 			}else{
-				$errMsg = "Incorrect User Name or Password!";
+				$errMsg = "Incorrect Username or Password!";
 				$this->load->view('home_page', $errMsg);
 			}
 		}
 	}
-	*/
-	
 	
 	public function comparePassword($password, $user){
 		if(isset($password) && isset($user) && $user->password == $password){
@@ -79,12 +76,12 @@ class Authorize extends CI_Controller {
 		}		
 	}
 	
-	/*
+	
 	public function logout(){
 		unset($_SESSION['user']);
-		redirect('base\index');
+		redirect('home\index');
 	}
-	*/
+	
 
 }
 
