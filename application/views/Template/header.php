@@ -13,7 +13,17 @@
         
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="form">
-            <?php echo anchor('home/loginPage', 'Login', array('id'=>'login'))?>
+            <?php 
+			if (!isset($_SESSION['user'])){
+				echo anchor('home/loginPage', 'Login', array('class'=>'login'));
+			}
+			else{
+				$user = $_SESSION['user'];
+				echo anchor('home/profile', "<span 'class=login'>Welcome, " . $user->username . "</span>");
+				echo " ";
+				echo anchor('authorize/logout', 'Log Out', array('class'=>'btn btn-success'));
+			}
+			?>
             <div class="form-group">
               <input type="keyword" placeholder="Search" class="form-control">
             </div>

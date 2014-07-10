@@ -8,6 +8,7 @@ class Home extends CI_Controller {
 			$this->load->model('user');
 			$this->load->model('user_model');
 			$this->load->helper('url');
+			session_start();
     }
 	/**
 	 * Index Page for this controller.
