@@ -4,6 +4,9 @@ class Home extends CI_Controller {
     function __construct() {
     		// Call the Controller constructor
 	    	parent::__construct();
+			$this->load->library('form_validation');
+			$this->load->model('user');
+			$this->load->model('user_model');
 			$this->load->helper('url');
     }
 	/**

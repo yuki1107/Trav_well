@@ -7,28 +7,14 @@
 <link href="<?= base_url()?>/css/style.css" rel="stylesheet">
 
 <style>
-
-
 .form-signin {    
-    max-width: 300px;
-    padding: 19px 29px 29px;
-	float:left;
+    width: 300px;
+	height: 520px;
+    padding: 20px;
     background-color: #fff;
     border: 1px solid #e5e5e5;
     border-radius: 20px;
     box-shadow: 0 1px 2px rgba(0,0,0,.05);
-	margin-bottom:30px;
-
-}
-
-.form-reg {
-    max-width: 300px;
-    padding: 19px 29px 29px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 20px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.05);
-	float:left;
 }
 
 .row{
@@ -42,14 +28,14 @@
 }
 
 .login_button {
-	margin-top:120px;
+	margin-top:135px;
 	margin-bottom:45px;
 	margin-right:200px;
 	
 }
 
 .reg_button{
-	margin-top:50px;
+	margin-top:28px;
 	margin-bottom:45px;
 }
 	
@@ -59,6 +45,22 @@ body {
 }
 
 </style>
+
+<script>
+			function checkPassword() {
+				var p1 = $("#pwd1"); 
+				var p2 = $("#pwd2");
+				
+				if (p1.val() == p2.val()) {
+					p1.get(0).setCustomValidity("");  // All is well, clear error message
+					return true;
+				}	
+				else	 {
+					p1.get(0).setCustomValidity("Passwords do not match =(");
+					return false;
+				}
+			}
+		</script>
 </head>
 
 
@@ -66,22 +68,34 @@ body {
 	<?=$this->load->view("Template/header")?>
 
  	<div class="row">
-        <form class="form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-3" role="form">
-              <h2 class="signin_text">Please sign in</h2>
-              <p><input type="email" name="login" value="" placeholder="Email"></p>
-              <p><input type="password" name="password" value="" placeholder="Password"></p>
-    
-              <p class="login_button"><button type="submit" class="btn btn-info">Login</button></p>
-        </form>
+    	<div class="form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-3">
+			<?php
+                echo form_open('authorize/login', "role='form'");
+                echo "<h2 class='signin_text'>Please sign in</h2>";
+                echo form_input('username',set_value('username'), "class=form-control placeholder='Username'", "required");
+				echo "<br>";
+                echo form_password('password',set_value(),"id='pwd1' class=form-control placeholder='Password'","required");
+                echo form_submit('submit', 'Login', "class = 'btn btn-info login_button'");
+                echo form_close();
+            ?>
+       </div>
         
-        <form class="form-reg col-lg-3 col-md-5 col-sm-12 col-lg-offset-1 col-md-offset-1" role="form">
-            <h2 class="signin_text">If not a user yet...</h2>
-            <p><input type="text" name="Username" value="" placeholder="Create a Username"></p>
-            <p><input type="email" name="email" value="" placeholder="Email"></p>
-            <p><input type="password" name="password1" value="" placeholder="Create a Password"></p>
-            <p><input type="password" name="password2" value="" placeholder="Confirm your Password"></p>
-            <p class="reg_button"><button type="submit" class="btn btn-info">Create Your Account</button></p>
-         </form>
+        <div class='form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-1 col-md-offset-1'>
+			<?php
+                echo form_open('authorize/register', "class='form-group' role='form'");
+                echo "<h2 class='signin_text'>If not a user yet...</h2>";
+                echo form_input('username',set_value('username'), "class=form-control placeholder='Username'", "required");
+				echo "<br>";
+                echo form_input('email',set_value('email'), "class=form-control placeholder='Username'", "required");
+				echo "<br>";
+                echo form_password('password',set_value(),"id='pwd1' class=form-control placeholder='Password'","required");
+				echo "<br>";
+                echo form_password('passconf',set_value(),"id='pwd2' class=form-control placeholder='Confirm your password'","required oninput='checkPassword();'");
+                echo form_submit('submit', 'Register', "class = 'btn btn-info reg_button'");
+                echo form_close();
+            ?>
+        </div>
+        
 	</div>
  
 
