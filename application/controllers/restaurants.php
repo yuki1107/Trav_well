@@ -4,7 +4,10 @@ class Restaurants extends CI_Controller {
     function __construct() {
     		// Call the Controller constructor
 	    	parent::__construct();
+			$this->load->model('user');
+			$this->load->model('user_model');
 			$this->load->helper('url');
+			session_start();
     }
 	/**
 	 * Index Page for this controller.
