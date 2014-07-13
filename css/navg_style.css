@@ -1,36 +1,24 @@
 @charset "utf-8";
 /* CSS Document */
-.row{
-	padding-top:55px;
-}
 
-.sidebar{
-	background-color:#306;
-	padding-bottom:300px;
-	color:white;
-}
 
 .active > a{
 	color:#306;
 	background-color:white;
-	width:208.182px;
-}
-
-a.sidebar{
-	color:#428bca;
-}
-
-a.sidebar:hover{
-	color:black;
 }
 
 .nav-sidebar{
 	font-weight:bold;
-	font-size:22px;
+	font-size:18px;
 	font-family:"Times New Roman", Times, serif;
+	background-color:#306;
 }
 
-.nav-sidebar:hover{
-	width:208.182px;
+.non-active > a{
+	color:#eee;
+}
+
+.non-active > a:hover{
+	color:#306;
 }
 
