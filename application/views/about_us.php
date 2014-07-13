@@ -23,8 +23,6 @@ body {
 .left{
 	float:left;
 }
-
-
 </style>
 
 </head>

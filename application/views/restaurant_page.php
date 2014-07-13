@@ -13,64 +13,77 @@
 	text-indent: 60px;	
 }
 .description{
-	padding-left:48px;
+	padding-left:80px;
 }
+
 h1{ font-family:"Comic Sans MS", cursive;}
+
 </style>
 </head>
 
 <body>
 	<?=$this->load->view("Template/header")?>
     
-
-<div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+<div class="row headerSpace">
+        <div class="col-sm-3 col-md-2">
               <ul class="nav nav-sidebar">
-                <li><?php echo anchor('sidebar/overviewPage', 'Overview')?></li>
+                <li class='non-active'><?php echo anchor('sidebar/overviewPage', 'Overview')?></li>
                 <li class="active"><a href="#">Restaurants</a></li>
-                <li><a href="#">Landmarks</a></li>
-                <li><a href="#">Shopping Malls</a></li>
-                <li><a href="#">Hotels</a></li>
-                <li><a href="#">...</a></li>
-                <li><a href="#">...</a></li>
-                <li><a href="#">...</a></li>
+                <li class='non-active'><a href="#">Landmarks</a></li>
+                <li class='non-active'><a href="#">Shopping Malls</a></li>
+                <li class='non-active'><a href="#">Hotels</a></li>
               </ul>
-        </div>
+         </div>
         
-        <div class="col-sm-9 col-md-10 main">
-      	  <h1>Restaunants</h1>
-     
-            
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img class="1strest" src="<?= base_url()?>/images/lacarnita.jpg" />
-            </div>
-
-            <div class="col-xs-6 col-sm-9 description">
+        <div class="col-sm-9 col-md-10">
+        <div class="cityInfoContainer">
+        
+      	  <h1>Restaunants</h1><hr />
+          <div class='listContainer'>
+              <div class="row placeholders listElement">
+                <div class="col-xs-6 col-sm-3 placeholder">
+                  <img class="1strest" src="<?= base_url()?>/images/lacarnita.jpg" />
+                </div>
+    
+                <div class="col-xs-6 col-sm-9 description">
+                    <address>
+                         <h4><?php echo anchor('restaurant/lacarnitaPage', 'La Carnita')?></h4>
+                         501 College street<br />
+                         Toronto, ON M5S 2K2<br />
+                         <abbr>Contact: </abbr>(416）964-1555
+                     </address>
+                     <?=$this->load->view("Template/rating")?>
+                     <div>
+                         <button type="submit" class="btn btn-info">Wanna Go</button>
+                         <button type="submit" class="btn btn-info">Been There</button>
+                     </div>
+                </div><!--description-->            
+              </div> <!--row-->
               
-              <h4><a href="#"><?php echo anchor('restaurant/lacarnitaPage', 'La Carnita')?></a></h4>
-             <span >Address: 501 College street </span> 
-             <p class="b">Toronto, ON M5S 2K2</p>
-             <p>Contact:(416）964-1555 </p> 
-             <?=$this->load->view("Template/buttons")?>
-			 <?=$this->load->view("Template/rating")?>
-            </div>
-          </div> 
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img class="1strest" src="<?= base_url()?>/images/MillieCreperie.jpg" />
-            </div>
-
-            <div class="col-xs-6 col-sm-9 description">
-              <h4><a href="#">MillieCreerie</a></h4>
-             <span >Address: 161 Baldwin street </span> 
-             <p class="b">Toronto, ON M5T 1L9</p>
-             <p>Contact:(416) 977-1922 </p> 
-             <?=$this->load->view("Template/buttons")?>
-			 <?=$this->load->view("Template/rating")?>
-            </div>
-          </div>
-      </div>
+              
+              <div class="row placeholders listElement">
+                <div class="col-xs-6 col-sm-3 placeholder">
+                  <img class="1strest" src="<?= base_url()?>/images/MillieCreperie.jpg" />
+                </div>
+    
+                <div class="col-xs-6 col-sm-9 description">
+                    <address>
+                         <h4>MillieCreerie</h4>
+                         161 Baldwin street <br /> 
+                         Toronto, ON M5T 1L9<br />
+                         <abbr>Contact: </abbr>(416) 977-1922
+                    </address>
+                     <?=$this->load->view("Template/rating")?>
+                     <div>
+                         <button type="submit" class="btn btn-info">Wanna Go</button>
+                         <button type="submit" class="btn btn-info">Been There</button>
+                     </div>
+                </div><!--description-->
+              </div><!--row-->
+          </div><!--listContainer-->
+          </div><!--cityInfoContainer-->
+      </div><!--col-->
 </div>
+
 
 <?=$this->load->view("Template/footer")?>
