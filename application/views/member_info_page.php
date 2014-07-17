@@ -29,42 +29,43 @@ h3 { background-color: black;
 
     <?=$this->load->view("Template/header")?>
 
-    <div class="row">
+    <div class="row headerSpace">
             <div class="col-xs-2 sidebar">
                   <ul class="nav nav-sidebar">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Friends</a></li>
-                    <li><a href="#">Messages</a></li>
+                    <li class="non-active"><a href="#">Friends</a></li>
+                    <li class="non-active"><a href="#">Messages</a></li>
                   </ul>
             </div>
             
-            <div class="col-xs-10 main">
-              <h2>jdo13's Profile</h2>
-              <h4>Toronto</h4>
-            </div>
-
-            <div class="col-xs-2 placeholder">
-              <img src="<?= base_url()?>/images/profile.png" align="center" />
-            </div>
-
-            <div class="col-xs-6 description">
-                <h3>Basic</h3>
-                <p>Name: John Doe</p>
-                <p>Age: 25</p>
-                <p>Interests: Water Polo, Biochemistry</p>
-                <p>Bio: I am a writer from California</p>
-                <h3>Wants to Visit</h3>
-                    <ul> <li> MillieCreerie (Toronto) </li></ul>
-                <h3>Posted Reviews</h3>
-                    <ul><li> La Carnita nightmare...</li></ul>
-            </div>
-
-            <div class="col-xs-8">
-              <p>
-                <button type="submit" class="btn btn-info">Add to Friends</button>
-                <button type="submit" class="btn btn-info">Send Message</button>
-              </p>
-            </div>
+            <div class="cityInfoContainer">
+                <div class="col-xs-10">
+                  <h2>jdo13's Profile</h2>
+                </div>
+    
+                <div class="col-xs-2 placeholder">
+                  <img src="<?= base_url()?>/images/profile.png" align="center" />
+                </div>
+    
+                <div class="col-xs-6 description">
+                    <h3>Basic</h3>
+                    <p>Name: John Doe</p>
+                    <p>Age: 25</p>
+                    <p>Interests: Water Polo, Biochemistry</p>
+                    <p>Bio: I am a writer from California</p>
+                    <h3>Wants to Visit</h3>
+                        <ul> <li> MillieCreerie (Toronto) </li></ul>
+                    <h3>Posted Reviews</h3>
+                        <ul><li> La Carnita nightmare...</li></ul>
+                </div>
+    
+                <div class="col-xs-8">
+                  <p>
+                    <button type="submit" class="btn btn-info">Add to Friends</button>
+                    <button type="submit" class="btn btn-info">Send Message</button>
+                  </p>
+                </div>
+            </div><!--cityInfoContainer-->
     </div>
 
     <?=$this->load->view("Template/footer")?>

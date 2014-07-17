@@ -19,3 +19,5 @@ class User  {
 		return ($enterPassword == $this->password);
 	}	
 }
+
+?>

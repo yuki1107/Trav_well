@@ -26,7 +26,9 @@
             <div class='cityInfoContainer'>
           		<h1 class="cityInfoHeader">Toronto</h1><hr />
                 	<img class="cityInfoImg" src="<?= base_url()?>/images/cityToronto.jpg" />
-                    <p class='cityInfoFont'>	
+                    <p class='cityInfoFont'>
+                    <?php
+					?>	
                 		One of Canada’s best kept secrets, Toronto is on par with New York City, San Francisco, and Chicago when it comes to cultural attractions and urban endeavors.<br /><br />
 
 The best place to start is at the top; and in Toronto, there’s no mistaking where that is. The landmark CN Tower is the tallest free-standing structure in the West (Malaysia has a taller free-standing structure), and also an important telecommunications hub. Take the elevator to the top for a breathtaking view of the city and its surrounding areas. <br /><br />
