@@ -13,25 +13,13 @@ SET time_zone = "+00:00";
 --
 -- Database: `Trav_well`
 --
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `CityBeen`
+-- Table structure for table `City`
 --
 
-CREATE TABLE `CityBeen` (
-  `userID` int(30) NOT NULL,
-  `cityID` int(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Citys`
---
-
-CREATE TABLE `Citys` (
+CREATE TABLE `City` (
   `cityID` int(30) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `country` varchar(30) NOT NULL,
@@ -43,89 +31,10 @@ CREATE TABLE `Citys` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Comments`
+-- Table structure for table `User`
 --
 
-CREATE TABLE `Comments` (
-  `userID` int(30) NOT NULL,
-  `placeID` int(30) NOT NULL,
-  `content` text NOT NULL,
-  `commentID` int(30) NOT NULL,
-  `time` datetime NOT NULL,
-  PRIMARY KEY (`userID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Friendship`
---
-
-CREATE TABLE `Friendship` (
-  `user1` int(30) NOT NULL,
-  `user2` int(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Messages`
---
-
-CREATE TABLE `Messages` (
-  `messageID` int(30) NOT NULL,
-  `sender` int(30) NOT NULL,
-  `receiver` int(30) NOT NULL,
-  `content` text NOT NULL,
-  `time` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Place`
---
-
-CREATE TABLE `Place` (
-  `placeID` int(30) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `address` varchar(200) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `cityID` int(30) NOT NULL,
-  `description` text NOT NULL,
-  `picture_url` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `PlacesBeen`
---
-
-CREATE TABLE `PlacesBeen` (
-  `userID` int(30) NOT NULL,
-  `placeID` int(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Rating`
---
-
-CREATE TABLE `Rating` (
-  `userID` int(30) NOT NULL,
-  `placeID` int(30) NOT NULL,
-  `Rating` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Users`
---
-
-CREATE TABLE `Users` (
+CREATE TABLE `User` (
   `userID` int(30) NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
   `first_name` varchar(30) DEFAULT NULL,
@@ -143,11 +52,120 @@ CREATE TABLE `Users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `Users`
+-- Dumping data for table `User`
 --
 
-INSERT INTO `Users` (`userID`, `username`, `first_name`, `last_name`, `email`, `password`, `phone`, `age`, `gender`, `location`, `picture_url`, `interest`, `bio`) VALUES
+INSERT INTO `User` (`userID`, `username`, `first_name`, `last_name`, `email`, `password`, `phone`, `age`, `gender`, `location`, `picture_url`, `interest`, `bio`) VALUES
 (1, 'abc', NULL, NULL, 'abc@def.com', '123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `CityBeen`
+--
+
+CREATE TABLE `CityBeen` (
+  `userID` int(30) NOT NULL,
+  `cityID` int(30) NOT NULL,
+  PRIMARY KEY (`userID`, `cityID`),
+  FOREIGN KEY (`userID`) REFERENCES User(`userID`),
+  FOREIGN KEY (`cityID`) REFERENCES City(`cityID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Place`
+--
+
+CREATE TABLE `Place` (
+  `placeID` int(30) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `cityID` int(30) NOT NULL,
+  `description` text NOT NULL,
+  `picture_url` varchar(300) NOT NULL,
+  PRIMARY KEY (`placeID`),
+  FOREIGN KEY (`cityID`) REFERENCES City(`cityID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Comments`
+--
+
+CREATE TABLE `Comments` (
+  `userID` int(30) NOT NULL,
+  `placeID` int(30) NOT NULL,
+  `content` text NOT NULL,
+  `commentID` int(30) NOT NULL,
+  `time` datetime NOT NULL,
+  PRIMARY KEY (`commentID`),
+  FOREIGN KEY (`userID`) REFERENCES User(`userID`),
+  FOREIGN KEY (`placeID`) REFERENCES Place(`placeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Messages`
+--
+
+CREATE TABLE `Messages` (
+  `messageID` int(30) NOT NULL,
+  `sender` int(30) NOT NULL,
+  `receiver` int(30) NOT NULL,
+  `content` text NOT NULL,
+  `time` datetime NOT NULL,
+  PRIMARY KEY (`messageID`),
+  FOREIGN KEY (`sender`) REFERENCES User(`userID`),
+  FOREIGN KEY (`receiver`) REFERENCES User(`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `PlacesBeen`
+--
+
+CREATE TABLE `PlacesBeen` (
+  `userID` int(30) NOT NULL,
+  `placeID` int(30) NOT NULL,
+  PRIMARY KEY (`userID`, `placeID`),
+  FOREIGN KEY (`userID`) REFERENCES User(`userID`),
+  FOREIGN KEY (`placeID`) REFERENCES Place(`placeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Rating`
+--
+
+CREATE TABLE `Rating` (
+  `userID` int(30) NOT NULL,
+  `placeID` int(30) NOT NULL,
+  `Rating` float NOT NULL,
+  PRIMARY KEY (`userID`, `placeID`),
+  FOREIGN KEY (`userID`) REFERENCES User(`userID`),
+  FOREIGN KEY (`placeID`) REFERENCES Place(`placeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Friendship`
+--
+
+CREATE TABLE `Friendship` (
+  `user1` int(30) NOT NULL,
+  `user2` int(30) NOT NULL,
+  PRIMARY KEY (`user1`, `user2`),
+  FOREIGN KEY (`user1`) REFERENCES User(`userID`),
+  FOREIGN KEY (`user2`) REFERENCES User(`userID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -157,7 +175,10 @@ INSERT INTO `Users` (`userID`, `username`, `first_name`, `last_name`, `email`, `
 
 CREATE TABLE `WantToGoCity` (
   `userID` int(30) NOT NULL,
-  `cityID` int(30) NOT NULL
+  `cityID` int(30) NOT NULL,
+  PRIMARY KEY (`userID`, `cityID`),
+  FOREIGN KEY (`userID`) REFERENCES User(`userID`),
+  FOREIGN KEY (`cityID`) REFERENCES City(`cityID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -168,5 +189,8 @@ CREATE TABLE `WantToGoCity` (
 
 CREATE TABLE `WantToGoPlace` (
   `userID` int(30) NOT NULL,
-  `placeID` int(30) NOT NULL
+  `placeID` int(30) NOT NULL,
+  PRIMARY KEY (`userID`, `placeID`),
+  FOREIGN KEY (`userID`) REFERENCES User(`userID`),
+  FOREIGN KEY (`placeID`) REFERENCES Place(`placeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
