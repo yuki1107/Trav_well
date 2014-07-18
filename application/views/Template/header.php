@@ -7,13 +7,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          
-          <?php echo anchor('home/index', '<img src="'.base_url().'/images/logo.gif" id="logo"/>')?>
+
+          <?php echo anchor('home/index', '<img src="/Trav_well/assets/images/logo.gif" id="logo"/>')?>
         </div>
-        
+
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="form">
-            <?php 
+            <?php
 			if (!isset($_SESSION['user'])){
 				echo anchor('home/loginPage', 'Login', array('class'=>'login'));
 			}
@@ -27,10 +27,10 @@
             <div class="form-group">
               <input type="keyword" placeholder="Search" class="form-control">
             </div>
-            
+
             <button type="submit" class="btn btn-info">Search</button>
           </form>
         </div><!--/.navbar-collapse -->
-        
+
       </div>
     </div>
