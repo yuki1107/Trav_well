@@ -7,7 +7,7 @@
 <link href="<?= base_url()?>/css/style.css" rel="stylesheet">
 
 <style>
-.form-signin {    
+.form-signin {
     width: 300px;
 	height: 520px;
     padding: 20px;
@@ -31,30 +31,30 @@
 	margin-top:135px;
 	margin-bottom:45px;
 	margin-right:200px;
-	
+
 }
 
 .reg_button{
 	margin-top:28px;
 	margin-bottom:45px;
 }
-	
+
 body {
 	background-color: #306;
-   
+
 }
 
 </style>
 
 <script>
 			function checkPassword() {
-				var p1 = $("#pwd1"); 
+				var p1 = $("#pwd1");
 				var p2 = $("#pwd2");
-				
+
 				if (p1.val() == p2.val()) {
 					p1.get(0).setCustomValidity("");  // All is well, clear error message
 					return true;
-				}	
+				}
 				else	 {
 					p1.get(0).setCustomValidity("Passwords do not match =(");
 					return false;
@@ -79,7 +79,7 @@ body {
                 echo form_close();
             ?>
        </div>
-        
+
         <div class='form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-1 col-md-offset-1'>
 			<?php
                 echo form_open('authorize/register', "class='form-group' role='form'");
@@ -95,8 +95,9 @@ body {
                 echo form_close();
             ?>
         </div>
-        
+
 	</div>
- 
+ <?php
+ 	echo "<script> alert('".$errMsg."') </script>";?>
 
 <?=$this->load->view("Template/footer")?>
