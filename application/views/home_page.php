@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Trav_well</title>
-<link href="<?= base_url()?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/Trav_well/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/Trav_well/assets/css/style.css" rel="stylesheet">
 <style>
 .bigImageBar{
@@ -40,9 +40,9 @@
     </div>
 
     <div class="iconBar">
-    	<?php echo anchor("home/torontoPage", '<img src="'.base_url().'/images/Toronto.gif" class="icon"/>')?>
-        <?php echo anchor('sidebar/restaurantPage', '<img src="'.base_url().'/images/Ottawa.gif" class="icon"/>')?>
-        <?php echo anchor('home/profile', '<img src="'.base_url().'/images/Vancouver.gif" class="icon"/>')?>
+    	<?php echo anchor("home/torontoPage", '<img src="/Trav_well/assets/images/Toronto.gif" class="icon"/>')?>
+        <?php echo anchor('sidebar/restaurantPage', '<img src="/Trav_well/assets/images/Ottawa.gif" class="icon"/>')?>
+        <?php echo anchor('home/profile', '<img src="/Trav_well/assets/images/Vancouver.gif" class="icon"/>')?>
         <img class="icon" src="/Trav_well/assets/images/HongKong.gif" />
         <img class="icon" src="/Trav_well/assets/images/ShangHai.gif" />
     </div>
