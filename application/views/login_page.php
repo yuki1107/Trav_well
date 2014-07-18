@@ -97,7 +97,5 @@ body {
         </div>
 
 	</div>
- <?php
- 	echo "<script> alert('".$errMsg."') </script>";?>
 
 <?=$this->load->view("Template/footer")?>
