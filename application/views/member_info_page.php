@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Trav_well</title>
 <link href="<?= base_url()?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?= base_url()?>/css/style.css" rel="stylesheet">
-<link href="<?= base_url()?>/css/navg_style.css" rel="stylesheet">
+<link href="/Trav_well/assets/css/style.css" rel="stylesheet">
+<link href="/Trav_well/assets/css/navg_style.css" rel="stylesheet">
 <style>
 
 .description{ padding-left:45px; }
@@ -37,16 +37,16 @@ h3 { background-color: black;
                     <li class="non-active"><a href="#">Messages</a></li>
                   </ul>
             </div>
-            
+
             <div class="cityInfoContainer">
                 <div class="col-xs-10">
                   <h2>jdo13's Profile</h2>
                 </div>
-    
+
                 <div class="col-xs-2 placeholder">
-                  <img src="<?= base_url()?>/images/profile.png" align="center" />
+                  <img src="/Trav_well/assets/images/profile.png" align="center" />
                 </div>
-    
+
                 <div class="col-xs-6 description">
                     <h3>Basic</h3>
                     <p>Name: John Doe</p>
@@ -58,7 +58,7 @@ h3 { background-color: black;
                     <h3>Posted Reviews</h3>
                         <ul><li> La Carnita nightmare...</li></ul>
                 </div>
-    
+
                 <div class="col-xs-8">
                   <p>
                     <button type="submit" class="btn btn-info">Add to Friends</button>
