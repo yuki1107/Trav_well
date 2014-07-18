@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Trav_well</title>
-<link href="<?= base_url()?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/Trav_well/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/Trav_well/assets/css/style.css" rel="stylesheet">
 <style>
 body {
