@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Trav_well</title>
 <link href="<?= base_url()?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?= base_url()?>/css/style.css" rel="stylesheet">
-<link href="<?= base_url()?>/css/rating.css" rel="stylesheet">
-<link href="<?= base_url()?>/css/buttons.css" rel="stylesheet">
-<link href="<?= base_url()?>/css/navg_style.css" rel="stylesheet">
+<link href="/Trav_well/assets/css/style.css" rel="stylesheet">
+<link href="/Trav_well/assets/css/rating.css" rel="stylesheet">
+<link href="/Trav_well/assets/css/buttons.css" rel="stylesheet">
+<link href="/Trav_well/assets/css/navg_style.css" rel="stylesheet">
 <style>
 .b{
-	text-indent: 60px;	
+	text-indent: 60px;
 }
 .description{
 	padding-left:80px;
@@ -23,7 +23,7 @@ h1{ font-family:"Comic Sans MS", cursive;}
 
 <body>
 	<?=$this->load->view("Template/header")?>
-    
+
 <div class="row headerSpace">
         <div class="col-sm-3 col-md-2">
               <ul class="nav nav-sidebar">
@@ -34,17 +34,17 @@ h1{ font-family:"Comic Sans MS", cursive;}
                 <li class='non-active'><a href="#">Hotels</a></li>
               </ul>
          </div>
-        
+
         <div class="col-sm-9 col-md-10">
         <div class="cityInfoContainer">
-        
+
       	  <h1>Restaunants</h1><hr />
           <div class='listContainer'>
               <div class="row placeholders listElement">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                  <img class="1strest" src="<?= base_url()?>/images/lacarnita.jpg" />
+                  <img class="1strest" src="/Trav_well/assets/images/lacarnita.jpg" />
                 </div>
-    
+
                 <div class="col-xs-6 col-sm-9 description">
                     <address>
                          <h4><?php echo anchor('restaurant/lacarnitaPage', 'La Carnita')?></h4>
@@ -57,19 +57,19 @@ h1{ font-family:"Comic Sans MS", cursive;}
                          <button type="submit" class="btn btn-info">Wanna Go</button>
                          <button type="submit" class="btn btn-info">Been There</button>
                      </div>
-                </div><!--description-->            
+                </div><!--description-->
               </div> <!--row-->
-              
-              
+
+
               <div class="row placeholders listElement">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                  <img class="1strest" src="<?= base_url()?>/images/MillieCreperie.jpg" />
+                  <img class="1strest" src="/Trav_well/assets/images/MillieCreperie.jpg" />
                 </div>
-    
+
                 <div class="col-xs-6 col-sm-9 description">
                     <address>
                          <h4>MillieCreerie</h4>
-                         161 Baldwin street <br /> 
+                         161 Baldwin street <br />
                          Toronto, ON M5T 1L9<br />
                          <abbr>Contact: </abbr>(416) 977-1922
                     </address>

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Trav_well</title>
 <link href="<?= base_url()?>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?= base_url()?>/css/style.css" rel="stylesheet">
+<link href="/Trav_well/assets/css/style.css" rel="stylesheet">
 <style>
 body {
 	background-color: #306;
@@ -84,7 +84,7 @@ body {
             </div>
             <div class="jumbotron row">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img class="photo" src="/Trav_well/assets/images/6.gif"/>
+                    <img class="photo" src="/Trav_well/assets/images/6.jpg"/>
                 </div>
                 <div class="col-xs-6 col-sm-9 description">
                     <p><b>Monica Li </b></p>
