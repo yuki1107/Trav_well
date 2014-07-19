@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Trav_well</title>
-<link href="/Trav_well/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/style.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/navg_style.css" rel="stylesheet">
+<link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/style.css" rel="stylesheet">
+<link href="/assets/css/navg_style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
             <div class="col-sm-9 col-md-10">
             <div class='cityInfoContainer'>
           		<h1 class="cityInfoHeader">Toronto</h1><hr />
-                	<img class="cityInfoImg" src="/Trav_well/assets/images/cityToronto.jpg" />
+                	<img class="cityInfoImg" src="/assets/images/cityToronto.jpg" />
                     <p class='cityInfoFont'>
                     <?php
 					?>

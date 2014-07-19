@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <?php echo anchor('home/index', '<img src="/Trav_well/assets/images/logo.gif" id="logo"/>')?>
+          <?php echo anchor('home/index', '<img src="/assets/images/logo.gif" id="logo"/>')?>
         </div>
 
         <div class="navbar-collapse collapse">

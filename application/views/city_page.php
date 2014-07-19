@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Trav_well</title>
-<link href="/Trav_well/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/style.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/navg_style.css" rel="stylesheet">
+<link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/style.css" rel="stylesheet">
+<link href="/assets/css/navg_style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -30,7 +30,7 @@
             	</div>
         	</div>
 		</div>
-<script src="/Trav_well/assets/js/jquery-1.11.1.min.js"></script>
+<script src="/assets/js/jquery-1.11.1.min.js"></script>
 <script>
   $(document).ready(function() {
         var city = <?php echo json_encode($cityInfo); ?>;

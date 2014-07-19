@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Trav_well</title>
-<link href="/Trav_well/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/style.css" rel="stylesheet">
+<link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/style.css" rel="stylesheet">
 <style>
 .bigImageBar{
 	text-align:center;
@@ -36,15 +36,15 @@
 	<?=$this->load->view("Template/header")?>
 
     <div class="bigImageBar">
-        <img class="bigImage" src="/Trav_well/assets/images/TorontoImg.jpg" />
+        <img class="bigImage" src="/assets/images/TorontoImg.jpg" />
     </div>
 
     <div class="iconBar">
-    	<?php echo anchor("home/torontoPage", '<img src="/Trav_well/assets/images/Toronto.gif" class="icon"/>')?>
-        <?php echo anchor('sidebar/restaurantPage', '<img src="/Trav_well/assets/images/Ottawa.gif" class="icon"/>')?>
-        <?php echo anchor('home/profile', '<img src="/Trav_well/assets/images/Vancouver.gif" class="icon"/>')?>
-        <img class="icon" src="/Trav_well/assets/images/HongKong.gif" />
-        <img class="icon" src="/Trav_well/assets/images/ShangHai.gif" />
+    	<?php echo anchor("home/torontoPage", '<img src="/assets/images/Toronto.gif" class="icon"/>')?>
+        <?php echo anchor('sidebar/restaurantPage', '<img src="/assets/images/Ottawa.gif" class="icon"/>')?>
+        <?php echo anchor('home/profile', '<img src="/assets/images/Vancouver.gif" class="icon"/>')?>
+        <img class="icon" src="/assets/images/HongKong.gif" />
+        <img class="icon" src="/assets/images/ShangHai.gif" />
     </div>
 
 <?=$this->load->view("Template/footer")?>

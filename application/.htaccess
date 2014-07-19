@@ -1,4 +1,4 @@
 RewriteEngine on
-RewriteBase /Trav_well/
+RewriteBase /
 RewriteCond $1 !^(index\.php|images|robots\.txt)
 RewriteRule ^(.*)$ /index.php/$1
