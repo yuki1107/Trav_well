@@ -3,11 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Trav_well</title>
-<link href="/Trav_well/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/style.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/rating.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/buttons.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/navg_style.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/rating.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/buttons.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/navg_style.css" rel="stylesheet">
 <style>
 .b{
 	text-indent: 60px;
@@ -42,7 +42,7 @@ h1{ font-family:"Comic Sans MS", cursive;}
           <div class='listContainer'>
               <div class="row placeholders listElement">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                  <img class="1strest" src="/Trav_well/assets/images/lacarnita.jpg" />
+                  <img class="1strest" src="<?php echo base_url();?>assets/images/lacarnita.jpg" />
                 </div>
 
                 <div class="col-xs-6 col-sm-9 description">
@@ -63,7 +63,7 @@ h1{ font-family:"Comic Sans MS", cursive;}
 
               <div class="row placeholders listElement">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                  <img class="1strest" src="/Trav_well/assets/images/MillieCreperie.jpg" />
+                  <img class="1strest" src="<?php echo base_url();?>assets/images/MillieCreperie.jpg" />
                 </div>
 
                 <div class="col-xs-6 col-sm-9 description">
