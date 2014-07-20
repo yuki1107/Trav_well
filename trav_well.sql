@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.1.12
 -- http://www.phpmyadmin.net
 --
@@ -28,8 +28,7 @@ CREATE TABLE `City` (-- phpMyAdmin SQL Dump
 -- Server version: 5.5.34
 -- PHP Version: 5.5.10
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+
 
 --
 -- Database: `Trav_well`
