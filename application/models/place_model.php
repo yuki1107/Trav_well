@@ -43,9 +43,9 @@ class Place_model extends CI_Model {
 			$qPlaces = $this->db->get_where('Place', array('cityID'=>$qCity->row()->cityID));
 			if ($qPlaces->num_rows() > 0)
 			{
-				foreach($qPlaces->row() as $p)
+				foreach($qPlaces->result() as $p)
 				{
-					$places[] = $this->create_place_from_data($qPlaces->row($p));
+					$places[] = $this->create_place_from_data$p);
 				}
 			}
 		}
@@ -86,9 +86,9 @@ class Place_model extends CI_Model {
 		$qPlaces = $this->db->get_where('Place', array('type' => $type));
 		if ($qPlaces->num_rows() > 0)
 		{
-			foreach($qPlaces->row() as $p)
+			foreach($qPlaces->result() as $p)
 			{
-				$places[] = $this->create_place_from_data($qPlaces->row($p));
+				$places[] = $this->create_place_from_data($p);
 			}
 		}
 		else

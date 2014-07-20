@@ -39,12 +39,44 @@
         <img class="bigImage" src="<?php echo base_url();?>assets/images/TorontoImg.jpg" />
     </div>
 
-    <div class="iconBar">
+    <div id='cityLinks' class="iconBar">
+    <!--
     	<?php echo anchor("home/torontoPage", '<img src="'.base_url().'/assets/images/Toronto.gif" class="icon"/>')?>
         <?php echo anchor('sidebar/restaurantPage', '<img src="'.base_url().'assets/images/Ottawa.gif" class="icon"/>')?>
         <?php echo anchor('home/profile', '<img src="'.base_url().'assets/images/Vancouver.gif" class="icon"/>')?>
         <img class="icon" src="<?php echo base_url();?>assets/images/HongKong.gif" />
-        <img class="icon" src="<?php echo base_url();?>assets/images/ShangHai.gif" />
+        <img class="icon" src="<?php echo base_url();?>assets/images/ShangHai.gif" />-->
     </div>
+
+<!-- JavaScript -->
+<script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var listCities = <?php echo json_encode($cities); ?>;
+
+        /* Create city links */
+        $.each(listCities, function(i, city) {
+        var html = "<a id='" + city.name + "' href='<?php echo base_url('home'); ?>/view_city'>" +
+              "<img class='icon' src='" + city.picURL + "'></img></a>";
+        $('#cityLinks').append(html);
+        });
+        link_cities();
+    });
+</script>
+<script type="text/javascript">
+    function link_cities() {
+        $('#cityLinks').find('a').click(function() {
+            $.post("<?php echo base_url('home'); ?>/view_city", {
+                cityName: this.id,
+            }, function() {
+                location.href='<?php echo base_url('home'); ?>/view_city';
+                console.log("City linked! Redirecting to city page...");
+            })
+            .fail(function() {
+                console.log(".AJAX: City link failed!");
+            });
+        });
+    }
+</script>
 
 <?=$this->load->view("Template/footer")?>

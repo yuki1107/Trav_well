@@ -29,7 +29,8 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('home_page');
+		$data = array('cities' => $this->city_model->get_all_cities());
+		$this->load->view('home_page', $data);
 	}
 
 	public function loginPage()
@@ -37,17 +38,12 @@ class Home extends CI_Controller {
 		$this->load->view('login_page');
 	}
 
-	public function torontoPage()
-	{
-		$this->load->view('toronto_page');
-	}
-
 	public function profile()
 	{
 		$this->load->view('member_info_page');
 	}
 
-	/* Gets information about a specific city from the database
+	/** Gets information about a specific city from the database
 	 *
 	 */
 	public function view_city()
@@ -55,7 +51,13 @@ class Home extends CI_Controller {
 		/* Currently specifically gets Toronto.
 		 * Should instead get post data: $_POST['cityName'], $_POST['cityCountry']
 		 */
-		$data = array('cityInfo' => $this->city_model->get_city_by_name('Toronto'));
+		if(isset($_POST['cityName'])) {
+			$cityName = $_POST['cityName'];
+			$data = array('cityInfo' => $this->city_model->get_city_by_name($cityName));
+		}
+		else {
+			$data = array('cityInfo' => $this->city_model->get_city_by_name('Toronto'));
+		}
 		$this->load->view('city_page', $data);
 	}
 

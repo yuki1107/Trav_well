@@ -47,7 +47,7 @@ class City_model extends CI_Model {
 	}
 
 	/**
-	 * Searches the database for places in a particular city
+	 * Searches the database for cities in a particular country
 	 * @author Monica Li
 	 * @return an array of cities in a country
 	 */
@@ -57,9 +57,9 @@ class City_model extends CI_Model {
 		$qCities = $this->db->get_where('City', array('country'=>$country));
 		if ($qCities->num_rows() > 0)
 		{
-			foreach($qCities->row() as $c)
+			foreach($qCities->result() as $c)
 			{
-				$cities[] = $this->create_city_from_data($qCities->row($c));
+				$cities[] = $this->create_city_from_data($c);
 			}
 		}
 		else
@@ -69,5 +69,27 @@ class City_model extends CI_Model {
 		return $cities;
 	}
 
+	/**
+	 * Gets all cities from the database
+	 * @author Monica Li
+	 * @return an array of cities in a country
+	 */
+	function get_all_cities() {
+		/* TODO: This should be getting post data instead */
+		$cities = array();
+		$qCities = $this->db->select('*')->from('City')->get();
+		if ($qCities->num_rows() > 0)
+		{
+			foreach($qCities->result() as $c)
+			{
+				$cities[] = $this->create_city_from_data($c);
+			}
+		}
+		else
+		{
+			return false;
+		}
+		return $cities;
+	}
 }
 ?>
