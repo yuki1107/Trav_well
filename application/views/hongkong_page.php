@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>tr</title>
-<link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/assets/css/style.css" rel="stylesheet">
+<link href="'.base_url().'assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="'.base_url().'assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>

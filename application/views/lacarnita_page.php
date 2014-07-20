@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Trav_well</title>
-<link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/assets/css/style.css" rel="stylesheet">
-<link href="/assets/css/rating.css" rel="stylesheet">
-<link href="/assets/css/buttons.css" rel="stylesheet">
-<link href="/assets/css/navg_style.css" rel="stylesheet">
-<link href="/assets/css/comment_box.css" rel="stylesheet">
+<link href="'.base_url().'assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="'.base_url().'assets/css/style.css" rel="stylesheet">
+<link href="'.base_url().'assets/css/rating.css" rel="stylesheet">
+<link href="'.base_url().'assets/css/buttons.css" rel="stylesheet">
+<link href="'.base_url().'assets/css/navg_style.css" rel="stylesheet">
+<link href="'.base_url().'assets/css/comment_box.css" rel="stylesheet">
 <style>
 h2{
 	color:#06F;
@@ -56,7 +56,7 @@ h1{
       	  <h1>Restaunants</h1>
 
             <div class="col-xs-6 col-sm-3 placeholder">
-              <img class="1strest" src="/assets/images/lacarnita.jpg" />
+              <img class="1strest" src="'.base_url().'assets/images/lacarnita.jpg" />
              <span >Address: 501 College street </span>
              <p class="b">Toronto, ON M5S 2K2</p>
              <p>Contact:(416）964-1555 </p>
