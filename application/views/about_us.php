@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Trav_well</title>
-<link href="/Trav_well/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/style.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 <style>
 body {
 	background-color: #306;
@@ -35,7 +35,7 @@ body {
     	<div class="intro">
             <div class="jumbotron row">
             	<div class="col-xs-6 col-sm-3 placeholder">
-                    <img class="photo" src="/Trav_well/assets/images/1.gif"/>
+                    <img class="photo" src="<?php echo base_url();?>assets/images/1.gif"/>
                 </div>
                 <div class="col-xs-6 col-sm-9 description">
                 	<p><b>Fujun Shen</b></p>
@@ -45,7 +45,7 @@ body {
 
             <div class ="jumbotron row">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img class="photo" src="/Trav_well/assets/images/2.gif"/>
+                    <img class="photo" src="<?php echo base_url();?>assets/images/2.gif"/>
                 </div>
                 <div class="col-xs-6 col-sm-9 description">
                 	<p><b>Sean Gallagher</b></p>
@@ -55,7 +55,7 @@ body {
 
             <div class="jumbotron row">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img class="photo" src="/Trav_well/assets/images/3.gif"/>
+                    <img class="photo" src="<?php echo base_url();?>assets/images/3.gif"/>
                 </div>
                 <div class="col-xs-6 col-sm-9 description">
                 	<p><b>Feifei Ding (Sophie)</b></p>
@@ -65,7 +65,7 @@ body {
 
             <div class="jumbotron row">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img class="photo" src="/Trav_well/assets/images/4.gif"/>
+                    <img class="photo" src="<?php echo base_url();?>assets/images/4.gif"/>
                 </div>
                 <div class="col-xs-6 col-sm-9 description">
                 	<p><b>Yuxiu Wang (Emmy)</b></p>
@@ -75,7 +75,7 @@ body {
 
             <div class="jumbotron row">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img class="photo" src="/Trav_well/assets/images/5.gif"/>
+                    <img class="photo" src="<?php echo base_url();?>assets/images/5.gif"/>
                 </div>
                 <div class="col-xs-6 col-sm-9 description">
                 	<p><b>Ying qi He (Yuki) </b></p>
@@ -84,7 +84,7 @@ body {
             </div>
             <div class="jumbotron row">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <img class="photo" src="/Trav_well/assets/images/6.jpg"/>
+                    <img class="photo" src="<?php echo base_url();?>assets/images/6.jpg"/>
                 </div>
                 <div class="col-xs-6 col-sm-9 description">
                     <p><b>Monica Li </b></p>

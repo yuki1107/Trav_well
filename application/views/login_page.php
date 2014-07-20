@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Trav_well</title>
-<link href="/Trav_well/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/style.css" rel="stylesheet">
+<link href="'.base_url().'assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="'.base_url().'assets/css/style.css" rel="stylesheet">
 
 <style>
 .form-signin {

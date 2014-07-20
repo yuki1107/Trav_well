@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Trav_well</title>
-<link href="/Trav_well/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/style.css" rel="stylesheet">
-<link href="/Trav_well/assets/css/navg_style.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/navg_style.css" rel="stylesheet">
 <style>
 
 .description{ padding-left:45px; }
@@ -44,7 +44,7 @@ h3 { background-color: black;
                 </div>
 
                 <div class="col-xs-2 placeholder">
-                  <img src="/Trav_well/assets/images/profile.png" align="center" />
+                  <img src="<?php echo base_url();?>assets/images/profile.png" align="center" />
                 </div>
 
                 <div class="col-xs-6 description">
