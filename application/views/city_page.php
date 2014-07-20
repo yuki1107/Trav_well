@@ -24,16 +24,19 @@
             </div>
 
             <div class="col-sm-9 col-md-10">
-            <div class='cityInfoContainer'>
-          		<h1 id="cityHeader" class="cityInfoHeader"></h1><hr />
-                	<img id="cityImg" class="cityInfoImg" src="" />
+                <div class='cityInfoContainer'>
+              		<h1 id="cityHeader" class="cityInfoHeader"></h1><hr />
+                    <img id="cityImg" class="cityInfoImg" src="" />
                     <p id="cityDesc"class='cityInfoFont'></p>
             	</div>
         	</div>
-		</div>
+		</div> <!-- row headerSpace -->
+    </div> <!-- container-fluid -->
+<!-- JavaScript -->
 <script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
+<script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
 <script>
-  $(document).ready(function() {
+    $(document).ready(function() {
         var city = <?php echo json_encode($cityInfo); ?>;
         $('#cityHeader').html(city.name);
         $("#cityImg").attr("src", city.picURL);

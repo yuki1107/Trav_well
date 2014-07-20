@@ -1,5 +1,5 @@
 <?php
-class City{
+class City {
 	public $cityID;
 	public $name;
 	public $country;
