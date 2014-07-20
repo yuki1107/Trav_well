@@ -22,7 +22,7 @@ class Authorize extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			echo "<script>alert('Please confrim your password!')</script>";
+			echo "<script>alert('Please confirm your password!')</script>";
 			$this->load->view("login_page");
 		}
 		else

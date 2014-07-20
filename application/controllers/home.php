@@ -64,6 +64,21 @@ class Home extends CI_Controller {
 		;
 	}
 
+	public function messages()
+	{
+		$this->load->view('messages_page');
+	}
+
+	public function friends()
+	{
+		$this->load->view('friends_page');
+	}
+
+	public function create_message()
+	{
+		$this->load->view('create_message_page');
+	}
+
 }
 
 /* End of file welcome.php */

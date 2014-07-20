@@ -32,9 +32,9 @@ h3 { background-color: black;
     <div class="row headerSpace">
             <div class="col-xs-2 sidebar">
                   <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li class="non-active"><a href="#">Friends</a></li>
-                    <li class="non-active"><a href="#">Messages</a></li>
+                    <li class="active"><a href="">Home</a></li>
+                    <li class="non-active"><a href="/home/friends">Friends</a></li>
+                    <li class="non-active"><a href="/home/messages">Messages</a></li>
                   </ul>
             </div>
 
@@ -44,7 +44,7 @@ h3 { background-color: black;
                 </div>
 
                 <div class="col-xs-2 placeholder">
-                  <img src="<?php echo base_url();?>assets/images/profile.png" align="center" />
+                  <img src="/assets/images/profile.png" align="center" />
                 </div>
 
                 <div class="col-xs-6 description">
@@ -62,7 +62,7 @@ h3 { background-color: black;
                 <div class="col-xs-8">
                   <p>
                     <button type="submit" class="btn btn-info">Add to Friends</button>
-                    <button type="submit" class="btn btn-info">Send Message</button>
+                    <a class="btn btn-info" href="/home/create_message">Send Message</a>
                   </p>
                 </div>
             </div><!--cityInfoContainer-->
