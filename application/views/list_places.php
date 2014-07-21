@@ -16,7 +16,10 @@
 	padding-left:80px;
 }
 
-h1{ font-family:"Comic Sans MS", cursive;}
+h1{ 
+  font-family:"Georgia, serif", cursive;
+  font-size: 50px;
+}
 
 </style>
 </head>
@@ -38,48 +41,65 @@ h1{ font-family:"Comic Sans MS", cursive;}
         <div class="col-sm-9 col-md-10">
         <div class="cityInfoContainer">
 
-      	  <h1>Restaunants</h1><hr />
+      	  <h1>Restaurants</h1><hr />
           <div class='listContainer'>
+
+<!--
               <div class="row placeholders listElement">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                  <img class="1strest" src="<?php echo base_url();?>assets/images/lacarnita.jpg" />
+                  <img id='placeImg' class="1strest" src="<?php echo base_url();?>assets/images/lacarnita.jpg" />
                 </div>
 
                 <div class="col-xs-6 col-sm-9 description">
                     <address>
-                         <h4><?php echo anchor('restaurant/lacarnitaPage', 'La Carnita')?></h4>
-                         501 College street<br />
-                         Toronto, ON M5S 2K2<br />
-                         <abbr>Contact: </abbr>(416）964-1555
+                         <h4 id='placeHeader'><?php echo anchor('restaurant/lacarnitaPage', 'La Carnita')?></h4>
+                         <p id='placeAddr'>501 College street<br/>
+                         Toronto, ON M5S 2K2<br/></p>
+                         <abbr>Contact: </abbr><span id='placeContact'>(416）964-1555</span>
                      </address>
                      <?=$this->load->view("Template/rating")?>
                      <div>
                          <button type="submit" class="btn btn-info">Wanna Go</button>
                          <button type="submit" class="btn btn-info">Been There</button>
                      </div>
-                </div><!--description-->
-              </div> <!--row-->
+                </div>          //description
+              </div>            //row
+-->
+
+              <?php 
+                foreach($restaurant_list as $restaurant){
+                  echo "<div class='row placeholders listElement'>
+                    <div class='col-xs-6 col-sm-3 placeholder'>
+                      <img class='1strest' src=' ". base_url() . $restaurant['picURL'] . "'/>
+                    </div>
+                    <div class='col-xs-6 col-sm-9 description'>
+                      <address>
+                           <h4>". anchor('restaurant/lacarnitaPage', 'La Carnita') . "</h4>
+                           <p >" . $restaurant['address'] . "</p>
+                           <abbr>Contact: </abbr>" . $restaurant['contact'] . " 
+                      </address>
+                      
+                      <div>
+                           <button type='submit' class='btn btn-info'>Wanna Go</button>
+                           <button type='submit' class='btn btn-info'>Been There</button>
+                      </div>
+                    </div>
+                  </div>";
+                }
+              ?>
+
+              <script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
+              <script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
+              <script>
+                  $(document).ready(function() {
+                      var place = <?php echo json_encode($placeInfo); ?>;
+                      $('#placeHeader').html(city.name);
+                      $("#placeImg").attr("src", city.picURL);
+                      $('#placeAddr').html(place.a)
+                  });
+              </script>
 
 
-              <div class="row placeholders listElement">
-                <div class="col-xs-6 col-sm-3 placeholder">
-                  <img class="1strest" src="<?php echo base_url();?>assets/images/MillieCreperie.jpg" />
-                </div>
-
-                <div class="col-xs-6 col-sm-9 description">
-                    <address>
-                         <h4>MillieCreerie</h4>
-                         161 Baldwin street <br />
-                         Toronto, ON M5T 1L9<br />
-                         <abbr>Contact: </abbr>(416) 977-1922
-                    </address>
-                     <?=$this->load->view("Template/rating")?>
-                     <div>
-                         <button type="submit" class="btn btn-info">Wanna Go</button>
-                         <button type="submit" class="btn btn-info">Been There</button>
-                     </div>
-                </div><!--description-->
-              </div><!--row-->
           </div><!--listContainer-->
           </div><!--cityInfoContainer-->
       </div><!--col-->

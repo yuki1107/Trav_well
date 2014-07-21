@@ -69,6 +69,7 @@ class City_model extends CI_Model {
 		return $cities;
 	}
 
+
 	/**
 	 * Gets all cities from the database
 	 * @author Monica Li

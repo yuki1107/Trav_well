@@ -25,6 +25,7 @@ class Place_model extends CI_Model {
 						'cityID' => $place->cityID,
 						'desc' => $place->description,
 						'picURL' => $place->picture_url,
+						'contact' =>$place->contact
 					);
 		return $placeInfo;
 	}
@@ -98,6 +99,27 @@ class Place_model extends CI_Model {
 		return $places;
 	}
 
+	function get_places_by_city_type($cityname, $type) {
+		/* TODO: This should be getting post data instead */
+		$places = array();
+		$qCity = $this->db->select('cityID')->get_where('City', array('name'=>$cityname));
+		if ($qCity->num_rows() > 0)
+		{
+			$qPlaces = $this->db->get_where('Place', array('cityID'=>$qCity->row()->cityID, 'type'=>$type));
+			if ($qPlaces->num_rows() > 0)
+			{
+				foreach($qPlaces->result() as $p)
+				{
+					$places[] = $this->create_place_from_data($p);
+				}
+			}
+		}
+		else
+		{
+			return false;
+		}
+		return $places;
+	}
 
 }
 ?>

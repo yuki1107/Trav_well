@@ -9,6 +9,8 @@ class Home extends CI_Controller {
 			$this->load->model('user_model');
 						$this->load->model('city');
 			$this->load->model('city_model');
+			$this->load->model('place');
+			$this->load->model('place_model');
 			$this->load->helper('url');
 			session_start();
     }
@@ -61,9 +63,6 @@ class Home extends CI_Controller {
 		$this->load->view('city_page', $data);
 	}
 
-	public function view_restaurant()
-	{
-	}
 
 	public function messages()
 	{
@@ -78,6 +77,12 @@ class Home extends CI_Controller {
 	public function create_message()
 	{
 		$this->load->view('create_message_page');
+	}
+
+	public function listPlaces($cityName, $type)
+	{
+		$data['restaurant_list'] = $this->place_model->get_places_by_city_type($cityName, $type);
+		$this->load->view('list_places', $data);
 	}
 
 }

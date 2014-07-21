@@ -16,10 +16,33 @@
             <div class="col-sm-3 col-md-2">
               <ul class="nav nav-sidebar">
                 <li class="active"><a href="#">Overview</a></li>
-                <li class='non-active'><?php echo anchor('sidebar/restaurantPage', 'Restaurants')?></li>
-                <li class='non-active'><a href="#">Landmarks</a></li>
-                <li class='non-active'><a href="#">Shopping Malls</a></li>
-                <li class='non-active'><a href="#">Hotels</a></li>
+
+                <li class='non-active'>
+                    <?php 
+                    $type = 'restaurant';
+                    echo anchor('home/listPlaces/' . $cityInfo['name']. '/' .$type, 'Restaurants')
+                    ?>
+                </li>
+
+                <li class='non-active'>
+                    <?php 
+                    $type = 'landmark';
+                    echo anchor('home/listPlaces/' . $cityInfo['name']. '/' .$type, 'Landmarks')
+                    ?>
+                </li>
+
+                <li class='non-active'>
+                    <?php 
+                    $type = 'mall';
+                    echo anchor('home/listPlaces/' . $cityInfo['name']. '/' .$type, 'Shopping Malls')
+                    ?>
+                </li>
+
+                <li class='non-active'>
+                <?php 
+                    $type = 'hotel';
+                    echo anchor('home/listPlaces/' . $cityInfo['name']. '/' .$type, 'Hotels')
+                    ?></li>
               </ul>
             </div>
 
