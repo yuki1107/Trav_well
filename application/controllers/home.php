@@ -7,10 +7,12 @@ class Home extends CI_Controller {
 			$this->load->library('form_validation');
 			$this->load->model('user');
 			$this->load->model('user_model');
-						$this->load->model('city');
+			$this->load->model('city');
 			$this->load->model('city_model');
 			$this->load->model('place');
 			$this->load->model('place_model');
+			$this->load->model('friendship');
+			$this->load->model('friendship_model');
 			$this->load->helper('url');
 			session_start();
     }
@@ -40,9 +42,23 @@ class Home extends CI_Controller {
 		$this->load->view('login_page');
 	}
 
-	public function profile()
+	public function profile($username)
 	{
-		$this->load->view('member_info_page');
+
+		$data['user'] = $this->user_model->getUser($username);
+		$userID = $data['user']->userID;
+
+		//Check if logged in user is friends with user passed as argument
+		$friendship = new Friendship();
+		$friendship->user1 = $_SESSION['user']->userID;
+		$friendship->user2 = $userID;
+		$friends = $this->friendship_model->checkExists($friendship);
+
+		$data['friends'] = ($friends == 1);
+		$data['wants'] = $this->user_model->getWants($userID);
+		$data['comments'] = $this->user_model->getComments($userID);
+
+		$this->load->view('member_info_page', $data);
 	}
 
 	/** Gets information about a specific city from the database
@@ -84,9 +100,9 @@ class Home extends CI_Controller {
 		$this->load->view('edit_user');
 	}
 
-	public function listPlaces($cityID, $type)
+	public function listPlaces($cityName, $type)
 	{
-		$data['place_list'] = $this->place_model->get_places_by_id_type($cityID, $type);
+		$data['restaurant_list'] = $this->place_model->get_places_by_city_type($cityName, $type);
 		$this->load->view('list_places', $data);
 	}
 

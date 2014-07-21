@@ -32,7 +32,7 @@ h3 { background-color: black;
     <div class="row headerSpace">
             <div class="col-xs-2 sidebar">
                   <ul class="nav nav-sidebar">
-                    <li class="non-active"><a href="/home/profile">Home</a></li>
+                    <li class="non-active"><a href="<?php echo base_url();?>home/profile/<?php echo $_SESSION['user']->username; ?>">Home</a></li>
                     <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
                     <li class="active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
                   </ul>
@@ -46,7 +46,7 @@ h3 { background-color: black;
                       echo "<h2>Compose Message</h2>";
                       if (isset($username))
                       {
-
+                        echo form_input('receiver',set_value('receiver'), "class=form-control placeholder='To' value='" . $username . "'", "required");
                       }
                       else
                       {

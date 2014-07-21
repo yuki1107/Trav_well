@@ -38,7 +38,7 @@ class Authorize extends CI_Controller {
 			$user->bio = NULL;
 			$user->picture_url = NULL;
 
-			$error = $this->user_model->insert($user);
+			$error = $this->user_model->addUser($user);
 
 			$this->load->view('home_page');
 		}
@@ -57,7 +57,7 @@ class Authorize extends CI_Controller {
 			$username = $this->input->post('username');
 			$enterPwd = $this->input->post('password');
 
-			$user = $this->user_model->read($username);
+			$user = $this->user_model->getUser($username);
 			if($user && $user->comparePassword($enterPwd)){
 				$_SESSION['user'] = $user;
 				redirect('home/index');

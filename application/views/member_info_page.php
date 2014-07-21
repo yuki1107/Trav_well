@@ -32,56 +32,170 @@ h3 { background-color: black;
     <div class="row headerSpace">
             <div class="col-xs-2 sidebar">
                   <ul class="nav nav-sidebar">
-                    <li class="active"><a href="">Home</a></li>
-                        <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
+                    <?php
+                      if (strcmp($user->username, $_SESSION['user']->username) == 0)
+                      {
+                        echo "<li class='active'><a href=''>Home</a></li>";
+                      }
+                      else
+                      {
+                        echo "<li class='non-active'><a href='" . base_url() . "home/profile/" . $_SESSION['user']->username . "'>Home</a></li>";
+                      }
+                    ?>
+                    <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
                     <li class="non-active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
                   </ul>
             </div>
 
             <div class="cityInfoContainer">
                 <div class="col-xs-10">
-                  <h2>User's Profile</h2>
+                    <?php
+                      if (strcmp($user->username, $_SESSION['user']->username) == 0)
+                      {
+                        echo "<h2>My Profile</h2>";
+                      }
+                      else
+                      {
+                        echo "<h2>" . $user->username . "'s Profile</h2>";
+                      }
+                    ?>
+
                 </div>
-				
+
                 <div class="col-xs-2 placeholder">
                   <?php
-                  echo "<img src=' ". base_url() . $user['picture_url'] . "' align='center'/>
+                    if ($user->picture_url != NULL)
+                    {
+                      echo "<img src='" . $user->picture_url . "' align='center' width='200' height='300' />";
+                    }
+                    else
+                    {
+                      echo "<img src='/assets/images/profile.png' align='center' />";
+                    }
+                  ?>
+
                   <br>
                   <br>
-                  <button type='submit' class='btn btn-info'>Add to Friends</button>
-                  <br>
-                  <br>
-                  <li class='btn btn-info'><a href=" . base_url() . "home/create_message'>Send Message</a></li>";
-				  ?>
-				  
+                  <?php
+                    if (strcmp($user->username, $_SESSION['user']->username) == 0)
+                    {
+                      echo "<a class='btn btn-info' href='" . base_url() . "home/edit_info_page'>Edit Profile</a>";
+                      echo "<br>";
+                      echo "<br>";
+                    }
+                    else
+                    {
+                      if (!$friends)
+                      {
+                        echo "<button class='btn btn-info' href='" . base_url() . "interaction/addFriend/" . $user->userID . "'>Add to Friends</button>";
+                        echo "<br>";
+                        echo "<br>";
+                      }
+                      echo "<a class='btn btn-info' href='" . base_url() . "home/create_message'>Send Message</a>";
+                      echo "<br>";
+                      echo "<br>";
+                    }
+                  ?>
                 </div>
-                
 
                 <div class="col-xs-6 description">
-                	<?php
-                    echo "<h3>Basic</h3>
-                    <p>First Name: ".$user['first_name']."</p>
-					<p>Last Name: ".$user['las_tname']."</p>
-                    <p>Age: ".$user['age']."</p>
-                    <p>Interests: ".$user['interest']."</p>
-                    <p>Bio: ".$user['bio']."</p>
-                    <h3>Wants to Visit</h3>
-                        <ul> <li> MillieCreerie (Toronto) </li></ul>
-                    <h3>Posted Reviews</h3>
-                        <ul><li> La Carnita nightmare...</li></ul>
-                     
-    					
-    				<li class='btn btn-info'><a href='" . base_url() ."home/edit_info_page'>Edit Info</a></li>";
-    			    ?>
-					 
-                </div>
-				
-                <div class="col-xs-8">
-                  <p>
+                    <h3>Basic</h3>
+                    <?php
+                      
+                      if ($user->first_name != NULL && $user->last_name != NULL)
+                      {
+                        echo "<p>Name: " . $user->first_name . $user->last_name . "</p>";
+                      }
+                      elseif ($user->first_name != NULL)
+                      {
+                        echo "<p>Name: " . $user->first_name . "</p>";
+                      }
 
-                  </p>
+                      if ($user->age != NULL)
+                      {
+                        echo "<p>Age: " . $user->age . "</p>";
+                      }
+
+                      if ($user->interest != NULL)
+                      {
+                        echo "<p>Interests: " . $user->interest . "</p>";
+                      }
+
+                      if ($user->bio != NULL)
+                      {
+                        echo "<p>Bio: " . $user->bio . "</p>";
+                      }
+
+                      if ($user->first_name == NULL && $user->age == NULL && $user->interest == NULL && $user->bio == NULL)
+                      {
+                        if (strcmp($user->username, $_SESSION['user']->username) == 0)
+                        {
+                          echo "<p>You haven't added any information to your profile!</p>";
+                        }
+                        else
+                        {
+                          echo "<p>This user hasn't added any information to their profile!</p>";
+                        }
+                      }
+
+                    ?>
+                    <h3>Wants to Visit</h3>
+                        <?php
+                            if ($wants == False)
+                            {
+                              if (strcmp($user->username, $_SESSION['user']->username) == 0)
+                              {
+                                echo "<p>You have not indicated you want to go somewhere!</p>";
+                              }
+                              else
+                              {
+                                echo "<p>This user has not indicated they want to go somewhere!</p>";
+                              }
+                            }
+                            else
+                            {
+                              echo "<ul>";
+                              foreach ($wants as $row)
+                              {
+                                echo "<li>" . $row->pname . ", " . $row->cname . "</li>";
+                              }
+                              echo "</ul>";
+                            }
+                        ?>
+                    <h3>Posted Reviews</h3>
+                        <?php
+                            if ($comments == False)
+                            {
+                              if (strcmp($user->username, $_SESSION['user']->username) == 0)
+                              {
+                                echo "<p>You haven't posted any reviews!</p>";
+                              }
+                              else
+                              {
+                                echo "<p>This user has not posted any reviews!</p>";
+                              }
+                            }
+                            else
+                            {
+                              echo "<ul>";
+                              $count = 0;
+                              foreach ($comments as $row)
+                              {
+                                //only show 5 most recent comments
+                                if ($count = 5)
+                                {
+                                  break;
+                                }
+
+                                echo "<li>" . $row->content . "</li>";
+                                $count++;
+
+                              }
+                              echo "</ul>";
+                            }
+                        ?>
                 </div>
-            </div><!--cityInfoContainer-->
+            </div>
     </div>
 
     <?=$this->load->view("Template/footer")?>

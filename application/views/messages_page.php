@@ -32,7 +32,7 @@ td { text-align: center; }
     <div class="row headerSpace">
             <div class="col-xs-2 sidebar">
                   <ul class="nav nav-sidebar">
-                    <li class="non-active"><a href="/home/profile">Home</a></li>
+                    <li class="non-active"><a href="<?php echo base_url();?>home/profile/<?php echo $_SESSION['user']->username; ?>">Home</a></li>
                     <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
                     <li class="active"><a href="">Messages</a></li>
                   </ul>
@@ -67,7 +67,7 @@ td { text-align: center; }
                       {
                         echo "<tr>";
                         echo "<td>";
-                        echo $row->username;
+                        echo "<a href='" . base_url() . "home/profile/" . $row->username . "'>" . $row->username . "</a>";
                         echo "</td>";
                         echo "<td>";
                         echo $row->content;

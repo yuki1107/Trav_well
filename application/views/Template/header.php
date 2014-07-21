@@ -19,7 +19,7 @@
 			}
 			else{
 				$user = $_SESSION['user'];
-				echo anchor('home/profile', "<span 'class=login'>Welcome, " . $user->username . "</span>");
+				echo anchor('home/profile/' . $_SESSION['user']->username, "<span 'class=login'>Welcome, " . $user->username . "</span>");
 				echo " ";
 				echo anchor('authorize/logout', 'Log Out', array('class'=>'btn btn-success'));
 			}
