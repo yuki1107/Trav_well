@@ -33,7 +33,7 @@ h3 { background-color: black;
             <div class="col-xs-2 sidebar">
                   <ul class="nav nav-sidebar">
                     <li class="active"><a href="">Home</a></li>
-                    <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
+                        <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
                     <li class="non-active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
                   </ul>
             </div>
@@ -50,7 +50,7 @@ h3 { background-color: black;
                   <button type="submit" class="btn btn-info">Add to Friends</button>
                   <br>
                   <br>
-                  <a class="btn btn-info" href="/home/create_message">Send Message</a>
+                  <li class="btn btn-info"><a href="<?php echo base_url();?>home/create_message">Send Message</a></li>
                 </div>
 
                 <div class="col-xs-6 description">
@@ -63,6 +63,11 @@ h3 { background-color: black;
                         <ul> <li> MillieCreerie (Toronto) </li></ul>
                     <h3>Posted Reviews</h3>
                         <ul><li> La Carnita nightmare...</li></ul>
+                     
+    					
+    				<li class="btn btn-info"><a href="<?php echo base_url();?>home/edit_info_page">Edit Info</a></li>
+    					
+					 
                 </div>
 
                 <div class="col-xs-8">

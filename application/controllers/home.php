@@ -79,6 +79,11 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('create_message_page');
 	}
+	
+	public function edit_info_page()
+	{
+		$this->load->view('edit_user');
+	}
 
 }
 
