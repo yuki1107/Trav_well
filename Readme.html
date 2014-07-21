@@ -9,37 +9,47 @@
 
 <body>
 <h1>Read Me</h1>
-<h4>to run</h4>
+<h4>Installation</h4>
+<p>Regardless of your OS you will need to set up a mysql database named "Trav_well". After this database is created, run the trav_well.sql script located in the root Trav_well directory to create the tables and input the data into the Trav_well database.</p>
+
+<p>Also, ensure that the username and password of your Trav_well database match the username and password in applications/config/database.php</p>
+
+<h5>Windows</h5>
 <p>To run our website, please go to Tra_well/application/controllers, and run the home.php</p>
+
+<h5>Linux</h5>
+<p>To host the server simply enter the command: 'php -S localhost:<i>port</i> -t <i>path/to/rootdir</i>'</p>
+
+<br>
+
+<h4>Overview</h4>
+<p>We use codeigniter and bootstrap for this project.</p>
+<p>Images are stored in assets/images.</p>
+<p>All page layouts can be found in application/views.</p>
+<p>There are controllers in application/controllers that control various functionality. home.php controls functions related to page loading. interaction.php controls user interactions such as messaging or adding friends. authorize.php contains the login system, and search.php contains search functionality.</p>
+<p>All database actions are controlled by models in the application/models folder. These files are pretty straightforwardly named, although it should be noted that the difference between a place and a city is that a place is contained within a city. (i.e. a certain restaurant).</p>
+<p>The actual layout of the web pages can be found in application/views. Again these should be pretty straightforwardly named.</p>
+<br>
 
 <h4>Homepage, Login Page</h4>
 <p>On homepage, click the title on top-left corner; then the page can jump back to the homepage.</p>
-<p>If click on the login button on top-right corner, the page will jump login page. On login page, the user can use the left section to login and use the right section to register an account. The login and register buttons are templetes, and we will work on them later.</p>
+<p>If click on the login button on top-right corner, the page will jump login page. On login page, the user can use the left section to login and use the right section to register an account. </p>
 <p>Beside login button, there is a search bar and search button used for searching.</p>
-<p>At the bottom of the home page, there are five circles which link to five different cities(right now only Toronto circle works).</p>
 
 <h4>City info Page</h4>
-<p>After selecting a specific city by clicking the circle at the bottom of homepage, the page will jump to a city info page, whcih shows a brief introduction of the city the user selected.</p>
+<p>After selecting a specific city by clicking the image at the bottom of homepage, the page will jump to a city info page, whcih shows a brief introduction of the city the user selected.</p>
 
 <h4>Restaurant page</h4>
 <p>Having the same side bar as the Toronto page, the same function. If we click Overview button, we will go to the Toronto page. If we click Restaurants button, we will stay on the current page.</p>
-<p>This page has a list of restaurants with information, such as name, address, contact information, picture, has been there of want to go there. What’s more, you can rating.</p>
-
-<h4>Restaurant name page</h4>
-<p>Having the same side bar as the Toronto page, the same function. If we click Overview button, we will go to the Toronto page. If we click Restaurants button, we will go to the restaurant page, which is the main page of restaurants(only La Carnita works right now).</p>
-<p>When we click the restaurant La Carnita, it will go to this La Carnita page with some detail information about this restaurant. We can write comments about this restaurant. We also can do rating, and click has been there and want go buttons to provide some information, which will work later(comments cannot be submit yet). </p>
+<p>This page has a list of restaurants with information, such as name, address, contact information, picture, has been there of want to go there. What’s more, you can rate these restaurants.</p>
 
 <h4>Member info Page</h4>
-<p>Clicking on circle Vancouver, it will jump to Member info Page.</p>
-<p>This page is a template, which is used to record member profile with some basic information. This jdo13's profile is just a sample, and we do not have real content yet. We can use the add to frinds button to add some friends. We can also send message to this person by clicking send message button.These two buttons are also templates, and we will work on it later.</p>
+<p>This page is used to record member profile with some basic information. </p>
 
-<h4>Instructions</h4>
-<p>We use codeigniter and bootstrap for this project.</p>
-<p>Images are stored in the image folder.</p>
-<p>All other files are in the application folder.</p>
-<p>Page layouts are in the views folder within application.</p>
-<p>There are also some files for some navigation features in controllers.</p>
-<br>
-<p>To run in a webserver on CDF, simple enter the command: 'php -S localhost:<i>port</i> -t <i>path/to/rootdir</i>'</p>
+<h4>Friends</h4>
+<p>You can send someone a friend request by clicking the "Add as friend" button on their profile. This friend will not be visible on the friends page until they confirm your request.</p>
+
+<h4>Messaging</h4>
+<p>You can send any valid user a message. Messages can be up to 20,000 characters and will appear on that user's messages screen.</p>
 </body>
 </html>

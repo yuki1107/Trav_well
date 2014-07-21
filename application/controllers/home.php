@@ -67,14 +67,17 @@ class Home extends CI_Controller {
 	public function view_city()
 	{
 		/* Currently specifically gets Toronto.
-		 * Should instead get post data: $_POST['cityName'], $_POST['cityCountry']
+		 * Should instead get post data: $_POST['cityName'], 
+		 * $_POST['cityCountry']
 		 */
 		if(isset($_POST['cityName'])) {
 			$cityName = $_POST['cityName'];
-			$data = array('cityInfo' => $this->city_model->get_city_by_name($cityName));
+			$data = array('cityInfo' => 
+				$this->city_model->get_city_by_name($cityName));
 		}
 		else {
-			$data = array('cityInfo' => $this->city_model->get_city_by_name('Toronto'));
+			$data = array('cityInfo' => 
+				$this->city_model->get_city_by_name('Toronto'));
 		}
 		$this->load->view('city_page', $data);
 	}
@@ -102,7 +105,8 @@ class Home extends CI_Controller {
 
 	public function listPlaces($cityID, $type)
 	{
-		$data['place_list'] = $this->place_model->get_places_by_id_type($cityID, $type);
+		$data['place_list'] = $this->place_model->get_places_by_id_type(
+			$cityID, $type);
 		$this->load->view('list_places', $data);
 	}
 

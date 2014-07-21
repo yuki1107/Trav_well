@@ -87,7 +87,7 @@ h3 { background-color: black;
                     {
                       if (!$friends)
                       {
-                        echo "<button class='btn btn-info' href='" . base_url() . "interaction/addFriend/" . $user->userID . "'>Add to Friends</button>";
+                        echo "<a class='btn btn-info' href='" . base_url() . "interaction/addFriend/" . $user->userID . "'>Add to Friends</a>";
                         echo "<br>";
                         echo "<br>";
                       }
