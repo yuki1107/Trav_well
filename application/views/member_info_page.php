@@ -51,7 +51,7 @@ h3 { background-color: black;
                   <button type='submit' class='btn btn-info'>Add to Friends</button>
                   <br>
                   <br>
-                  <li class='btn btn-info'><a href='<?php echo base_url();?>home/create_message'>Send Message</a></li>";
+                  <li class='btn btn-info'><a href=" . base_url() . "home/create_message'>Send Message</a></li>";
 				  ?>
 				  
                 </div>
@@ -71,7 +71,7 @@ h3 { background-color: black;
                         <ul><li> La Carnita nightmare...</li></ul>
                      
     					
-    				<li class='btn btn-info'><a href='<?php echo base_url();?>home/edit_info_page'>Edit Info</a></li>";
+    				<li class='btn btn-info'><a href='" . base_url() ."home/edit_info_page'>Edit Info</a></li>";
     			    ?>
 					 
                 </div>
