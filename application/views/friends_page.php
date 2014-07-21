@@ -15,9 +15,10 @@ h3 { background-color: black;
      font-family:sans-serif;
      text-indent: 10px; }
 
-.sidebar { bottom: 0px;}
+th { padding:15px;
+     text-align:center; }
 
-.placeholder { margin-left: 20px; }
+.sidebar { bottom: 0px;}
 
 </style>
 
@@ -32,7 +33,7 @@ h3 { background-color: black;
                   <ul class="nav nav-sidebar">
                     <li class="non-active"><a href="/home/profile">Home</a></li>
                     <li class="active"><a href="">Friends</a></li>
-                    <li class="non-active"><a href="/home/messages">Messages</a></li>
+                    <li class="non-active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
                   </ul>
             </div>
 
@@ -41,8 +42,35 @@ h3 { background-color: black;
                   <h2>Friends</h2>
                 </div>
 
-                <div class="col-xs-6 description">
-                  <p>You don't have any friends</p>
+                <div class="col-xs-10 description">
+                  <?php
+
+                    if ($friends == False)
+                    {
+                      echo "<p>You don't have any friends</p>";
+                    }
+                    else
+                    {
+
+                      echo "<table class='table table-hover'>";
+                      echo "<tr>";
+                      echo "<th> Name </th>";
+                      echo "</tr>";
+
+                      foreach($friends as $row)
+                      {
+                        echo "<tr>";
+                        echo "<td>";
+                        echo $row->username;
+                        echo "</td>";
+                        echo "</tr>";
+                      }
+
+                      echo "</table>";
+                      echo "<br>";
+                    
+                    }
+                  ?>
                 </div>
             </div><!--cityInfoContainer-->
     </div>

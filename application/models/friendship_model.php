@@ -1,5 +1,5 @@
 <?php
-class Messages_model extends CI_Model {
+class Friendship_model extends CI_Model {
 
      function __construct(){
        parent::__construct();
@@ -21,7 +21,7 @@ class Messages_model extends CI_Model {
 
     function removeFriend($friendship) {
 
-      $query = $this->db->delete('Friendship', (array('user1'=>$friendship->$user1, 'user2'=>$friendship->$user2));
+      $query = $this->db->delete('Friendship', (array('user1'=>$friendship->$user1, 'user2'=>$friendship->$user2)));
 
       if ($this->db->affected_rows() > 0)
       {
@@ -33,6 +33,8 @@ class Messages_model extends CI_Model {
 
     function getFriends($userID) {
 
+      $this->db->join('User', 'User.userID = Friendship.user2');
+      $this->db->order_by('username');
       $query = $this->db->get_where('Friendship', array('user1'=>$userID));
 
       if ($query->num_rows() > 0)

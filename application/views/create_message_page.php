@@ -19,6 +19,8 @@ h3 { background-color: black;
 
 .placeholder { margin-left: 20px; }
 
+#msg { height: 200px; }
+
 </style>
 
 </head>
@@ -31,24 +33,25 @@ h3 { background-color: black;
             <div class="col-xs-2 sidebar">
                   <ul class="nav nav-sidebar">
                     <li class="non-active"><a href="/home/profile">Home</a></li>
-                    <li class="non-active"><a href="/home/friends">Friends</a></li>
-                    <li class="active"><a href="/home/messages">Messages</a></li>
+                    <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
+                    <li class="active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
                   </ul>
             </div>
 
             <div class="cityInfoContainer">
 
-                <div class="col-xs-6 description">
+                <div class="col-xs-4 description col-sm-4 description">
                     <?php
-                      echo form_open('messaging/sendMessage', "role='form'");
+                      echo form_open('interaction/sendMessage', "role='form'");
                       echo "<h2>Compose Message</h2>";
                       echo form_input('receiver',set_value('receiver'), "class=form-control placeholder='To'", "required");
                       echo "<br>";
-                      echo form_input('content',set_value('content'), "class=form-control placeholder='Message'", "required");
+                      echo form_textarea('content',set_value('content'), "class=form-control placeholder='Message' id='msg'", "required");
                       echo "<br>";
                       echo form_submit('submit', 'Send', "class = 'btn btn-info send_button'");
                       echo form_close();
                     ?>
+                    <br>
                 </div>
 
             </div><!--cityInfoContainer-->

@@ -33,8 +33,8 @@ h3 { background-color: black;
             <div class="col-xs-2 sidebar">
                   <ul class="nav nav-sidebar">
                     <li class="active"><a href="">Home</a></li>
-                    <li class="non-active"><a href="/home/friends">Friends</a></li>
-                    <li class="non-active"><a href="/home/messages">Messages</a></li>
+                    <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
+                    <li class="non-active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
                   </ul>
             </div>
 

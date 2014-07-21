@@ -46,6 +46,8 @@ class Messages_model extends CI_Model {
 
     function getMessages($userID) {
 
+      $this->db->join('User', 'User.userID = Messages.sender');
+      $this->db->order_by('time', 'desc');
       $query = $this->db->get_where('Messages', array('receiver'=>$userID));
 
       if ($query->num_rows() > 0)
@@ -56,9 +58,9 @@ class Messages_model extends CI_Model {
       return False;
     }
 
-    function deleteMessage($message) {
+    function deleteMessage($messageID) {
 
-      $query = $this->db->delete('Messages', (array('messageID'=>$message->$messageID)));
+      $query = $this->db->delete('Messages', (array('messageID'=>$messageID)));
 
       if ($this->db->affected_rows() > 0)
       {
