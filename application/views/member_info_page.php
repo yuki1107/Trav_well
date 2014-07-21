@@ -40,36 +40,42 @@ h3 { background-color: black;
 
             <div class="cityInfoContainer">
                 <div class="col-xs-10">
-                  <h2>jdo13's Profile</h2>
+                  <h2>User's Profile</h2>
                 </div>
-
+				
                 <div class="col-xs-2 placeholder">
-                  <img src="/assets/images/profile.png" align="center" />
+                  <?php
+                  echo "<img src=' ". base_url() . $user['picture_url'] . "' align='center'/>
                   <br>
                   <br>
-                  <button type="submit" class="btn btn-info">Add to Friends</button>
+                  <button type='submit' class='btn btn-info'>Add to Friends</button>
                   <br>
                   <br>
-                  <li class="btn btn-info"><a href="<?php echo base_url();?>home/create_message">Send Message</a></li>
+                  <li class='btn btn-info'><a href='<?php echo base_url();?>home/create_message'>Send Message</a></li>";
+				  ?>
+				  
                 </div>
+                
 
                 <div class="col-xs-6 description">
-                    <h3>Basic</h3>
-                    <p>Name: John Doe</p>
-                    <p>Age: 25</p>
-                    <p>Interests: Water Polo, Biochemistry</p>
-                    <p>Bio: I am a writer from California</p>
+                	<?php
+                    echo "<h3>Basic</h3>
+                    <p>First Name: ".$user['first_name']."</p>
+					<p>Last Name: ".$user['las_tname']."</p>
+                    <p>Age: ".$user['age']."</p>
+                    <p>Interests: ".$user['interest']."</p>
+                    <p>Bio: ".$user['bio']."</p>
                     <h3>Wants to Visit</h3>
                         <ul> <li> MillieCreerie (Toronto) </li></ul>
                     <h3>Posted Reviews</h3>
                         <ul><li> La Carnita nightmare...</li></ul>
                      
     					
-    				<li class="btn btn-info"><a href="<?php echo base_url();?>home/edit_info_page">Edit Info</a></li>
-    					
+    				<li class='btn btn-info'><a href='<?php echo base_url();?>home/edit_info_page'>Edit Info</a></li>";
+    			    ?>
 					 
                 </div>
-
+				
                 <div class="col-xs-8">
                   <p>
 

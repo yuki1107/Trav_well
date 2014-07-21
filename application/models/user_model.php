@@ -16,15 +16,10 @@ class User_model extends CI_Model {
 		// row() for transfer first row into user object
 	}
 	
-	fuction username_change($username, $newname){
-		$this->db->where('User', array('username'=>$username));
-		$this->db->update('User', $newname);
-	}
-	
-	
-	function fir_change($first_name, $newfir){
-		$this->db->where('User', array('first_name'=>$first_name));
-		$this->db->update('User', $newfir);
+	function user_update($userID, $first_name, $last_name, $age, $interest, $bio){
+		$this->db->where('userID', $userID);
+		$this->db->update('User', array('first_name'=>$first_name, 'last_name'=>$last_name, 'age'=>$age, 
+		'interest'=>$interest, 'bio'=>$bio));
 	}
 	
 	

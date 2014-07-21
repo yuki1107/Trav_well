@@ -11,6 +11,24 @@
 <body>
 <?=$this->load->view("Template/header")?>
 
+<div class="form-group">
+         <?php
+            echo form_open('search/update', "role='form'");
+            echo form_input('fir_name',set_value('fir_name'), "class=form-control placeholder='New First Name'", "required");
+			echo "<br>";
+			echo form_input('las_name',set_value('las_name'), "class=form-control placeholder='New Last Name'", "required");
+			echo "<br>";
+			echo form_input('age',set_value('age'), "class=form-control placeholder='New Age'", "required");
+			echo "<br>";
+			echo form_input('interest',set_value('interest'), "class=form-control placeholder='Please enter your interests'", "required");
+			echo "<br>";
+			echo form_input('bio',set_value('bio'), "class=form-control placeholder='Your Biography'", "required");
+			echo "<br>";
+            echo form_submit('submit', 'Update', "class = 'btn btn-info'");
+            echo form_close();
+
+         ?>
+
 
 
 </body>
