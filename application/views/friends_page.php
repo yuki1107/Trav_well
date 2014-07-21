@@ -15,8 +15,9 @@ h3 { background-color: black;
      font-family:sans-serif;
      text-indent: 10px; }
 
-th { padding:15px;
-     text-align:center; }
+th { text-align: center; }
+
+td { text-align: center; }
 
 .sidebar { bottom: 0px;}
 
@@ -39,36 +40,81 @@ th { padding:15px;
 
             <div class="cityInfoContainer">
                 <div class="col-xs-10">
-                  <h2>Friends</h2>
+                  <h1>Friends</h1>
                 </div>
 
                 <div class="col-xs-10 description">
                   <?php
 
-                    if ($friends == False)
+                    if ($friends == False && $requests == False)
                     {
                       echo "<p>You don't have any friends</p>";
                     }
                     else
                     {
+                      if ($requests != False) {
 
-                      echo "<table class='table table-hover'>";
-                      echo "<tr>";
-                      echo "<th> Name </th>";
-                      echo "</tr>";
-
-                      foreach($friends as $row)
-                      {
+                        echo "<h4>Requests</h4>";
+                        echo "<table class='table table-hover'>";
                         echo "<tr>";
-                        echo "<td>";
-                        echo $row->username;
-                        echo "</td>";
+                        echo "<th> Name </th>";
+                        echo "<th> Confirm </th>";
+                        echo "<th> Reject </th>";
                         echo "</tr>";
-                      }
 
-                      echo "</table>";
-                      echo "<br>";
-                    
+                        foreach($requests as $row)
+                        {
+                          if ($row->confirmed == 0) {
+                            echo "<tr>";
+                            echo "<td>";
+                            echo $row->username;
+                            echo "</td>";
+                            echo "<td>";
+                            echo "<a class='btn btn-info' href='" . base_url() . "interaction/confirmFriend/" . strval($row->userID) . "'>C</a>";
+                            echo "</td>";
+                            echo "<td>";
+                            echo "<a class='btn btn-info' href='" . base_url() . "interaction/rejectFriend/" . strval($row->userID) . "'>X</a>";
+                            echo "</td>";
+                            echo "</tr>";
+                          }
+
+                        }
+
+                        echo "</table>";
+                        echo "<br>";
+                        echo "<br>";
+                        echo "<br>";
+                        echo "<br>";
+
+                      }
+                      
+                      if ($friends != False)
+                      {
+
+                        echo "<table class='table table-hover'>";
+                        echo "<tr>";
+                        echo "<th> Name </th>";
+                        echo "<th> Remove Friend </th>";
+                        echo "</tr>";
+
+                        foreach($friends as $row)
+                        {
+                          if ($row->confirmed == 1) {
+                            echo "<tr>";
+                            echo "<td>";
+                            echo $row->username;
+                            echo "</td>";
+                            echo "<td>";
+                            echo "<a class='btn btn-info' href='" . base_url() . "interaction/removeFriend/" . strval($row->userID) . "'>X</a>";
+                            echo "</td>";
+                            echo "</tr>";
+                          }
+                        }
+
+                        echo "</table>";
+                        echo "<br>";
+
+                      }
                     }
                   ?>
                 </div>

@@ -17,6 +17,8 @@ h3 { background-color: black;
 
 th { text-align: center; }
 
+td { text-align: center; }
+
 .sidebar { bottom: 0px;}
 
 </style>
@@ -38,7 +40,7 @@ th { text-align: center; }
 
             <div class="cityInfoContainer">
                 <div class="col-xs-10">
-                  <h2>Messages</h2>
+                  <h1>Messages</h1>
                   <a class="btn btn-info" href="/home/create_message">Create Message</a>
                 </div>
 
@@ -57,7 +59,7 @@ th { text-align: center; }
                       echo "<tr>";
                       echo "<th> Sender </th>";
                       echo "<th> Contents </th>";
-                      echo "<th> Timestamp </th>";
+                      echo "<th> Timestamp (UTC) </th>";
                       echo "<th> Delete </th>";
                       echo "</tr>";
 

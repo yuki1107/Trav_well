@@ -45,6 +45,12 @@ h3 { background-color: black;
 
                 <div class="col-xs-2 placeholder">
                   <img src="/assets/images/profile.png" align="center" />
+                  <br>
+                  <br>
+                  <button type="submit" class="btn btn-info">Add to Friends</button>
+                  <br>
+                  <br>
+                  <a class="btn btn-info" href="/home/create_message">Send Message</a>
                 </div>
 
                 <div class="col-xs-6 description">
@@ -61,8 +67,7 @@ h3 { background-color: black;
 
                 <div class="col-xs-8">
                   <p>
-                    <button type="submit" class="btn btn-info">Add to Friends</button>
-                    <a class="btn btn-info" href="/home/create_message">Send Message</a>
+
                   </p>
                 </div>
             </div><!--cityInfoContainer-->

@@ -16,7 +16,14 @@ class Interaction extends CI_Controller {
             session_start();
     }
 
-    public function sendMessage(){
+    public function sendTo($username) {
+
+        $data['username'] = $username;
+        $this->load->view('create_message_page', $data);
+
+    }
+
+    public function sendMessage() {
 
         $this->form_validation->set_rules('receiver', 'To', 'required|max_length[30]');
         $this->form_validation->set_rules('content', 'Message', 'required|max_length[20000]');
@@ -55,6 +62,70 @@ class Interaction extends CI_Controller {
         }
     }
 
+    public function addFriend($friendID) {
+
+        $user1 = $_SESSION['user']->userID;
+
+        $friendship = new Friendship();
+        $friendship->user1 = $user1;
+        $friendship->user2 = $friendID;
+        $friendship->confirmed = 0;
+
+        $checkFriendship = $this->friendship_model->checkExists($friendship);
+
+        if ($checkFriendship == 1)
+        {
+
+            echo "<script>alert('You have already added this person as a friend.')</script>";
+            redirect( base_url() . 'interaction/getFriends/', 'refresh');
+            return False;
+
+        }
+        elseif ($checkFriendship == 2)
+        {
+            return $this->confirmFriend($friendID);
+        }
+        else
+        {
+
+            $result = $this->friendship_model->addFriend($friendship);
+
+            if (!$result) {
+                echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+                return False;
+            }
+
+            echo "<script>alert('Your friend request has been sent.')</script>";
+            redirect( base_url() . 'interaction/getFriends/', 'refresh');
+            return True;
+
+        }
+    }
+
+    public function confirmFriend($friendID) {
+
+        $user1 = $_SESSION['user']->userID;
+
+        $friendship = new Friendship();
+        $friendship->user1 = $user1;
+        $friendship->user2 = $friendID;
+        $friendship->confirmed = 1;
+
+        $coFriendship = new Friendship();
+        $coFriendship->user1 = $friendID;
+        $coFriendship->user2 = $user1;
+        $coFriendship->confirmed = 1;
+
+        $result = $this->friendship_model->confirmFriend($friendship, $coFriendship);
+
+        if (!$result) {
+            echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+        }
+
+        redirect( base_url() . 'interaction/getFriends/', 'refresh');
+
+    }
+
     public function getMessages() {
 
         $userID = $_SESSION['user']->userID;
@@ -82,8 +153,38 @@ class Interaction extends CI_Controller {
         $userID = $_SESSION['user']->userID;
 
         $data['friends'] = $this->friendship_model->getFriends($userID);
+        $data['requests'] = $this->friendship_model->getRequests($userID);
 
         $this->load->view('friends_page', $data);
+
+    }
+
+    public function removeFriend($friendID) {
+
+        $userID = $_SESSION['user']->userID;
+
+        $result1 = $this->friendship_model->removeFriend($userID, $friendID);
+        $result2 = $this->friendship_model->removeFriend($friendID, $userID);
+
+        if (!$result1 || !$result2) {
+            echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+        }
+
+        redirect( base_url() . 'interaction/getFriends/', 'refresh');
+
+    }
+
+    public function rejectFriend($friendID) {
+
+        $userID = $_SESSION['user']->userID;
+
+        $result = $this->friendship_model->removeFriend($friendID, $userID);
+
+        if (!$result) {
+            echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+        }
+
+        redirect( base_url() . 'interaction/getFriends/', 'refresh');
 
     }
 }

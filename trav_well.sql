@@ -188,6 +188,7 @@ CREATE TABLE `Rating` (
 CREATE TABLE `Friendship` (
   `user1` int(30) NOT NULL,
   `user2` int(30) NOT NULL,
+  `confirmed` bit(1) NOT NULL,
   PRIMARY KEY (`user1`, `user2`),
   FOREIGN KEY (`user1`) REFERENCES User(`userID`),
   FOREIGN KEY (`user2`) REFERENCES User(`userID`)

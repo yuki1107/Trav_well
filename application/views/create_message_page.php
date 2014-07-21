@@ -44,7 +44,14 @@ h3 { background-color: black;
                     <?php
                       echo form_open('interaction/sendMessage', "role='form'");
                       echo "<h2>Compose Message</h2>";
-                      echo form_input('receiver',set_value('receiver'), "class=form-control placeholder='To'", "required");
+                      if (isset($username))
+                      {
+
+                      }
+                      else
+                      {
+                        echo form_input('receiver',set_value('receiver'), "class=form-control placeholder='To'", "required");
+                      }
                       echo "<br>";
                       echo form_textarea('content',set_value('content'), "class=form-control placeholder='Message' id='msg'", "required");
                       echo "<br>";
