@@ -21,6 +21,10 @@ h1{
   font-size: 50px;
 }
 
+h1:first-letter{
+  text-transform: uppercase;
+}
+
 </style>
 </head>
 
@@ -30,18 +34,54 @@ h1{
 <div class="row headerSpace">
         <div class="col-sm-3 col-md-2">
               <ul class="nav nav-sidebar">
-                <li class='non-active'><?php echo anchor('sidebar/overviewPage', 'Overview')?></li>
-                <li class="active"><a href="#">Restaurants</a></li>
-                <li class='non-active'><a href="#">Landmarks</a></li>
-                <li class='non-active'><a href="#">Shopping Malls</a></li>
-                <li class='non-active'><a href="#">Hotels</a></li>
+                <li class='non-active'><?php echo anchor('home/view_city', 'Overview')?></li>
+                <li class=<?php 
+                                if($place_list[0]['type']=="restaurant"){echo "'active'";}else {
+                                  echo"'non-active'";
+                                }
+                            ?>>
+                    <?php
+                    $type = 'restaurant';
+                    echo anchor('home/listPlaces/' . $place_list[0]['cityID']. '/' .$type, 'Restaurants');
+                    ?>
+                </li>
+                <li class=<?php 
+                                if($place_list[0]['type']=="landmark"){echo "'active'";}else {
+                                  echo"'non-active'";
+                                }
+                            ?>>
+                    <?php
+                    $type = 'landmark';
+                    echo anchor('home/listPlaces/' . $place_list[0]['cityID']. '/' .$type, 'Landmarks');
+                    ?>
+                </li>
+                <li class=<?php 
+                                if($place_list[0]['type']=="shopping mall"){echo "'active'";}else {
+                                  echo"'non-active'";
+                                }
+                            ?>>
+                    <?php
+                    $type = 'shopping mall';
+                    echo anchor('home/listPlaces/' . $place_list[0]['cityID']. '/' .$type, 'Shopping malls');
+                    ?>
+                    </li>
+                <li class=<?php 
+                                if($place_list[0]['type']=="hotel"){echo "'active'";}else {
+                                  echo"'non-active'";
+                                }
+                            ?>>
+                    <?php
+                    $type = 'hotel';
+                    echo anchor('home/listPlaces/' . $place_list[0]['cityID']. '/' .$type, 'Hotels');
+                    ?>
+                </li>
               </ul>
          </div>
 
         <div class="col-sm-9 col-md-10">
         <div class="cityInfoContainer">
 
-      	  <h1>Restaurants</h1><hr />
+      	  <h1><?= $place_list[0]['type']?></h1><hr />
           <div class='listContainer'>
 
 <!--
@@ -67,16 +107,17 @@ h1{
 -->
 
               <?php 
-                foreach($restaurant_list as $restaurant){
+              if($place_list!=NULL){
+                foreach($place_list as $place){
                   echo "<div class='row placeholders listElement'>
                     <div class='col-xs-6 col-sm-3 placeholder'>
-                      <img class='1strest' src=' ". base_url() . $restaurant['picURL'] . "'/>
+                      <img class='1strest' src=' ". base_url() . $place['picURL'] . "'/>
                     </div>
                     <div class='col-xs-6 col-sm-9 description'>
                       <address>
                            <h4>". anchor('restaurant/lacarnitaPage', 'La Carnita') . "</h4>
-                           <p >" . $restaurant['address'] . "</p>
-                           <abbr>Contact: </abbr>" . $restaurant['contact'] . " 
+                           <p >" . $place['address'] . "</p>
+                           <abbr>Contact: </abbr>" . $place['contact'] . " 
                       </address>
                       
                       <div>
@@ -86,6 +127,7 @@ h1{
                     </div>
                   </div>";
                 }
+              }
               ?>
 
               <script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>

@@ -11,40 +11,40 @@
 
 <body>
 	<?=$this->load->view("Template/header")?>
-    <div class="container-fluid">
+
     	<div class="row headerSpace">
-            <div class="col-sm-3 col-md-2">
+            <div class="col-sm-3 col-md-2"><!--sidebar-->
               <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">Overview</a></li>
+                <li class="active"><?php echo anchor('home/view_city/', 'Overview')?></li>
 
                 <li class='non-active'>
                     <?php 
                     $type = 'restaurant';
-                    echo anchor('home/listPlaces/' . $cityInfo['name']. '/' .$type, 'Restaurants')
+                    echo anchor('home/listPlaces/' . $cityInfo['cityID']. '/' .$type, 'Restaurants');
                     ?>
                 </li>
 
                 <li class='non-active'>
                     <?php 
                     $type = 'landmark';
-                    echo anchor('home/listPlaces/' . $cityInfo['name']. '/' .$type, 'Landmarks')
+                    echo anchor('home/listPlaces/' . $cityInfo['cityID']. '/' .$type, 'Landmarks');
                     ?>
                 </li>
 
                 <li class='non-active'>
                     <?php 
-                    $type = 'mall';
-                    echo anchor('home/listPlaces/' . $cityInfo['name']. '/' .$type, 'Shopping Malls')
+                    $type = 'shopping mall';
+                    echo anchor('home/listPlaces/' . $cityInfo['cityID']. '/' .$type, 'Shopping Malls');
                     ?>
                 </li>
 
                 <li class='non-active'>
                 <?php 
                     $type = 'hotel';
-                    echo anchor('home/listPlaces/' . $cityInfo['name']. '/' .$type, 'Hotels')
+                    echo anchor('home/listPlaces/' . $cityInfo['cityID']. '/' .$type, 'Hotels');
                     ?></li>
               </ul>
-            </div>
+            </div><!--sidebar-->
 
             <div class="col-sm-9 col-md-10">
                 <div class='cityInfoContainer'>
@@ -54,7 +54,7 @@
             	</div>
         	</div>
 		</div> <!-- row headerSpace -->
-    </div> <!-- container-fluid -->
+     <!-- container-fluid -->
 <!-- JavaScript -->
 <script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
 <script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>

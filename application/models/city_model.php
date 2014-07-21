@@ -19,7 +19,7 @@ class City_model extends CI_Model {
 	function create_city_from_data($city)
 	{
 		$cityInfo = array(
-					'cityId' => $city->cityID,
+					'cityID' => $city->cityID,
 					'name' => $city->name,
 					'country' => $city->country,
 					'picURL' => $city->picture_url,
