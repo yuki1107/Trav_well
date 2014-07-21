@@ -63,7 +63,6 @@ class Home extends CI_Controller {
 
 	public function view_restaurant()
 	{
-		;
 	}
 
 	public function messages()

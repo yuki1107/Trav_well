@@ -12,7 +12,7 @@
         </div>
 
         <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
+          <div class="navbar-form navbar-right" >
             <?php
 			if (!isset($_SESSION['user'])){
 				echo anchor('home/loginPage', 'Login', array('class'=>'login'));
@@ -24,12 +24,18 @@
 				echo anchor('authorize/logout', 'Log Out', array('class'=>'btn btn-success'));
 			}
 			?>
+
             <div class="form-group">
-              <input type="keyword" placeholder="Search" class="form-control">
+             <?php
+                echo form_open('search/lookup', "role='form'");
+                echo form_input('query',set_value('query'), "class=form-control placeholder='Search'", "required");
+                echo form_submit('submit', 'Search', "class = 'btn btn-info'");
+                echo form_close();
+
+            ?>
+       		</div>
             </div>
 
-            <button type="submit" class="btn btn-info">Search</button>
-          </form>
         </div><!--/.navbar-collapse -->
 
       </div>
