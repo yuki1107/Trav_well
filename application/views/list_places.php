@@ -130,17 +130,6 @@ h1:first-letter{
               }
               ?>
 
-              <script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
-              <script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
-              <script>
-                  $(document).ready(function() {
-                      var place = <?php echo json_encode($placeInfo); ?>;
-                      $('#placeHeader').html(city.name);
-                      $("#placeImg").attr("src", city.picURL);
-                      $('#placeAddr').html(place.a)
-                  });
-              </script>
-
 
           </div><!--listContainer-->
           </div><!--cityInfoContainer-->

@@ -12,17 +12,15 @@ class Search extends CI_Controller {
     }
 	
 	public function lookup(){
-
+		$src_res = NULL;
 		$this->load->view('search_result');
-		$search = $this->input->get('query');
-		$srch_res1 = $this->place_model->get_places_by_city($search);
-		$srch_res2 = $this->place_model->get_place_by_name($search);
-		
-		var_dump($srch_res1);
-		var_dump($srch_res2);
-		
-		var_dump($search);
-
+		$search = $this->input->post('query');
+		$srch_res = $this->place_model->get_places_by_city($search);
+		if($srch_res==false){
+			$srch_res = $this->place_model->get_place_by_name($search);
+		}
+		$data['search_result'] = $srch_res;
+		$this->load->view('search_result_page', $data);
 	}
 	
 	public function update(){
