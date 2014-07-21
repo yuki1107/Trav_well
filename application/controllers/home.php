@@ -100,9 +100,9 @@ class Home extends CI_Controller {
 		$this->load->view('edit_user');
 	}
 
-	public function listPlaces($cityName, $type)
+	public function listPlaces($cityID, $type)
 	{
-		$data['restaurant_list'] = $this->place_model->get_places_by_city_type($cityName, $type);
+		$data['place_list'] = $this->place_model->get_places_by_id_type($cityID, $type);
 		$this->load->view('list_places', $data);
 	}
 
