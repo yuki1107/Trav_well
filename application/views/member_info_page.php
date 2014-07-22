@@ -137,6 +137,8 @@ h3 { background-color: black;
                           echo "<p>This user hasn't added any information to their profile!</p>";
                         }
                       }
+					  
+					  
 
                     ?>
                     <h3>Wants to Visit</h3>
@@ -161,6 +163,7 @@ h3 { background-color: black;
                               }
                               echo "</ul>";
                             }
+							
                         ?>
                     <h3>Posted Reviews</h3>
                         <?php
@@ -193,6 +196,8 @@ h3 { background-color: black;
                               }
                               echo "</ul>";
                             }
+							echo "<br>";
+							echo "<br>";
                         ?>
                 </div>
             </div>
