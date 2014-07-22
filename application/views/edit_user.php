@@ -13,7 +13,10 @@
 
 .upInfoBar{
 	text-align:center;
-	padding-top:60px;
+	padding-top:100px;
+	width:500px;
+	alignment-adjust:central;
+	margin:auto;
 }
 	
 
@@ -41,7 +44,8 @@
 
          ?>
 
+</div>
 
-<?=$this->load->view("Template/footer")?>
 </body>
+<?=$this->load->view("Template/footer")?>
 </html>
