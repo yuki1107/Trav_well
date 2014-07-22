@@ -99,6 +99,11 @@ class User_model extends CI_Model {
 		$this->db->update('user', array('first_name'=>$first_name, 'last_name'=>$last_name, 'age'=>$age,
 		'interest'=>$interest, 'bio'=>$bio));
 	}
+	
+	function user_pic_change($userID, $picture_url){
+		$this->db->where('userID', $userID);
+		$this->db->update('user', array('picture_url'=>$picture_url));
+	}
 }
 
 ?>

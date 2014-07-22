@@ -64,12 +64,20 @@ h3 { background-color: black;
                   <?php
                     if ($user->picture_url != NULL)
                     {
-                      echo "<img src='" . $user->picture_url . "' align='center' width='200' height='300' />";
+                      echo "<img src='" . base_url(). $user->picture_url . "' align='center' width='200' height='300' />";
                     }
                     else
                     {
                       echo "<img src='/assets/images/profile.png' align='center' />";
                     }
+					echo "<br>";
+					echo "<br>";
+					
+					echo form_open_multipart('authorize/change_pic');
+					echo "<input type='file' name='userimg' />";
+					echo form_submit('Submit', 'submit');
+					echo form_close();
+                    echo "<br>";
                   ?>
                   <h3>Basic</h3>
                     <?php
