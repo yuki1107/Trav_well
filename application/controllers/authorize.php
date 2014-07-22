@@ -109,6 +109,28 @@ class Authorize extends CI_Controller {
 			$this->load->view('edit_user');
 		}
 	}
+	
+	public function change_pic(){
+
+		$config['upload_path']          = './assets/images/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        $config['max_width']            = 300;
+        $config['max_height']           = 300;
+		
+		$this->load->library('upload', $config);
+		if ($this->upload->do_upload('userimg')){
+			$pic = array('upload_data' => $this->upload->data());
+		
+			$user= $_SESSION['user'];
+			
+			$this->user_model->user_pic_change($user->userID, '/assets/images/' .$pic['upload_data']['file_name']);
+			redirect('home/home_page');	
+		}else{
+			var_dump($this->upload->display_errors());
+
+		}
+	}
+		
 
 
 }
