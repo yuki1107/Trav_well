@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
 CREATE TABLE IF NOT EXISTS `friendship` (
   `user1` int(30) NOT NULL,
   `user2` int(30) NOT NULL,
+  `confirmed` bit(1) NOT NULL,
   PRIMARY KEY (`user1`,`user2`),
   KEY `user2` (`user2`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -115,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 --
 
 CREATE TABLE IF NOT EXISTS `place` (
-  `placeID` int(30) NOT NULL,
+  `placeID` int(30) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   `address` varchar(200) NOT NULL,
   `contact` varchar(60) DEFAULT NULL,

@@ -9,7 +9,7 @@ class Messages_model extends CI_Model {
 
     function checkReceiver($receiver) {
 
-      $query = $this->db->get_where('User', array('username'=>$receiver));
+      $query = $this->db->get_where('user', array('username'=>$receiver));
 
       if ($query->num_rows() > 0)
       {
@@ -22,7 +22,7 @@ class Messages_model extends CI_Model {
 
     function sendMessage($message) {
 
-      $query = $this->db->insert('Messages', $message);
+      $query = $this->db->insert('messages', $message);
 
       if ($this->db->affected_rows() > 0)
       {
@@ -34,7 +34,7 @@ class Messages_model extends CI_Model {
 
     function readMessage($message) {
 
-      $query = $this->db->update('Messages', array('read'=>1), array('messageID'=>$message->$messageID));
+      $query = $this->db->update('messages', array('read'=>1), array('messageID'=>$message->$messageID));
 
       if ($this->db->affected_rows() > 0)
       {
@@ -46,9 +46,9 @@ class Messages_model extends CI_Model {
 
     function getMessages($userID) {
 
-      $this->db->join('User', 'User.userID = Messages.sender');
+      $this->db->join('user', 'user.userID = messages.sender');
       $this->db->order_by('time', 'desc');
-      $query = $this->db->get_where('Messages', array('receiver'=>$userID));
+      $query = $this->db->get_where('messages', array('receiver'=>$userID));
 
       if ($query->num_rows() > 0)
       {
@@ -60,7 +60,7 @@ class Messages_model extends CI_Model {
 
     function deleteMessage($messageID) {
 
-      $query = $this->db->delete('Messages', (array('messageID'=>$messageID)));
+      $query = $this->db->delete('messages', (array('messageID'=>$messageID)));
 
       if ($this->db->affected_rows() > 0)
       {
