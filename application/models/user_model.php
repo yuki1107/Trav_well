@@ -47,6 +47,27 @@ class User_model extends CI_Model {
 
 	}
 
+	function wantToGo($placeID) {
+
+		$userID = $_SESSION['user']->userID;
+
+		//check whether the user already said they want to go here
+		$query = $this->db->get_where('wantToGoPlace', array('userID'=>$userID, 'placeID'=>$placeID));
+
+		if ($query->num_rows() != 0) {
+			return True;
+		}
+
+		$this->db->insert('wantToGoPlace', array('userID'=>$userID, 'placeID'=>$placeID));
+
+		if ($this->db->affected_rows() > 0)
+      	{
+        	return True;
+      	}
+
+      return False; 
+	}
+
 	function user_update($userID, $first_name, $last_name, $age, $interest, $bio){
 		
 		$this->db->where('userID', $userID);

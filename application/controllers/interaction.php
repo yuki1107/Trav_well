@@ -187,5 +187,18 @@ class Interaction extends CI_Controller {
         redirect( base_url() . 'interaction/getFriends/', 'refresh');
 
     }
+
+    public function wantToGo($placeID) {
+
+        $result = $this->user_model->wantToGo($placeID);
+
+        if (!$result) {
+            echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+        }
+
+        $ref = $this->input->server('HTTP_REFERER', TRUE);
+        redirect($ref, 'location');
+
+    }
 }
 ?>

@@ -48,8 +48,8 @@ h1{
                       </address>
                       
                       <div>
-                           <button type='submit' class='btn btn-info'>Wanna Go</button>
-                           <button type='submit' class='btn btn-info'>Been There</button>
+                           <a class='btn btn-info' href='" . base_url() . "interaction/wantToGo/" . $place['placeID'] . "'>Wanna Go</a>
+                           <a class='btn btn-info'>Been There</a>
                       </div>
                     </div>
                   </div>";
