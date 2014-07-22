@@ -104,7 +104,7 @@ h3 { background-color: black;
                       
                       if ($user->first_name != NULL && $user->last_name != NULL)
                       {
-                        echo "<p>Name: " . $user->first_name . $user->last_name . "</p>";
+                        echo "<p>Name: " . $user->first_name . ' ' . $user->last_name . "</p>";
                       }
                       elseif ($user->first_name != NULL)
                       {

@@ -99,6 +99,12 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('edit_user');
 	}
+	
+	public function home_page(){
+		
+		
+		$this->load->view('home_page');
+	}
 
 	public function listPlaces($cityName, $type)
 	{
