@@ -16,6 +16,23 @@
 	padding-left:80px;
 }
 
+.starRate {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+  font-size: 20;
+}
+.starRate > a {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.starRate > a:hover:before,
+.starRate > a:hover ~ a:before {
+   content: "\2605";
+   position: absolute;
+}
+
 </style>
 </head>
 
@@ -67,7 +84,16 @@
                               "<div class='col-xs-6 col-sm-3 placeholder'><img class='placeInfoImg' src='<?php echo base_url();?>"+item.picURL+"'/></div>" +
                               "<div id='"+item.name+"' class='col-xs-6 col-sm-9 description'>"+
                                   "<address><h4><a href='<?php echo base_url('home'); ?>/view_place/" + item.name +"'>"+item.name+"</a></h4>"+item.address+"<br/><abbr>Contact: </abbr>"+item.contact+"</address>" +
-                                   "<div><a class='btn btn-info' href='<?php echo base_url(); ?>interaction/wantToGo/" + item.placeID + "'>Wanna Go</a> <a class='btn btn-info' href='<?php echo base_url(); ?>interaction/placeBeen/" + item.placeID + "'>Been There</a></div></div><!--description--></div><!--row-->";
+                                   "<div class='starRate'>" +
+                                      "<a href='#'>☆</a>" +
+                                      "<a href='#'>☆</a>" +
+                                      "<a href='#'>☆</a>" +
+                                      "<a href='#'>☆</a>" +
+                                      "<a href='#'>☆</a>" +
+                              "</div>" +
+                              "<br>" +
+                                   "<div><a class='btn btn-info' href='<?php echo base_url(); ?>interaction/wantToGo/" + item.placeID + "'>Wanna Go</a> <a class='btn btn-info' href='<?php echo base_url(); ?>interaction/placeBeen/" + item.placeID + "'>Been There</a>" +
+                                   "</div></div><!--description--></div><!--row-->";
             $('#listPlaces').append(htmlText);
           });
         }

@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `userID` int(30) NOT NULL,
   `placeID` int(30) NOT NULL,
   `content` text NOT NULL,
-  `commentID` int(30) NOT NULL,
+  `commentID` int(30) NOT NULL AUTO_INCREMENT,
   `time` datetime NOT NULL,
   PRIMARY KEY (`commentID`),
   KEY `userID` (`userID`),
@@ -197,7 +197,7 @@ CREATE TABLE IF NOT EXISTS `placesBeen` (
 CREATE TABLE IF NOT EXISTS `rating` (
   `userID` int(30) NOT NULL,
   `placeID` int(30) NOT NULL,
-  `Rating` float NOT NULL,
+  `rating` float NOT NULL,
   PRIMARY KEY (`userID`,`placeID`),
   KEY `placeID` (`placeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

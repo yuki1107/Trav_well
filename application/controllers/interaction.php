@@ -41,14 +41,12 @@ class Interaction extends CI_Controller {
         else 
         {
             //Get receiver userID from username
-            $this->db->where(array('username'=>$this->input->post('receiver')));
-            $query = $this->db->get('user');
-            $val = $query->result_array();
+            $receiver = $this->user_model->getUser($this->input->post('receiver'));
 
             //Put message in database
             $message = new Messages();
             $message->sender = $_SESSION['user']->userID;
-            $message->receiver = $val[0]['userID'];
+            $message->receiver = $receiver->userID;
             $message->content = $this->input->post('content');
             $message->time = date('Y-m-d H:i:s');
 

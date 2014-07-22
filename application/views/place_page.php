@@ -66,8 +66,8 @@
                     <div id='otherInfo' class="col-xs-6 col-sm-4 placeholder ">
                         <img id='placeImg' class='placeDetailImg' src='' />
                         <div class='btnArea'>
-                            <button type="button" class="btn btn-info btn-this">Wanna go</button>
-                            <button type="button" class="btn btn-info btn-this">Has been</button>
+                            <a id="wannaGo" class="btn btn-info btn-this">Wanna go</a>
+                            <a id="beenThere" class="btn btn-info btn-this">Has been</a>
                         </div>
                         <div id='placeInfo'>
                                 <p id='placeAddress'></p>
@@ -107,6 +107,8 @@
             $("#placeImg").attr("src", "<?php echo base_url();?>" + place.picURL);
             $('#placeAddress').html("<strong>Address: </strong><br>" + place.address);
             $('#placeContact').html("<strong>Contact: </strong> " + place.contact);
+            $('#wannaGo').attr("href", "<?php echo base_url();?>interaction/wantToGo/" + place.placeID);
+            $('#beenThere').attr("href", "<?php echo base_url();?>interaction/placeBeen/" + place.placeID);
         }
     });
 </script>
