@@ -45,8 +45,13 @@
         $('#hLink').attr('href',"<?php echo base_url('home'); ?>/view_city/" + city.name + "/hotel");
 
         /* City Info */
-        $("#cityImg").attr("src", "<?php echo base_url();?>" + city.picURL);
         $('#cityDesc').html(city.desc);
+        if(city.name == "Error") {
+            $('#cityImg').remove();
+        }
+        else {
+            $("#cityImg").attr("src", "<?php echo base_url();?>" + city.picURL);
+        }
     });
 </script>
 <?=$this->load->view("Template/footer")?>
