@@ -10,26 +10,38 @@
 <link href="<?php echo base_url();?>assets/css/navg_style.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/comment_box.css" rel="stylesheet">
 <style>
-h2{
-	color:#06F;
-	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
 
-}
-.b{
-	text-indent: 40px;
-}
-.description{
-	padding-left:48px;
-}
-.placeholder{
-	padding-top:30px;
+#placeInfo{
+    margin-top: 15px;
 }
 
-h1{
-	font-family:"Comic Sans MS", cursive;
-	font-size:38px;
+#placeDesc{
+    text-align: justify;
 }
 
+.placeDetailImg{
+    width:330px;
+    height:auto;
+    border:5px double #DDD;
+}
+
+.commentBox{
+    height:150px;
+    margin-bottom:10px;
+}
+
+.commentArea{
+    margin-top:30px;
+}
+
+.btn-this{
+    width:160px;
+}
+
+.btnArea{
+    margin-top:5px;
+    text-align: justify;
+}
 
 </style>
 </head>
@@ -49,27 +61,36 @@ h1{
             </ul>
         </div>
 
-        <div id="mainBody" class="col-sm-9 col-md-10 main">
-            <h1 id='pType'></h1>
-            <div class="row">
-                <div id='otherInfo' class="col-xs-6 col-sm-3 placeholder">
-                    <img id='placeImg' class="1strest" src='' />
-                    <div id='placeInfo'>
-                        <p id='placeAddress'></p>
-                        <p id='placeContact'></p>
+        <div id="mainBody" class="col-sm-9 col-md-10">
+            <div class="cityInfoContainer">
+                <h1 id='placeName'></h1><hr/>
+                <div class="row">
+                    <div id='otherInfo' class="col-xs-6 col-sm-4 placeholder ">
+                        <img id='placeImg' class='placeDetailImg' src='' />
+                        <div class='btnArea'>
+                            <button type="button" class="btn btn-info btn-this">Wanna go</button>
+                            <button type="button" class="btn btn-info btn-this">Has been</button>
+                        </div>
+                        <div id='placeInfo'>
+                                <p id='placeAddress'></p>
+                                <p id='placeContact'></p>
+                        </div>
                     </div>
-                    <?=$this->load->view("Template/buttons")?>
-                    <?=$this->load->view("Template/rating")?>
+
+                    <div id='mainInfo' class="col-xs-6 col-sm-8 description">
+                        <p id='placeDesc'class="cityInfoFont"></p>
+                    </div>
                 </div>
 
-                <div id='mainInfo' class="col-xs-6 col-sm-9 description">
-                    <h2 id='placeName'></h2>
-                    <hr/>
-                    <p id='placeDesc'class="b"></p>
+                <div class="form-group commentArea">
+                    <label for="comment">Comment:</label>
+                    <textarea class="form-control" rows="5"></textarea>
+                    <button type="submit" class="btn btn-info">Submit</button>
                 </div>
             </div>
+        </div>
 
-            <?=$this->load->view("Template/comment_box")?>
+            
         </div>
     </div>
 <!-- JavaScript -->
@@ -86,7 +107,7 @@ h1{
         else {
             $('#pType').html(place.type);
             $("#placeImg").attr("src", "<?php echo base_url();?>" + place.picURL);
-            $('#placeAddress').html("<strong>Address: </strong>" + place.address);
+            $('#placeAddress').html("<strong>Address: </strong><br>" + place.address);
             $('#placeContact').html("<strong>Contact: </strong> " + place.contact);
         }
     });
