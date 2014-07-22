@@ -38,11 +38,11 @@ h1{
                 foreach($search_result as $place){
                   echo "<div class='row placeholders listElement'>
                     <div class='col-xs-6 col-sm-3 placeholder'>
-                      <img class='1strest' src=' ". base_url() . $place['picURL'] . "'/>
+                      <img class='placeInfoImg' src=' ". base_url() . $place['picURL'] . "'/>
                     </div>
                     <div class='col-xs-6 col-sm-9 description'>
                       <address>
-                           <h4>". anchor('restaurant/lacarnitaPage', 'La Carnita') . "</h4>
+                           <h4>". anchor('restaurant/lacarnitaPage', $place['name']) . "</h4>
                            <p >" . $place['address'] . "</p>
                            <abbr>Contact: </abbr>" . $place['contact'] . " 
                       </address>

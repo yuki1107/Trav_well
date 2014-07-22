@@ -86,7 +86,7 @@ body {
                 echo "<h2 class='signin_text'>If not a user yet...</h2>";
                 echo form_input('username',set_value('username'), "class=form-control placeholder='Username'", "required");
 				echo "<br>";
-                echo form_input('email',set_value('email'), "class=form-control placeholder='Username'", "required");
+                echo form_input('email',set_value('email'), "class=form-control placeholder='Email'", "required");
 				echo "<br>";
                 echo form_password('password',set_value(),"id='pwd1' class=form-control placeholder='Password'","required");
 				echo "<br>";

@@ -16,11 +16,6 @@
 	padding-left:80px;
 }
 
-h1{
-  font-family:"Georgia, serif", cursive;
-  font-size:50px;
-}
-
 </style>
 </head>
 

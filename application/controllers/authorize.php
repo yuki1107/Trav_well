@@ -14,15 +14,15 @@ class Authorize extends CI_Controller {
 
 
 	public function register(){
-		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[User.username]');
+		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[user.username]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[20]|matches[passconf]');
 		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|min_length[6]|max_length[20]');
-		$this->form_validation->set_rules('email', 'Email', "required|is_unique[User.email]|valid_email");
+		$this->form_validation->set_rules('email', 'Email', "required|is_unique[user.email]|valid_email");
 
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			echo "<script>alert('Please confirm your password!')</script>";
+			echo "<script>alert('Please check your infomation!')</script>";
 			$this->load->view("login_page");
 		}
 		else
@@ -40,7 +40,7 @@ class Authorize extends CI_Controller {
 
 			$error = $this->user_model->addUser($user);
 
-			$this->load->view('home_page');
+			redirect('home/index');
 		}
 	}
 

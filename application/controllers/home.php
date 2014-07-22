@@ -159,6 +159,16 @@ class Home extends CI_Controller {
 		$this->load->view('list_places', $data);
 	}
 
+	public function search(){
+		$src_res = NULL;
+		$search = $this->input->post('query');
+		$srch_res = $this->place_model->get_places_by_city($search);
+		if($srch_res==false){
+			$srch_res = $this->place_model->get_place_by_name($search);
+		}
+		$data['search_result'] = $srch_res;
+		$this->load->view('search_result_page', $data);
+	}
 }
 
 /* End of file welcome.php */
