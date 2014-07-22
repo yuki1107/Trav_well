@@ -42,7 +42,7 @@ class Interaction extends CI_Controller {
         {
             //Get receiver userID from username
             $this->db->where(array('username'=>$this->input->post('receiver')));
-            $query = $this->db->get('User');
+            $query = $this->db->get('user');
             $val = $query->result_array();
 
             //Put message in database
