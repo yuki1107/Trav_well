@@ -72,11 +72,13 @@ h3 { background-color: black;
                     }
 					echo "<br>";
 					echo "<br>";
-					
-					echo form_open_multipart('authorize/change_pic');
-					echo "<input type='file' name='userimg' />";
-					echo form_submit('Submit', 'submit');
-					echo form_close();
+					if (strcmp($user->username, $_SESSION['user']->username) == 0)
+                    {
+						echo form_open_multipart('authorize/change_pic');
+						echo "<input type='file' name='userimg' />";
+						echo form_submit('Submit', 'submit');
+						echo form_close();
+					}
                     echo "<br>";
                   ?>
                   <h3>Basic</h3>
