@@ -22,6 +22,7 @@ class City_model extends CI_Model {
 					'cityID' => $city->cityID,
 					'name' => $city->name,
 					'country' => $city->country,
+					'icon_url' => $city->icon_url,
 					'picURL' => $city->picture_url,
 					'desc' => $city->description
 				);
