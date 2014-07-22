@@ -16,6 +16,23 @@
 	padding-left:80px;
 }
 
+.starRate {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+  font-size: 20;
+}
+.starRate > a {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.starRate > a:hover:before,
+.starRate > a:hover ~ a:before {
+   content: "\2605";
+   position: absolute;
+}
+
 h1{
   font-family:"Georgia, serif", cursive;
   font-size: 50px;
@@ -45,6 +62,15 @@ h1{
                                            <p >" . $place['address'] . "</p>
                                            <abbr>Contact: </abbr>" . $place['contact'] . "
                                       </address>
+
+                                    <div class='starRate'>
+                                      <a href='" . base_url() . "interaction/addRating/" .  $place['placeID'] . "/1'>☆</a>
+                                      <a href='" . base_url() . "interaction/addRating/" .  $place['placeID'] . "/2'>☆</a>
+                                      <a href='" . base_url() . "interaction/addRating/" .  $place['placeID'] . "/3'>☆</a>
+                                      <a href='" . base_url() . "interaction/addRating/" .  $place['placeID'] . "/4'>☆</a>
+                                      <a href='" . base_url() . "interaction/addRating/" .  $place['placeID'] . "/5'>☆</a>
+                                    </div>
+                                    <br>
 
                                       <div>
                                            <a class='btn btn-info' href='" . base_url() . "interaction/wantToGo/" . $place['placeID'] . "'>Wanna Go</a>

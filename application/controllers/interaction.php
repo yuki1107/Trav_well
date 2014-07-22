@@ -211,5 +211,18 @@ class Interaction extends CI_Controller {
         redirect($ref, 'location');
 
     }
+
+    public function addRating($placeID, $rating) {
+
+        $result = $this->user_model->addRating($placeID, $rating);
+
+        if (!$result) {
+            echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+        }
+
+        $ref = $this->input->server('HTTP_REFERER', TRUE);
+        redirect($ref, 'location');
+
+    }
 }
 ?>

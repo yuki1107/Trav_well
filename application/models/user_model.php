@@ -93,6 +93,24 @@ class User_model extends CI_Model {
 
 	}
 
+	function addRating($placeID, $rating) {
+
+		$userID = $_SESSION['user']->userID;
+
+		//delete rating if it exists already
+		$this->db->delete('rating', array('userID'=>$userID, 'placeID'=>$placeID));
+
+		$this->db->insert('rating', array('userID'=>$userID, 'placeID'=>$placeID, 'rating'=>$rating));
+
+		if ($this->db->affected_rows() > 0)
+      	{
+        	return True;
+      	}
+
+      return False; 
+
+	}
+
 	function user_update($userID, $first_name, $last_name, $age, $interest, $bio){
 		
 		$this->db->where('userID', $userID);

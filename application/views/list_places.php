@@ -85,11 +85,11 @@
                               "<div id='"+item.name+"' class='col-xs-6 col-sm-9 description'>"+
                                   "<address><h4><a href='<?php echo base_url('home'); ?>/view_place/" + item.name +"'>"+item.name+"</a></h4>"+item.address+"<br/><abbr>Contact: </abbr>"+item.contact+"</address>" +
                                    "<div class='starRate'>" +
-                                      "<a href='#'>☆</a>" +
-                                      "<a href='#'>☆</a>" +
-                                      "<a href='#'>☆</a>" +
-                                      "<a href='#'>☆</a>" +
-                                      "<a href='#'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/1'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/2'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/3'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/4'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/5'>☆</a>" +
                               "</div>" +
                               "<br>" +
                                    "<div><a class='btn btn-info' href='<?php echo base_url(); ?>interaction/wantToGo/" + item.placeID + "'>Wanna Go</a> <a class='btn btn-info' href='<?php echo base_url(); ?>interaction/placeBeen/" + item.placeID + "'>Been There</a>" +
