@@ -48,8 +48,6 @@
 
 <body>
 	<?=$this->load->view("Template/header")?>
-
-
     <div class="row headerSpace">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
@@ -90,7 +88,7 @@
             </div>
         </div>
 
-            
+
         </div>
     </div>
 <!-- JavaScript -->

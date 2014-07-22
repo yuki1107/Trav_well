@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Home extends CI_Controller {
-    function __construct() {
-    		// Call the Controller constructor
-	    	parent::__construct();
+	function __construct() {
+			// Call the Controller constructor
+			parent::__construct();
 			$this->load->library('form_validation');
 			$this->load->model('user');
 			$this->load->model('user_model');
@@ -15,7 +15,7 @@ class Home extends CI_Controller {
 			$this->load->model('friendship_model');
 			$this->load->helper('url');
 			session_start();
-    }
+	}
 	/**
 	 * Index Page for this controller.
 	 *
@@ -100,7 +100,6 @@ class Home extends CI_Controller {
 			}
 			$this->load->view('city_page', $data);
 		}
-
 	}
 
 	/**
@@ -112,7 +111,7 @@ class Home extends CI_Controller {
 	public function view_place($placeName ='')
 	{
 		if($placeName) {
-			$qPlace = $this->place_model->get_place_by_name($placeName);
+			$qPlace = $this->place_model->get_place_by_name(urldecode($placeName));
 			if($qPlace) {
 				$data = array('placeInfo' => $qPlace);
 			}
@@ -145,10 +144,10 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('edit_user');
 	}
-	
+
 	public function home_page(){
-		
-		
+
+
 		$this->load->view('home_page');
 	}
 
