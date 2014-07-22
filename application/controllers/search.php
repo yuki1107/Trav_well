@@ -23,17 +23,7 @@ class Search extends CI_Controller {
 		$this->load->view('search_result_page', $data);
 	}
 	
-	public function update(){
-		$fir = $this->input->get('fir_name');
-		$las = $this->input->get('las_name');
-		$age = $this->input->get('age');
-		$interst = $this->input->get('interest');
-		$bio = $this->input->get('bio');
-		if(isset($_SESSION['user'])){
-			var_dump("cao");
-		}
-//		$this->user_model->user_update(
-	}
+
 		
 	
 	

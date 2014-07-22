@@ -48,6 +48,7 @@ class User_model extends CI_Model {
 	}
 
 	function user_update($userID, $first_name, $last_name, $age, $interest, $bio){
+		
 		$this->db->where('userID', $userID);
 		$this->db->update('user', array('first_name'=>$first_name, 'last_name'=>$last_name, 'age'=>$age,
 		'interest'=>$interest, 'bio'=>$bio));
