@@ -81,6 +81,34 @@ class Authorize extends CI_Controller {
 		unset($_SESSION['user']);
 		redirect('home\index');
 	}
+	
+	public function update(){
+		$this->form_validation->set_rules('fir_name', 'firstname', 'required');
+		$this->form_validation->set_rules('las_name', 'lastname', 'required');
+		$this->form_validation->set_rules('age', 'age', 'required');
+		$this->form_validation->set_rules('interest', 'interest', 'required');
+		$this->form_validation->set_rules('bio', 'bio', 'required');
+		$fir = $this->input->post('fir_name');
+		$las = $this->input->post('las_name');
+		$age = $this->input->post('age');
+		$interest = $this->input->post('interest');
+		$bio = $this->input->post('bio');
+		
+		if($this->form_validation->run()!= FALSE){
+			if(isset($_SESSION['user'])){
+				$user = $_SESSION['user'];
+				$this->user_model->user_update($user->userID, $fir, $las, $age, $interest, $bio);
+				/*$user_new = new User();
+				$user_new = $this->user_model->getUser($user->username);
+				$_SESSION['user'] = $user_new;
+				redirect('home/profile/$user_new->username')*/
+				redirect('home/home_page');		
+			}
+		}else{
+			echo "<script>alert('Fields cannot be empty!')</script>";
+			$this->load->view('edit_user');
+		}
+	}
 
 
 }
