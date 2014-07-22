@@ -29,6 +29,7 @@
              <?php
                 echo form_open('home/search', "role='form'");
                 echo form_input('query',set_value('query'), "class=form-control placeholder='Search'", "required");
+                echo " ";
                 echo form_submit('submit', 'Search', "class = 'btn btn-info'");
                 echo form_close();
 

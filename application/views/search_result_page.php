@@ -49,7 +49,7 @@ h1{
                       
                       <div>
                            <a class='btn btn-info' href='" . base_url() . "interaction/wantToGo/" . $place['placeID'] . "'>Wanna Go</a>
-                           <a class='btn btn-info'>Been There</a>
+                           <a class='btn btn-info' href='" . base_url() . "interaction/placeBeen/" . $place['placeID'] . "'>Been There</a>
                       </div>
                     </div>
                   </div>";

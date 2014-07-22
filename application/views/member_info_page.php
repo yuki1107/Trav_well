@@ -17,8 +17,6 @@ h3 { background-color: black;
      font-family:sans-serif;
      text-indent: 10px; }
 
-.sidebar { bottom: 0px;}
-
 .placeholder { margin-left: 20px; }
 
 </style>
@@ -30,7 +28,7 @@ h3 { background-color: black;
     <?=$this->load->view("Template/header")?>
 
     <div class="row headerSpace">
-            <div class="col-xs-2 sidebar">
+            <div class="col-sm-3 col-md-2">
                   <ul class="nav nav-sidebar">
                     <?php
                       if (strcmp($user->username, $_SESSION['user']->username) == 0)
@@ -60,9 +58,9 @@ h3 { background-color: black;
                       }
                     ?>
 
-                </div>
+                <!--</div>-->
 
-                <div class="col-xs-2 placeholder">
+                <!--<div class="col-xs-2 placeholder">-->
                   <?php
                     if ($user->picture_url != NULL)
                     {
@@ -73,33 +71,7 @@ h3 { background-color: black;
                       echo "<img src='/assets/images/profile.png' align='center' />";
                     }
                   ?>
-
-                  <br>
-                  <br>
-                  <?php
-                    if (strcmp($user->username, $_SESSION['user']->username) == 0)
-                    {
-                      echo "<a class='btn btn-info' href='" . base_url() . "home/edit_info_page'>Edit Profile</a>";
-                      echo "<br>";
-                      echo "<br>";
-                    }
-                    else
-                    {
-                      if (!$friends)
-                      {
-                        echo "<a class='btn btn-info' href='" . base_url() . "interaction/addFriend/" . $user->userID . "'>Add to Friends</a>";
-                        echo "<br>";
-                        echo "<br>";
-                      }
-                      echo "<a class='btn btn-info' href='" . base_url() . "home/create_message'>Send Message</a>";
-                      echo "<br>";
-                      echo "<br>";
-                    }
-                  ?>
-                </div>
-
-                <div class="col-xs-6 description">
-                    <h3>Basic</h3>
+                  <h3>Basic</h3>
                     <?php
                       
                       if ($user->first_name != NULL && $user->last_name != NULL)
@@ -137,8 +109,8 @@ h3 { background-color: black;
                           echo "<p>This user hasn't added any information to their profile!</p>";
                         }
                       }
-					  
-					  
+            
+            
 
                     ?>
                     <h3>Wants to Visit</h3>
@@ -163,7 +135,7 @@ h3 { background-color: black;
                               }
                               echo "</ul>";
                             }
-							
+              
                         ?>
                     <h3>Posted Reviews</h3>
                         <?php
@@ -196,9 +168,35 @@ h3 { background-color: black;
                               }
                               echo "</ul>";
                             }
-							echo "<br>";
-							echo "<br>";
+                          echo "<br>";
+                          echo "<br>";
                         ?>
+                  <br>
+                  <br>
+                  <?php
+                    if (strcmp($user->username, $_SESSION['user']->username) == 0)
+                    {
+                      echo "<a class='btn btn-info' href='" . base_url() . "home/edit_info_page'>Edit Profile</a>";
+                      echo "<br>";
+                      echo "<br>";
+                    }
+                    else
+                    {
+                      if (!$friends)
+                      {
+                        echo "<a class='btn btn-info' href='" . base_url() . "interaction/addFriend/" . $user->userID . "'>Add to Friends</a>";
+                        echo "<br>";
+                        echo "<br>";
+                      }
+                      echo "<a class='btn btn-info' href='" . base_url() . "home/create_message'>Send Message</a>";
+                      echo "<br>";
+                      echo "<br>";
+                    }
+                  ?>
+                <!--</div>-->
+
+                <!--<div class="col-xs-6 description">-->
+                   
                 </div>
             </div>
     </div>

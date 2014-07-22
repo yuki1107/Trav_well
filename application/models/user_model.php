@@ -51,10 +51,11 @@ class User_model extends CI_Model {
 
 		$userID = $_SESSION['user']->userID;
 
-		//check whether the user already said they want to go here
-		$query = $this->db->get_where('wantToGoPlace', array('userID'=>$userID, 'placeID'=>$placeID));
+		//check whether the user already said they want to go here, or said they have been there
+		$query1 = $this->db->get_where('wantToGoPlace', array('userID'=>$userID, 'placeID'=>$placeID));
+		$query2 = $this->db->get_where('placesBeen', array('userID'=>$userID, 'placeID'=>$placeID));
 
-		if ($query->num_rows() != 0) {
+		if ($query1->num_rows() != 0 || $query2->num_rows() != 0) {
 			return True;
 		}
 
@@ -66,6 +67,30 @@ class User_model extends CI_Model {
       	}
 
       return False; 
+	}
+
+	function placeBeen($placeID) {
+
+		$userID = $_SESSION['user']->userID;
+
+		//check whether the user already said they have been here
+		$query = $this->db->get_where('placesBeen', array('userID'=>$userID, 'placeID'=>$placeID));
+
+		if ($query->num_rows() != 0) {
+			return True;
+		}
+
+		//if a user has been somewhere, remove it from where they want to go
+		$this->db->delete('wantToGoPlace', array('userID'=>$userID, 'placeID'=>$placeID));
+		$this->db->insert('placesBeen', array('userID'=>$userID, 'placeID'=>$placeID));
+
+		if ($this->db->affected_rows() > 0)
+      	{
+        	return True;
+      	}
+
+      return False; 
+
 	}
 
 	function user_update($userID, $first_name, $last_name, $age, $interest, $bio){
