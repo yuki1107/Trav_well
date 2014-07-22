@@ -20,9 +20,9 @@ class User_model extends CI_Model {
 	function getWants($userID) {
 
 		$this->db->select('place.name AS pname, city.name AS cname');
-		$this->db->join('place', 'wanttogoplace.placeID = place.placeID');
+		$this->db->join('place', 'wantToGoPlace.placeID = place.placeID');
 		$this->db->join('city', 'place.cityID = city.cityID');
-		$query = $this->db->get_where('wanttogoplace', array('userID'=>$userID));
+		$query = $this->db->get_where('wantToGoPlace', array('userID'=>$userID));
 
 		if ($query->num_rows() == 0)
 		{

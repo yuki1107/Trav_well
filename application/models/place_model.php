@@ -44,11 +44,11 @@ class Place_model extends CI_Model {
 		{
 			if($placeType)
 			{
-				$qPlaces = $this->db->get_where('Place', array('cityID'=>$qCity->row()->cityID, 'type'=>$placeType));
+				$qPlaces = $this->db->get_where('place', array('cityID'=>$qCity->row()->cityID, 'type'=>$placeType));
 			}
 			else
 			{
-				$qPlaces = $this->db->get_where('Place', array('cityID'=>$qCity->row()->cityID));
+				$qPlaces = $this->db->get_where('place', array('cityID'=>$qCity->row()->cityID));
 			}
 			if ($qPlaces->num_rows() > 0)
 			{
@@ -72,7 +72,7 @@ class Place_model extends CI_Model {
 	 */
 	function get_place_by_name($placeName)
 	{
-		$qPlace = $this->db->get_where('Place', array('name'=>$placeName));
+		$qPlace = $this->db->get_where('place', array('name'=>$placeName));
 		if ($qPlace && $qPlace->num_rows() > 0)
 		{
 			return $this->create_place_from_data($qPlace->row());
@@ -90,7 +90,7 @@ class Place_model extends CI_Model {
 	 */
 	function get_places_by_type($type) {
 		$places = array();
-		$qPlaces = $this->db->get_where('Place', array('type' => $type));
+		$qPlaces = $this->db->get_where('place', array('type' => $type));
 		if ($qPlaces && $qPlaces->num_rows() > 0)
 		{
 			foreach($qPlaces->result() as $p)

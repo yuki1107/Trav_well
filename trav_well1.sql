@@ -53,7 +53,7 @@ INSERT INTO `city` (`cityID`, `name`, `country`, `picture_url`, `icon_url`, `des
 -- Table structure for table `citybeen`
 --
 
-CREATE TABLE IF NOT EXISTS `citybeen` (
+CREATE TABLE IF NOT EXISTS `cityBeen` (
   `userID` int(30) NOT NULL,
   `cityID` int(30) NOT NULL,
   PRIMARY KEY (`userID`,`cityID`),
@@ -181,7 +181,7 @@ INSERT INTO `place` (`placeID`, `name`, `address`, `contact`, `type`, `cityID`, 
 -- Table structure for table `placesbeen`
 --
 
-CREATE TABLE IF NOT EXISTS `placesbeen` (
+CREATE TABLE IF NOT EXISTS `placesBeen` (
   `userID` int(30) NOT NULL,
   `placeID` int(30) NOT NULL,
   PRIMARY KEY (`userID`,`placeID`),
@@ -238,7 +238,7 @@ INSERT INTO `user` (`userID`, `username`, `first_name`, `last_name`, `email`, `p
 -- Table structure for table `wanttogocity`
 --
 
-CREATE TABLE IF NOT EXISTS `wanttogocity` (
+CREATE TABLE IF NOT EXISTS `wantToGoCity` (
   `userID` int(30) NOT NULL,
   `cityID` int(30) NOT NULL,
   PRIMARY KEY (`userID`,`cityID`),
@@ -251,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `wanttogocity` (
 -- Table structure for table `wanttogoplace`
 --
 
-CREATE TABLE IF NOT EXISTS `wanttogoplace` (
+CREATE TABLE IF NOT EXISTS `wantToGoPlace` (
   `userID` int(30) NOT NULL,
   `placeID` int(30) NOT NULL,
   PRIMARY KEY (`userID`,`placeID`),
@@ -265,9 +265,9 @@ CREATE TABLE IF NOT EXISTS `wanttogoplace` (
 --
 -- Constraints for table `citybeen`
 --
-ALTER TABLE `citybeen`
-  ADD CONSTRAINT `citybeen_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `citybeen_ibfk_2` FOREIGN KEY (`cityID`) REFERENCES `city` (`cityID`);
+ALTER TABLE `cityBeen`
+  ADD CONSTRAINT `cityBeen_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
+  ADD CONSTRAINT `cityBeen_ibfk_2` FOREIGN KEY (`cityID`) REFERENCES `city` (`cityID`);
 
 --
 -- Constraints for table `comments`
@@ -299,9 +299,9 @@ ALTER TABLE `place`
 --
 -- Constraints for table `placesbeen`
 --
-ALTER TABLE `placesbeen`
-  ADD CONSTRAINT `placesbeen_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `placesbeen_ibfk_2` FOREIGN KEY (`placeID`) REFERENCES `place` (`placeID`);
+ALTER TABLE `placesBeen`
+  ADD CONSTRAINT `placesBeen_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
+  ADD CONSTRAINT `placesBeen_ibfk_2` FOREIGN KEY (`placeID`) REFERENCES `place` (`placeID`);
 
 --
 -- Constraints for table `rating`
@@ -313,16 +313,16 @@ ALTER TABLE `rating`
 --
 -- Constraints for table `wanttogocity`
 --
-ALTER TABLE `wanttogocity`
-  ADD CONSTRAINT `wanttogocity_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `wanttogocity_ibfk_2` FOREIGN KEY (`cityID`) REFERENCES `city` (`cityID`);
+ALTER TABLE `wantToGoCity`
+  ADD CONSTRAINT `wantToGoCity_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
+  ADD CONSTRAINT `wantToGoCity_ibfk_2` FOREIGN KEY (`cityID`) REFERENCES `city` (`cityID`);
 
 --
 -- Constraints for table `wanttogoplace`
 --
-ALTER TABLE `wanttogoplace`
-  ADD CONSTRAINT `wanttogoplace_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
-  ADD CONSTRAINT `wanttogoplace_ibfk_2` FOREIGN KEY (`placeID`) REFERENCES `place` (`placeID`);
+ALTER TABLE `wantToGoPlace`
+  ADD CONSTRAINT `wantToGoPlace_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
+  ADD CONSTRAINT `wantToGoPlace_ibfk_2` FOREIGN KEY (`placeID`) REFERENCES `place` (`placeID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
