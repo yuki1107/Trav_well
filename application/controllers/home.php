@@ -61,27 +61,70 @@ class Home extends CI_Controller {
 		$this->load->view('member_info_page', $data);
 	}
 
-	/** Gets information about a specific city from the database
-	 *
+	/**
+	 * Gets city name and searches the database for this city.
+	 * On success, loads city_page with that information
+	 * @author Monica Li
+	 * @return array of city information
 	 */
-	public function view_city()
+	public function view_city($cityName='', $placeType='')
 	{
-		/* Currently specifically gets Toronto.
-		 * Should instead get post data: $_POST['cityName'], 
-		 * $_POST['cityCountry']
-		 */
-		if(isset($_POST['cityName'])) {
-			$cityName = $_POST['cityName'];
-			$data = array('cityInfo' => 
-				$this->city_model->get_city_by_name($cityName));
+		/* If given city and placetype, search for place info accordingly*/
+		if($cityName && $placeType) {
+			$qCityPlace = $this->place_model->get_places_by_city($cityName, $placeType);
+			if($qCityPlace) {
+				$data = array('cityName' => $cityName,
+								'placeType' => $placeType,
+								'placeInfo' => $qCityPlace);
+			}
+			else {
+				$data = array('cityName' => $cityName,
+								'placeType' => $placeType,
+								'placeInfo' => array('name' => 'Error', 'desc' => 'No places of type \''.$placeType.'\' found for this city'));
+			}
+			$this->load->view('list_places', $data);
 		}
 		else {
-			$data = array('cityInfo' => 
-				$this->city_model->get_city_by_name('Toronto'));
+			/* Only name of city given; search for city info */
+			if($cityName) {
+				$qCity = $this->city_model->get_city_by_name($cityName);
+				if($qCity) {
+					$data = array('cityInfo' => $qCity);
+				}
+				else {
+					$data = array('cityInfo' => array('name' => 'Error', 'desc' => 'City not found'));
+				}
+			}
+			else {
+					$data = array('cityInfo' => array('name' => 'Error', 'desc' => 'City not found'));
+			}
+			$this->load->view('city_page', $data);
 		}
-		$this->load->view('city_page', $data);
+
 	}
 
+	/**
+	 * Gets place name and searches the database for this place.
+	 * On success, loads place_page with that information
+	 * @author Monica Li
+	 * @return array of place information
+	 */
+	public function view_place($placeName ='')
+	{
+		if($placeName) {
+			$qPlace = $this->place_model->get_place_by_name($placeName);
+			if($qPlace) {
+				$data = array('placeInfo' => $qPlace);
+			}
+			else {
+				$data = array('placeInfo' => array('name' => 'Error', 'desc' => 'Place not found1'));
+			}
+		}
+		else {
+				$data = array('placeInfo' => array('name' => 'Error', 'desc' => 'Place not found'));
+		}
+		$this->load->view('place_page', $data);
+	}
 
 	public function messages()
 	{
@@ -97,7 +140,7 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('create_message_page');
 	}
-	
+
 	public function edit_info_page()
 	{
 		$this->load->view('edit_user');

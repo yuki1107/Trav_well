@@ -14,7 +14,7 @@ class Place_model extends CI_Model {
 	/**
 	 * Creates an array of place information from the database
 	 * @author Monica Li
-	 * @return an array containing place information
+	 * @return array containing place information
 	 */
 	function create_place_from_data($place) {
 		$placeInfo = array(
@@ -32,16 +32,24 @@ class Place_model extends CI_Model {
 
 	/**
 	 * Searches the database for places in a particular city
+	 * Optional: get places by city and type
 	 * @author Monica Li
-	 * @return an array of places in a city
+	 * @return array of places in a city
 	 */
-	function get_places_by_city($cityname) {
+	function get_places_by_city($cityname, $placeType='') {
 		/* TODO: This should be getting post data instead */
 		$places = array();
 		$qCity = $this->db->select('cityID')->get_where('city', array('name'=>$cityname));
-		if ($qCity->num_rows() > 0)
+		if ($qCity && $qCity->num_rows() > 0)
 		{
-			$qPlaces = $this->db->get_where('Place', array('cityID'=>$qCity->row()->cityID));
+			if($placeType)
+			{
+				$qPlaces = $this->db->get_where('Place', array('cityID'=>$qCity->row()->cityID, 'type'=>$placeType));
+			}
+			else
+			{
+				$qPlaces = $this->db->get_where('Place', array('cityID'=>$qCity->row()->cityID));
+			}
 			if ($qPlaces->num_rows() > 0)
 			{
 				foreach($qPlaces->result() as $p)
@@ -60,13 +68,12 @@ class Place_model extends CI_Model {
 	/**
 	 * Searches the database for places with name
 	 * @author Monica Li
-	 * @return an array containing place information from {@link create_place_from_data()}
+	 * @return array containing place information from {@link create_place_from_data()}
 	 */
 	function get_place_by_name($placeName)
 	{
-		/* TODO: This should be getting post data instead */
 		$qPlace = $this->db->get_where('Place', array('name'=>$placeName));
-		if ($qPlace->num_rows() > 0)
+		if ($qPlace && $qPlace->num_rows() > 0)
 		{
 			return $this->create_place_from_data($qPlace->row());
 		}
@@ -79,31 +86,12 @@ class Place_model extends CI_Model {
 	/**
 	 * Searches the database for places of a specific type
 	 * @author Monica Li
-	 * @return an array of places of a specific type
+	 * @return array of places of a specific type
 	 */
 	function get_places_by_type($type) {
-		/* TODO: This should be getting post data instead */
 		$places = array();
 		$qPlaces = $this->db->get_where('Place', array('type' => $type));
-		if ($qPlaces->num_rows() > 0)
-		{
-			foreach($qPlaces->result() as $p)
-			{
-				$places[] = $this->create_place_from_data($p);
-			}
-		}
-		else
-		{
-			return false;
-		}
-		return $places;
-	}
-
-	function get_places_by_id_type($cityID, $type) {
-		/* TODO: This should be getting post data instead */
-		$places = array();
-		$qPlaces = $this->db->get_where('Place', array('type' => $type, 'cityID'=>$cityID));
-		if ($qPlaces->num_rows() > 0)
+		if ($qPlaces && $qPlaces->num_rows() > 0)
 		{
 			foreach($qPlaces->result() as $p)
 			{

@@ -14,12 +14,7 @@ SET time_zone = "+00:00";
 -- Database: `Trav_well`
 --
 -- --------------------------------------------------------
-
---
--- Table structure for table `City`
---
-
-CREATE TABLE `City` (-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.1.12
 -- http://www.phpmyadmin.net
 --
@@ -27,9 +22,6 @@ CREATE TABLE `City` (-- phpMyAdmin SQL Dump
 -- Generation Time: Jul 10, 2014 at 05:35 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.5.10
-
-
-
 --
 -- Database: `Trav_well`
 --

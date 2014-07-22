@@ -14,7 +14,7 @@ class City_model extends CI_Model {
 	/**
 	 * Creates an array of city information from the database
 	 * @author Monica Li
-	 * @return an array containing place information
+	 * @return array containing place information
 	 */
 	function create_city_from_data($city)
 	{
@@ -29,12 +29,11 @@ class City_model extends CI_Model {
 	}
 
 	/**
-	 * Searches the database for places with name
+	 * Searches the database for cities with name
 	 * @author Monica Li
-	 * @return an array containing city information from {@link create_place_from_data()}
+	 * @return array containing city information from {@link create_city_from_data()}
 	 */
 	function get_city_by_name($cityName) {
-		/* TODO: This should be getting post data instead */
 		$qCity = $this->db->get_where('City', array('name'=>$cityName));
 		if ($qCity->num_rows() > 0)
 		{
@@ -49,10 +48,9 @@ class City_model extends CI_Model {
 	/**
 	 * Searches the database for cities in a particular country
 	 * @author Monica Li
-	 * @return an array of cities in a country
+	 * @return array of cities in a country
 	 */
 	function get_cities_by_country($country) {
-		/* TODO: This should be getting post data instead */
 		$cities = array();
 		$qCities = $this->db->get_where('City', array('country'=>$country));
 		if ($qCities->num_rows() > 0)
@@ -73,7 +71,7 @@ class City_model extends CI_Model {
 	/**
 	 * Gets all cities from the database
 	 * @author Monica Li
-	 * @return an array of cities in a country
+	 * @return array of cities in a country
 	 */
 	function get_all_cities() {
 		/* TODO: This should be getting post data instead */
