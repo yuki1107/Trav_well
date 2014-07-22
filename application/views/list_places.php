@@ -69,7 +69,7 @@ h1{
           $('#typeName').html(pt);
           $.each(placeInfo, function(i, item) {
             var htmlText = "<div id='place"+i+"' class='row placeholders listElement'>" +
-                              "<div class='col-xs-6 col-sm-3 placeholder'><img class='1strest' src='<?php echo base_url();?>"+item.picURL+"'/></div>" +
+                              "<div class='col-xs-6 col-sm-3 placeholder'><img class='placeInfoImg' src='<?php echo base_url();?>"+item.picURL+"'/></div>" +
                               "<div id='"+item.name+"' class='col-xs-6 col-sm-9 description'>"+
                                   "<address><h4><a href='<?php echo base_url('home'); ?>/view_place/" + item.name +"'>"+item.name+"</a></h4>"+item.address+"<br/><abbr>Contact: </abbr>"+item.contact+"</address>" +
                                    "<div><button type='submit' class='btn btn-info'>Wanna Go</button><button type='submit' class='btn btn-info'>Been There</button></div></div><!--description--></div><!--row-->";

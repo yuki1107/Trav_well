@@ -6,7 +6,6 @@
 <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/navg_style.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -24,9 +23,9 @@
 
             <div class="col-sm-9 col-md-10">
                 <div class='cityInfoContainer'>
-              		<h1 id="cityHeader" class="cityInfoHeader"></h1><hr />
-                    <img id="cityImg" class="cityInfoImg" src="" />
-                    <p id="cityDesc"class='cityInfoFont'></p>
+              		<h1 id='cityHeader' class='cityInfoHeader'></h1><hr/>
+                    <img id='cityImg' class='cityInfoImg' src=''/>
+                    <p id='cityDesc'class='cityInfoFont'></p>
             	</div>
         	</div>
 		</div> <!-- row headerSpace -->
