@@ -37,7 +37,12 @@ class Home extends CI_Controller {
 		$this->load->view('home_page', $data);
 	}
 
-	public function loginPage()
+	public function about_us()
+	{
+		$this->load->view('about_us');
+	}
+
+	public function login_page()
 	{
 		$this->load->view('login_page');
 	}
@@ -150,13 +155,6 @@ class Home extends CI_Controller {
 
 
 		$this->load->view('home_page');
-	}
-
-	public function listPlaces($cityID, $type)
-	{
-		$data['place_list'] = $this->place_model->get_places_by_id_type(
-			$cityID, $type);
-		$this->load->view('list_places', $data);
 	}
 
 	public function search(){

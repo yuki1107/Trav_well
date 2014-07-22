@@ -9,47 +9,14 @@
 <link href="<?php echo base_url();?>assets/css/buttons.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/navg_style.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/comment_box.css" rel="stylesheet">
-<style>
-
-#placeInfo{
-    margin-top: 15px;
-}
-
-#placeDesc{
-    text-align: justify;
-}
-
-.placeDetailImg{
-    width:330px;
-    height:auto;
-    border:5px double #DDD;
-}
-
-.commentBox{
-    height:150px;
-    margin-bottom:10px;
-}
-
-.commentArea{
-    margin-top:30px;
-}
-
-.btn-this{
-    width:160px;
-}
-
-.btnArea{
-    margin-top:5px;
-    text-align: justify;
-}
-
-</style>
 </head>
 
 <body>
-	<?=$this->load->view("Template/header")?>
+    <div id='container'>
+        <?=$this->load->view("Template/header")?>
+        <div id='content'>
     <div class="row headerSpace">
-        <div class="col-sm-3 col-md-2 sidebar">
+        <div id='sideNav' class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li><?php echo anchor('sidebar/overviewPage', 'Overview')?></li>
                 <li><?php echo anchor('sidebar/restaurantPage', 'Restaurants')?></li>
@@ -87,8 +54,6 @@
                 </div>
             </div>
         </div>
-
-
         </div>
     </div>
 <!-- JavaScript -->

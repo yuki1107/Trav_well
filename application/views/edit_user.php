@@ -18,34 +18,31 @@
 	alignment-adjust:central;
 	margin:auto;
 }
-	
+
 
 </style>
 <body>
-    <?=$this->load->view("Template/header")?>
-
-<div class="upInfoBar">
-         <?php
-            echo form_open('authorize/update', "role='form'");
-            echo form_input('fir_name',set_value('fir_name'), "class=form-control placeholder='Please Enter Your First Name'", "required");
-			echo "<br>";
-			echo form_input('las_name',set_value('las_name'), "class=form-control placeholder='Please Enter Your Last Name'", "required");
-			echo "<br>";
-			echo form_input('age',set_value('age'), "class=form-control placeholder='Please Enter Your Age'", "required");
-			echo "<br>";
-			echo form_input('interest',set_value('interest'), "class=form-control placeholder='Please Enter Your interests'", "required");
-			echo "<br>";
-			echo form_input('bio',set_value('bio'), "class=form-control placeholder='Please Enter Your Biography'", "required");
-			echo "<br>";
-            echo form_submit('submit', 'Update', "class = 'btn btn-info'");
-			echo "<br>";
-			echo "<br>";
-            echo form_close();
-
-         ?>
-
-</div>
-
-</body>
+    <div id='container'>
+        <?=$this->load->view("Template/header")?>
+        <div id='content'>
+			<div class="upInfoBar">
+			         <?php
+			            echo form_open('authorize/update', "role='form'");
+			            echo form_input('fir_name',set_value('fir_name'), "class=form-control placeholder='Please Enter Your First Name'", "required");
+						echo "<br>";
+						echo form_input('las_name',set_value('las_name'), "class=form-control placeholder='Please Enter Your Last Name'", "required");
+						echo "<br>";
+						echo form_input('age',set_value('age'), "class=form-control placeholder='Please Enter Your Age'", "required");
+						echo "<br>";
+						echo form_input('interest',set_value('interest'), "class=form-control placeholder='Please Enter Your interests'", "required");
+						echo "<br>";
+						echo form_input('bio',set_value('bio'), "class=form-control placeholder='Please Enter Your Biography'", "required");
+						echo "<br>";
+			            echo form_submit('submit', 'Update', "class = 'btn btn-info'");
+						echo "<br>";
+						echo "<br>";
+			            echo form_close();
+			         ?>
+			</div>
+		</div>
 <?=$this->load->view("Template/footer")?>
-</html>

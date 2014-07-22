@@ -14,7 +14,23 @@
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size:18px;
 }
-
+/* Necessary to keep footer at bottom of page, even short pages */
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#container{
+	padding:0;
+	min-height:100%;
+	min-width:100%;
+	position:relative;
+}
+#content{
+	padding:0;
+	padding-bottom:30px;   /* Height of the footer */
+}
 #footer{
 	height:30px;
 	line-height:15px;
@@ -70,15 +86,6 @@
 	margin-right:15px;
 }
 
-.placeInfoImg{
-	margin:10px;
-	margin-top:auto;
-	border:5px double #DDD;
-	max-width: 300px;
-	height: auto;
-}
-
-
 h1{
   font-family:"Georgia, serif", cursive;
   font-size:50px;
@@ -87,4 +94,45 @@ h1{
 
 h1:first-letter{
   text-transform:uppercase;
+}
+
+/*=======================Place Page=======================*/
+#placeInfo{
+    margin-top: 15px;
+}
+
+#placeDesc{
+    text-align: justify;
+}
+
+.placeInfoImg{
+	margin:10px;
+	margin-top:auto;
+	border:5px double #DDD;
+	max-width: 300px;
+	height: auto;
+}
+
+.placeDetailImg{
+    width:330px;
+    height:auto;
+    border:5px double #DDD;
+}
+
+.commentBox{
+    height:150px;
+    margin-bottom:10px;
+}
+
+.commentArea{
+    margin-top:30px;
+}
+
+.btn-this{
+    width:160px;
+}
+
+.btnArea{
+    margin-top:5px;
+    text-align: justify;
 }

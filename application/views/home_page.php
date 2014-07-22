@@ -33,12 +33,14 @@
 </head>
 
 <body>
-	<?=$this->load->view("Template/header")?>
-
-    <div class="bigImageBar">
-        <img class="bigImage" src="<?php echo base_url();?>assets/images/TorontoImg.jpg"/>
-    </div>
-    <div id='cityLinks' class="iconBar"></div>
+    <div id='container'>
+        <?=$this->load->view("Template/header")?>
+        <div id='content'>
+            <div class="bigImageBar">
+                <img class="bigImage" src="<?php echo base_url();?>assets/images/TorontoImg.jpg"/>
+            </div>
+            <div id='cityLinks' class="iconBar"></div>
+        </div><!-- content -->
 
 <!-- JavaScript -->
 <script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>

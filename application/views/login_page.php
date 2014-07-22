@@ -65,37 +65,37 @@ body {
 
 
 <body>
-	<?=$this->load->view("Template/header")?>
+	<div id='container'>
+		<?=$this->load->view("Template/header")?>
+		<div id='content'>
+			<div class="row">
+				<div class="form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-3">
+					<?php
+						echo form_open('authorize/login', "role='form'");
+						echo "<h2 class='signin_text'>Please sign in</h2>";
+						echo form_input('username',set_value('username'), "class=form-control placeholder='Username'", "required");
+						echo "<br>";
+						echo form_password('password',set_value(),"id='pwd1' class=form-control placeholder='Password'","required");
+						echo form_submit('submit', 'Login', "class = 'btn btn-info login_button'");
+						echo form_close();
+					?>
+				</div>
 
- 	<div class="row">
-    	<div class="form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-3">
-			<?php
-                echo form_open('authorize/login', "role='form'");
-                echo "<h2 class='signin_text'>Please sign in</h2>";
-                echo form_input('username',set_value('username'), "class=form-control placeholder='Username'", "required");
-				echo "<br>";
-                echo form_password('password',set_value(),"id='pwd1' class=form-control placeholder='Password'","required");
-                echo form_submit('submit', 'Login', "class = 'btn btn-info login_button'");
-                echo form_close();
-            ?>
-       </div>
-
-        <div class='form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-1 col-md-offset-1'>
-			<?php
-                echo form_open('authorize/register', "class='form-group' role='form'");
-                echo "<h2 class='signin_text'>If not a user yet...</h2>";
-                echo form_input('username',set_value('username'), "class=form-control placeholder='Username'", "required");
-				echo "<br>";
-                echo form_input('email',set_value('email'), "class=form-control placeholder='Email'", "required");
-				echo "<br>";
-                echo form_password('password',set_value(),"id='pwd1' class=form-control placeholder='Password'","required");
-				echo "<br>";
-                echo form_password('passconf',set_value(),"id='pwd2' class=form-control placeholder='Confirm your password'","required oninput='checkPassword();'");
-                echo form_submit('submit', 'Register', "class = 'btn btn-info reg_button'");
-                echo form_close();
-            ?>
-        </div>
-
-	</div>
-
-<?=$this->load->view("Template/footer")?>
+				<div class='form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-1 col-md-offset-1'>
+					<?php
+						echo form_open('authorize/register', "class='form-group' role='form'");
+						echo "<h2 class='signin_text'>If not a user yet...</h2>";
+						echo form_input('username',set_value('username'), "class=form-control placeholder='Username'", "required");
+						echo "<br>";
+						echo form_input('email',set_value('email'), "class=form-control placeholder='Email'", "required");
+						echo "<br>";
+						echo form_password('password',set_value(),"id='pwd1' class=form-control placeholder='Password'","required");
+						echo "<br>";
+						echo form_password('passconf',set_value(),"id='pwd2' class=form-control placeholder='Confirm your password'","required oninput='checkPassword();'");
+						echo form_submit('submit', 'Register', "class = 'btn btn-info reg_button'");
+						echo form_close();
+					?>
+				</div>
+			</div><!-- row -->
+		</div><!-- content -->
+		<?=$this->load->view("Template/footer")?>

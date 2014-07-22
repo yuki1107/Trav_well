@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Trav_well</title>
-<link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/assets/css/style.css" rel="stylesheet">
-<link href="/assets/css/navg_style.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
+<link href="<?php echo base_url();?>assets/css/navg_style.css" rel="stylesheet">
 <style>
 
 p { font-family:sans-serif; }
@@ -26,45 +26,40 @@ h3 { background-color: black;
 </head>
 
 <body>
+    <div id='container'>
+        <?=$this->load->view("Template/header")?>
+        <div id='content'>
+            <div class="row headerSpace">
+                <div id='sideNav' class="col-xs-2 sidebar">
+                      <ul class="nav nav-sidebar">
+                        <li class="non-active"><a href="<?php echo base_url();?>home/profile/<?php echo $_SESSION['user']->username; ?>">Home</a></li>
+                        <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
+                        <li class="active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
+                      </ul>
+                </div><!-- sideNav -->
 
-    <?=$this->load->view("Template/header")?>
-
-    <div class="row headerSpace">
-            <div class="col-xs-2 sidebar">
-                  <ul class="nav nav-sidebar">
-                    <li class="non-active"><a href="<?php echo base_url();?>home/profile/<?php echo $_SESSION['user']->username; ?>">Home</a></li>
-                    <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
-                    <li class="active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
-                  </ul>
-            </div>
-
-            <div class="cityInfoContainer">
-
-                <div class="col-xs-4 description col-sm-4 description">
-                    <?php
-                      echo form_open('interaction/sendMessage', "role='form'");
-                      echo "<h2>Compose Message</h2>";
-                      if (isset($username))
-                      {
-                        echo form_input('receiver',set_value('receiver'), "class=form-control placeholder='To' value='" . $username . "'", "required");
-                      }
-                      else
-                      {
-                        echo form_input('receiver',set_value('receiver'), "class=form-control placeholder='To'", "required");
-                      }
-                      echo "<br>";
-                      echo form_textarea('content',set_value('content'), "class=form-control placeholder='Message' id='msg'", "required");
-                      echo "<br>";
-                      echo form_submit('submit', 'Send', "class = 'btn btn-info send_button'");
-                      echo form_close();
-                    ?>
-                    <br>
-                </div>
-
-            </div><!--cityInfoContainer-->
-    </div>
-
-    <?=$this->load->view("Template/footer")?>
-
-</body>
-</html>
+                <div class="cityInfoContainer">
+                    <div class="col-xs-4 description col-sm-4 description">
+                        <?php
+                          echo form_open('interaction/sendMessage', "role='form'");
+                          echo "<h2>Compose Message</h2>";
+                          if (isset($username))
+                          {
+                            echo form_input('receiver',set_value('receiver'), "class=form-control placeholder='To' value='" . $username . "'", "required");
+                          }
+                          else
+                          {
+                            echo form_input('receiver',set_value('receiver'), "class=form-control placeholder='To'", "required");
+                          }
+                          echo "<br>";
+                          echo form_textarea('content',set_value('content'), "class=form-control placeholder='Message' id='msg'", "required");
+                          echo "<br>";
+                          echo form_submit('submit', 'Send', "class = 'btn btn-info send_button'");
+                          echo form_close();
+                        ?>
+                        <br>
+                    </div>
+                </div><!-- cityInfoContainer -->
+            </div><!-- headerSpace -->
+        </div><!-- content -->
+        <?=$this->load->view("Template/footer")?>

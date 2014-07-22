@@ -16,7 +16,7 @@
 	padding-left:80px;
 }
 
-h1{ 
+h1{
   font-family:"Georgia, serif", cursive;
   font-size: 50px;
 }
@@ -25,45 +25,41 @@ h1{
 </head>
 
 <body>
-	<?=$this->load->view("Template/header")?>
+    <div id='container'>
+        <?=$this->load->view("Template/header")?>
+        <div id='content'>
+            <div class="headerSpace">
+                <div class="container">
+                  	<h1>Search Result</h1><hr />
+                    <div class='listContainer'>
+                        <?php
+                            if($search_result!=NULL){
+                                foreach($search_result as $place){
+                                  echo "<div class='row placeholders listElement'>
+                                    <div class='col-xs-6 col-sm-3 placeholder'>
+                                      <img class='placeInfoImg' src=' ". base_url() . $place['picURL'] . "'/>
+                                    </div>
+                                    <div class='col-xs-6 col-sm-9 description'>
+                                      <address>
+                                           <h4>". anchor('restaurant/lacarnitaPage', $place['name']) . "</h4>
+                                           <p >" . $place['address'] . "</p>
+                                           <abbr>Contact: </abbr>" . $place['contact'] . "
+                                      </address>
 
-<div class="headerSpace">
-        
-        <div class="container">
-
-      	  <h1>Search Result</h1><hr />
-          <div class='listContainer'>
-              <?php 
-              if($search_result!=NULL){
-                foreach($search_result as $place){
-                  echo "<div class='row placeholders listElement'>
-                    <div class='col-xs-6 col-sm-3 placeholder'>
-                      <img class='placeInfoImg' src=' ". base_url() . $place['picURL'] . "'/>
-                    </div>
-                    <div class='col-xs-6 col-sm-9 description'>
-                      <address>
-                           <h4>". anchor('restaurant/lacarnitaPage', $place['name']) . "</h4>
-                           <p >" . $place['address'] . "</p>
-                           <abbr>Contact: </abbr>" . $place['contact'] . " 
-                      </address>
-                      
-                      <div>
-                           <a class='btn btn-info' href='" . base_url() . "interaction/wantToGo/" . $place['placeID'] . "'>Wanna Go</a>
-                           <a class='btn btn-info' href='" . base_url() . "interaction/placeBeen/" . $place['placeID'] . "'>Been There</a>
-                      </div>
-                    </div>
-                  </div>";
-                }
-              }
-              else{
-                echo '<p>Keyword not found</p>';
-              }
-              ?>
-
-
-          </div><!--listContainer-->
-          </div><!--cityInfoContainer-->
-</div>
-
-
-<?=$this->load->view("Template/footer")?>
+                                      <div>
+                                           <a class='btn btn-info' href='" . base_url() . "interaction/wantToGo/" . $place['placeID'] . "'>Wanna Go</a>
+                                           <a class='btn btn-info' href='" . base_url() . "interaction/placeBeen/" . $place['placeID'] . "'>Been There</a>
+                                      </div>
+                                    </div>
+                                  </div>";
+                                }
+                            }
+                            else{
+                              echo '<p>Keyword not found</p>';
+                            }
+                        ?>
+                      </div><!--listContainer-->
+                </div><!--cityInfoContainer-->
+            </div><!-- headerSpace -->
+      </div><!-- content -->
+      <?=$this->load->view("Template/footer")?>

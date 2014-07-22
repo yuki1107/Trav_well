@@ -7,28 +7,30 @@
 <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/navg_style.css" rel="stylesheet">
 </head>
-
 <body>
-	<?=$this->load->view("Template/header")?>
-	<div class="row headerSpace">
-        <div class="col-sm-3 col-md-2"><!--sidebar-->
-            <ul class="nav nav-sidebar">
+    <div id='container'>
+        <?=$this->load->view("Template/header")?>
+        <div id='content'>
+        	<div class="row headerSpace">
+            <div id='sideNav' class="col-xs-2 sidebar">
+              <ul class="nav nav-sidebar">
                 <li id='overview' class='non-active'><a id='oLink' href="#">Overview</a></li>
                 <li id="restaurant" class='non-active'><a id='rLink' href='#'>Restaurants</a></li>
                 <li id="landmark" class='non-active'><a id='lLink' href="#">Landmarks</a></li>
                 <li id="shopping" class='non-active'><a id='sLink' href="#">Shopping Malls</a></li>
                 <li id="hotel" class='non-active'><a id='hLink' href="#">Hotels</a></li>
-            </ul>
-        </div><!--sidebar-->
+              </ul>
+            </div>
 
-        <div class="col-sm-9 col-md-10">
-            <div class='cityInfoContainer'>
-          		<h1 id='cityHeader' class='cityInfoHeader'></h1><hr/>
-                <img id='cityImg' class='cityInfoImg' src=''/>
-                <p id='cityDesc'class='cityInfoFont'></p>
-        	</div>
-    	</div>
-	</div> <!-- row headerSpace -->
+                <div class="col-sm-9 col-md-10">
+                    <div class='cityInfoContainer'>
+                  		<h1 id='cityHeader' class='cityInfoHeader'></h1><hr/>
+                        <img id='cityImg' class='cityInfoImg' src=''/>
+                        <p id='cityDesc'class='cityInfoFont'></p>
+                	</div>
+            	</div>
+        	</div> <!-- row headerSpace -->
+        </div> <!-- content -->
 <!-- JavaScript -->
 <script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
 <script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
