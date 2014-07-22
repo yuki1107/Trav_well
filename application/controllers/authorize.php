@@ -79,7 +79,7 @@ class Authorize extends CI_Controller {
 
 	public function logout(){
 		unset($_SESSION['user']);
-		redirect('home\index');
+		redirect('home/index');
 	}
 	
 	public function update(){
