@@ -278,9 +278,8 @@ class Interaction extends CI_Controller {
                 $com->userID = $userID;
                 $com->time = date('Y-m-d H:i:s');
                 $error = $this->comment_model->addComment($com);
+                redirect('home/view_place/MillieCreerie');
             }
-
-			redirect('home/view_place/MillieCreerie');
 		}
 	}
 }
