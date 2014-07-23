@@ -47,45 +47,42 @@ h1{
         <div id='content'>
             <div class="headerSpace">
                 <div class="container">
-                  	<h1>Search Result</h1><hr />
-                    <div class='listContainer'>
-                        <?php
-                            if($search_result!=NULL){
-                                foreach($search_result as $place){
-                                  echo "<div class='row placeholders listElement'>
-                                    <div class='col-xs-6 col-sm-3 placeholder'>
-                                      <img class='placeInfoImg' src=' ". base_url() . $place['picURL'] . "'/>
-                                    </div>
-                                    <div class='col-xs-6 col-sm-9 description'>
-                                      <address>
-                                           <h4>". anchor('restaurant/lacarnitaPage', $place['name']) . "</h4>
-                                           <p >" . $place['address'] . "</p>
-                                           <abbr>Contact: </abbr>" . $place['contact'] . "
-                                      </address>
-
-                                    <div class='starRate'>
-                                      <a href='" . base_url() . "interaction/addRating/" .  $place['placeID'] . "/1'>☆</a>
-                                      <a href='" . base_url() . "interaction/addRating/" .  $place['placeID'] . "/2'>☆</a>
-                                      <a href='" . base_url() . "interaction/addRating/" .  $place['placeID'] . "/3'>☆</a>
-                                      <a href='" . base_url() . "interaction/addRating/" .  $place['placeID'] . "/4'>☆</a>
-                                      <a href='" . base_url() . "interaction/addRating/" .  $place['placeID'] . "/5'>☆</a>
-                                    </div>
-                                    <br>
-
-                                      <div>
-                                           <a class='btn btn-info' href='" . base_url() . "interaction/wantToGo/" . $place['placeID'] . "'>Wanna Go</a>
-                                           <a class='btn btn-info' href='" . base_url() . "interaction/placeBeen/" . $place['placeID'] . "'>Been There</a>
-                                      </div>
-                                    </div>
-                                  </div>";
-                                }
-                            }
-                            else{
-                              echo '<p>Keyword not found</p>';
-                            }
-                        ?>
-                      </div><!--listContainer-->
+                  	<h1 id='pageName'>Search Result</h1><hr />
+                    <div id='listResults' class='listContainer'>
+                    </div><!--listContainer-->
                 </div><!--cityInfoContainer-->
             </div><!-- headerSpace -->
       </div><!-- content -->
-      <?=$this->load->view("Template/footer")?>
+<!-- JavaScript -->
+<script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
+<script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var sRes = <?php echo json_encode($search_result);?>;
+        if(!sRes) {
+          $('#pageName').html('Search Error');
+          $('#listResults').append('<p>Keyword not found</p>');
+        }
+        else
+        {
+          $.each(sRes, function(i, item) {
+            var htmlText = "<div id='place"+i+"' class='row placeholders listElement'>" +
+                              "<div class='col-xs-6 col-sm-3 placeholder'><img class='placeInfoImg' src='<?php echo base_url();?>"+item.picURL+"'/></div>" +
+                              "<div id='"+item.name+"' class='col-xs-6 col-sm-9 description'>"+
+                                  "<address><h4><a href='<?php echo base_url('home'); ?>/view_place/" + item.name +"'>"+item.name+"</a></h4>"+item.address+"<br/><abbr>Contact: </abbr>"+item.contact+"</address>" +
+                                   "<div class='starRate'>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/1'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/2'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/3'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/4'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/5'>☆</a>" +
+                              "</div>" +
+                              "<br>" +
+                                   "<div><a class='btn btn-info' href='<?php echo base_url(); ?>interaction/wantToGo/" + item.placeID + "'>Wanna Go</a> <a class='btn btn-info' href='<?php echo base_url(); ?>interaction/placeBeen/" + item.placeID + "'>Been There</a>" +
+                                   "</div></div><!--description--></div><!--row-->";
+            $('#listResults').append(htmlText);
+          });
+        }
+    });
+</script>
+<?=$this->load->view("Template/footer")?>
