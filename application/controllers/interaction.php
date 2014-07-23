@@ -188,41 +188,68 @@ class Interaction extends CI_Controller {
 
     public function wantToGo($placeID) {
 
-        $result = $this->user_model->wantToGo($placeID);
-
-        if (!$result) {
-            echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+        if (!isset($_SESSION['user']->userID))
+        {
+            echo "<script>alert('Please create an account and login to access this feature!')</script>";
+            $this->load->view('login_page');
         }
+        else
+        {
 
-        $ref = $this->input->server('HTTP_REFERER', TRUE);
-        redirect($ref, 'location');
+            $result = $this->user_model->wantToGo($placeID);
 
+            if (!$result) {
+                echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+            }
+
+            $ref = $this->input->server('HTTP_REFERER', TRUE);
+            redirect($ref, 'location');
+
+        }
     }
 
     public function placeBeen($placeID) {
 
-        $result = $this->user_model->placeBeen($placeID);
-
-        if (!$result) {
-            echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+        if (!isset($_SESSION['user']->userID))
+        {
+            echo "<script>alert('Please create an account and login to access this feature!')</script>";
+            $this->load->view('login_page');
         }
+        else
+        {
 
-        $ref = $this->input->server('HTTP_REFERER', TRUE);
-        redirect($ref, 'location');
+           $result = $this->user_model->placeBeen($placeID);
 
+            if (!$result) {
+                echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+            }
+
+            $ref = $this->input->server('HTTP_REFERER', TRUE);
+            redirect($ref, 'location');
+
+        }
     }
 
     public function addRating($placeID, $rating) {
 
-        $result = $this->user_model->addRating($placeID, $rating);
-
-        if (!$result) {
-            echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+        if (!isset($_SESSION['user']->userID))
+        {
+            echo "<script>alert('Please create an account and login to access this feature!')</script>";
+            $this->load->view('login_page');
         }
+        else
+        {
 
-        $ref = $this->input->server('HTTP_REFERER', TRUE);
-        redirect($ref, 'location');
+            $result = $this->user_model->addRating($placeID, $rating);
 
+            if (!$result) {
+                echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+            }
+
+            $ref = $this->input->server('HTTP_REFERER', TRUE);
+            redirect($ref, 'location');
+
+        }
     }
 }
 ?>
