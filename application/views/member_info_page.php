@@ -30,16 +30,7 @@ h3 { background-color: black;
             <div class="row headerSpace">
                 <div class="col-sm-3 col-md-2">
                       <ul class="nav nav-sidebar">
-                        <?php
-                          if (strcmp($user->username, $_SESSION['user']->username) == 0)
-                          {
-                            echo "<li class='active'><a href=''>Home</a></li>";
-                          }
-                          else
-                          {
-                            echo "<li class='non-active'><a href='" . base_url() . "home/profile/" . $_SESSION['user']->username . "'>Home</a></li>";
-                          }
-                        ?>
+                        <li id="home_li"><a id="home_a">Home</a></li>
                         <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
                         <li class="non-active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
                       </ul>
@@ -47,35 +38,21 @@ h3 { background-color: black;
 
                 <div class="cityInfoContainer">
                     <div class="col-xs-10">
+                      <h2>
+                        <h2 id='profile_h2'></h2>
+                        <img id='profile_pic' align='center' width='200' height='200' />
+                        <br>
+                        <br>
                         <?php
-                          if (strcmp($user->username, $_SESSION['user']->username) == 0)
-                          {
-                            echo "<h2>My Profile</h2>";
-                          }
-                          else
-                          {
-                            echo "<h2>" . $user->username . "'s Profile</h2>";
-                          }
-                        ?>
-                        <?php
-                            if ($user->picture_url != NULL)
-                            {
-                              echo "<img src='" . base_url(). $user->picture_url . "' align='center' width='200' height='300' />";
-                            }
-                            else
-                            {
-                              echo "<img src='/assets/images/profile.png' align='center' />";
-                            }
-                  					echo "<br>";
-                  					echo "<br>";
-									if (strcmp($user->username, $_SESSION['user']->username) == 0)
-                       			    {
-                  							echo form_open_multipart('authorize/change_pic');
+
+									         if (strcmp($user->username, $_SESSION['user']->username) == 0)
+                       		 {
+                  				    echo form_open_multipart('authorize/change_pic');
                   						echo "<input type='file' name='userimg' />";
                   						echo form_submit('Submit', 'submit');
                   						echo form_close();
-									}
-                            echo "<br>";
+									         }
+                          echo "<br>";
                         ?>
                       <h3>Basic</h3>
                         <?php
@@ -175,28 +152,69 @@ h3 { background-color: black;
                             ?>
                       <br>
                       <br>
-                      <?php
-                        if (strcmp($user->username, $_SESSION['user']->username) == 0)
-                        {
-                          echo "<a class='btn btn-info' href='" . base_url() . "home/edit_info_page'>Edit Profile</a>";
-                          echo "<br>";
-                          echo "<br>";
-                        }
-                        else
-                        {
-                          if (!$friends)
-                          {
-                            echo "<a class='btn btn-info' href='" . base_url() . "interaction/addFriend/" . $user->userID . "'>Add to Friends</a>";
-                            echo "<br>";
-                            echo "<br>";
-                          }
-                          echo "<a class='btn btn-info' href='" . base_url() . "home/create_message'>Send Message</a>";
-                          echo "<br>";
-                          echo "<br>";
-                        }
-                      ?>
+                      <div id='edit_button'>
+                          <a class='btn btn-info' href="<?php echo base_url(); ?>home/edit_info_page">Edit Profile</a>
+                          <br>
+                          <br>
+                      </div>
+                      <div id='add_button'>
+                          <a id='add_link' class='btn btn-info'>Add to Friends</a>
+                          <br>
+                          <br>
+                      </div>
+                      <div id='message_button'>
+                          <a class='btn btn-info' href="<?php echo base_url(); ?>home/create_message">Send Message</a>
+                          <br>
+                          <br>
+                      </div>
+
                     </div><!-- col -->
                 </div><!-- cityInfoContainer -->
             </div><!-- headerSpace -->
         </div><!-- content -->
+
+<!-- JavaScript -->
+<script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
+<script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var userInfo = <?php echo json_encode($user);?>;
+        var currentUser = <?php echo json_encode($_SESSION['user']->username);?>;
+        var friends = <?php echo json_encode($friends);?>;
+
+        //Profile picture
+        if (!userInfo.picture_url)
+        {
+          $('#profile_pic').attr('src', "<?php echo base_url(); ?>assets/images/profile.png");
+
+        }
+        else
+        {
+          $('#profile_pic').attr('src', "<?php echo base_url(); ?>" + userInfo.picture_url);
+        }
+
+        //Add to friends button
+        if(!friends)
+        {
+          $('#add_link').attr('href', "<?php echo base_url(); ?>interaction/addFriend/" + userInfo.userID);
+        }
+
+        if (userInfo.username == currentUser) 
+        {
+          $('#home_li').attr('class', 'active');
+          $('#home_a').attr('href', "");
+          document.getElementById('profile_h2').innerHTML = "My Profile";
+          $('#add_button').hide();
+          $('#message_button').hide();
+        }
+        else
+        {
+          $('#home_li').attr('class', 'non-active');
+          $('#home_a').attr('href', "<?php echo base_url(); ?>home/profile/" + currentUser);
+          document.getElementById('profile_h2').innerHTML = userInfo.username + "'s Profile";
+          $('#edit_button').hide();
+        }
+    });
+</script>
+
         <?=$this->load->view("Template/footer")?>
