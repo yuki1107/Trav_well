@@ -45,7 +45,6 @@ class Comment_model extends CI_Model {
 		$p = $this->db->select('placeID')->get_where('place', array('name'=>$placeName))->row(0,'Place');
 		$this->db->join('user', 'user.userID = comments.userID');
 		$this->db->order_by('time', 'desc');
-		var_dump($p);
 		$qComment = $this->db->get_where('comments', array('placeID'=>$p->placeID));
 		if ($qComment->num_rows() > 0){
 			foreach($qComment->result() as $item){

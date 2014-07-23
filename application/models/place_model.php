@@ -39,7 +39,9 @@ class Place_model extends CI_Model {
 	function get_places_by_city($cityname, $placeType='') {
 		/* TODO: This should be getting post data instead */
 		$places = array();
-		$qCity = $this->db->select('cityID')->get_where('city', array('name'=>$cityname));
+		$this->db->select('cityID');
+		$this->db->like('name',$cityname);
+		$qCity= $this->db->get('city');
 		if ($qCity && $qCity->num_rows() > 0)
 		{
 			if($placeType)
@@ -72,10 +74,15 @@ class Place_model extends CI_Model {
 	 */
 	function get_place_by_name($placeName)
 	{
-		$qPlace = $this->db->get_where('place', array('name'=>$placeName));
+		$this->db->like('name',$placeName);
+		$qPlace= $this->db->get('place');
+//		$qPlace = $this->db->get_where('place', array('name'=>$placeName));
 		if ($qPlace && $qPlace->num_rows() > 0)
 		{
-			return $this->create_place_from_data($qPlace->row());
+			foreach($qPlace->result() as $p){
+				$places[] = $this->create_place_from_data($p);
+			}
+			return $places;
 		}
 		else
 		{

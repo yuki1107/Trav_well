@@ -119,7 +119,7 @@
                     <div class="form-group commentArea">
                         <?php
                             echo form_open('interaction/insertComment/'.$placeInfo['placeID'], "class='form-group' role='textarea' row='5'");
-                            echo form_textarea('content',set_value('content'), "class=form-control placeholder='Write your comments here...'", "required");
+                            echo form_textarea('content',set_value('content'), "class='form-control' placeholder='Write your comments here...'", "required");
                             echo "<br>";
                             echo form_submit('submit', 'submit', "class = 'btn btn-info com_button'");
                             echo form_close();
@@ -149,13 +149,13 @@
             $('#placeContact').html("<strong>Contact: </strong> " + place.contact);
             $('#wannaGo').attr("href", "<?php echo base_url();?>interaction/wantToGo/" + place.placeID);
             $('#beenThere').attr("href", "<?php echo base_url();?>interaction/placeBeen/" + place.placeID);
-
+            var htmlText;
             if (commentList.name == 'Error'){
-                var htmlText = "<p style='margin-left:15px;'>No comment yet! Say something!";
+                htmlText = "<p style='margin-left:15px;'>No comment yet! Say something!";
             }
             else{
                 $.each(commentList, function(i, item) {
-                var htmlText = "<img src= '<?= base_url()?>/" + item.picture_url + "' class='img-thumbnail col-xs-6 col-sm-3'/>"+
+                htmlText = "<img src= '<?= base_url()?>/" + item.picture_url + "' class='img-thumbnail col-xs-6 col-sm-3'/>"+
                                 "<div id='commentMsg' class='col-xs-6 col-sm-10'>"+
                                     "<span id='commentUser'>"+item.username+"</span>"+
                                     "<span id='commentTime'>"+item.time+"</span>"+

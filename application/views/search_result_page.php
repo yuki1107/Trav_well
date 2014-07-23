@@ -6,7 +6,6 @@
 <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/rating.css" rel="stylesheet">
-<link href="<?php echo base_url();?>assets/css/buttons.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/navg_style.css" rel="stylesheet">
 <style>
 .b{
