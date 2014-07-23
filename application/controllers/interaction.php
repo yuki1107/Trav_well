@@ -264,16 +264,22 @@ class Interaction extends CI_Controller {
 		}
 		else
 		{
-			$userID = $_SESSION['user']->userID;
-			$com = new Comment();
-			$com->content = $this->input->post('content');
-			$com->placeID = $placeID;
-			$com->userID = $userID;
-			$com->time = date('Y-m-d H:i:s');
+            if (!isset($_SESSION['user']->userID)) 
+            {
+                echo "<script>alert('Please login first.')</script>";
+                $this->load->view('login_page');
+            }
+            else
+            {
+                $userID = $_SESSION['user']->userID;
+                $com = new Comment();
+                $com->content = $this->input->post('content');
+                $com->placeID = $placeID;
+                $com->userID = $userID;
+                $com->time = date('Y-m-d H:i:s');
+                $error = $this->comment_model->addComment($com);
+            }
 
-			//$result = $this->comment_model->userComment($placeID);
-			$error = $this->comment_model->addComment($com);
-			//$result = $this->comment_model->userComment($placeID);
 			redirect('home/view_place/MillieCreerie');
 		}
 	}
