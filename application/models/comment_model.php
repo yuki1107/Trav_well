@@ -5,6 +5,7 @@ class Comment_model extends CI_Model {
 		parent::__construct();
 		$this->load->model('Comment');
 		$this->load->model('Place');
+		$this->load->model('User');
 		$this->load->database();
 	}
 

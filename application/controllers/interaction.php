@@ -12,6 +12,8 @@ class Interaction extends CI_Controller {
             $this->load->model('messages_model');
             $this->load->model('friendship');
             $this->load->model('friendship_model');
+			$this->load->model('comment');
+			$this->load->model('comment_model');
             $this->load->helper(array('form', 'url', 'date'));
             session_start();
     }
@@ -251,5 +253,29 @@ class Interaction extends CI_Controller {
 
         }
     }
+	
+	public function insertComment($placeID){
+		$this->form_validation->set_rules('content', 'Content', 'required|min_length[1]|max_length[2000]');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			echo "<script>alert('Please insert your comment.')</script>";
+			$this->load->view("place_page");
+		}
+		else
+		{
+			$userID = $_SESSION['user']->userID;
+			$com = new Comment();
+			$com->content = $this->input->post('content');
+			$com->placeID = $placeID;
+			$com->userID = $userID;
+			$com->time = date('Y-m-d H:i:s');
+
+			//$result = $this->comment_model->userComment($placeID);
+			$error = $this->comment_model->addComment($com);
+			//$result = $this->comment_model->userComment($placeID);
+			redirect('home/view_place/MillieCreerie');
+		}
+	}
 }
 ?>
