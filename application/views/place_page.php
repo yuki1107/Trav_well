@@ -6,9 +6,64 @@
 <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/rating.css" rel="stylesheet">
-<link href="<?php echo base_url();?>assets/css/buttons.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/navg_style.css" rel="stylesheet">
-<link href="<?php echo base_url();?>assets/css/comment_box.css" rel="stylesheet">
+<style>
+
+#placeInfo{
+    margin-top: 15px;
+}
+
+#placeDesc{
+    text-align: justify;
+}
+
+.placeDetailImg{
+    width:330px;
+    height:auto;
+    border:5px double #DDD;
+}
+
+.commentBox{
+    height:150px;
+    margin-bottom:10px;
+}
+
+.commentArea{
+    margin-top:30px;
+}
+
+.btn-this{
+    width:160px;
+}
+
+.btnArea{
+    margin-top:5px;
+    text-align: justify;
+}
+
+.img-thumbnail{
+    height:140px;
+    width:auto;
+    float:left;
+    margin-left:15px;
+}
+
+#commentTime{
+    margin-left:15px;
+    font-size:12px;
+    color:gray;
+}
+
+#commentUser{
+    font-size:20px;
+}
+
+#commentCon{
+
+}
+
+</style>
+
 </head>
 
 <body>
@@ -47,10 +102,24 @@
                     </div>
                 </div>
 
-                <div class="form-group commentArea">
-                    <label for="comment">Comment:</label>
-                    <textarea class="form-control" rows="5"></textarea>
-                    <button type="submit" class="btn btn-info">Submit</button>
+                <div class="commentArea">
+                    <h4>Comment:</h4>
+                    <div id='commentDisplay'> <!--            **************               -->
+                        <div class="row" id='commentCon'>
+<!--
+                            <img src= '<?= base_url()?>/assets/images/profile.png' class="img-thumbnail col-xs-6 col-sm-3">
+                            <div id='commentMsg' class='col-xs-6 col-sm-10'> 
+                                <span id="commentUser">abc</span>
+                                <span id="commentTime">2014-07-02</span>
+                                <p id="commentContent">This is a very good place! </p>
+                            </div>
+-->
+                        </div>
+                    </div> 
+                    <div class="form-group commentArea">
+                        <textarea class="form-control" rows="5"></textarea>
+                        <button type="submit" class="btn btn-info">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,6 +131,7 @@
 <script>
     $(document).ready(function() {
         var place = <?php echo json_encode($placeInfo); ?>;
+        var commentList = <?php echo json_encode($commentList);?>;
         $('#placeName').html(place.name);
         $('#placeDesc').html(place.desc);
         if(place.name == "Error") {
@@ -74,6 +144,18 @@
             $('#placeContact').html("<strong>Contact: </strong> " + place.contact);
             $('#wannaGo').attr("href", "<?php echo base_url();?>interaction/wantToGo/" + place.placeID);
             $('#beenThere').attr("href", "<?php echo base_url();?>interaction/placeBeen/" + place.placeID);
+
+            if (commentList){
+
+                $.each(commentList, function(i, item) {
+                var htmlText = "<img src= '<?= base_url()?>/" + item.picture_url + "' class='img-thumbnail col-xs-6 col-sm-3'/>"+
+                                "<div id='commentMsg' class='col-xs-6 col-sm-10'>"+
+                                    "<span id='commentUser'>"+item.username+"</span>"+
+                                    "<span id='commentTime'>"+item.time+"</span>"+
+                                    "<p id='commentContent'>"+item.content+"</p></div>";
+                $('#commentCon').append(htmlText);
+                });
+            }
         }
     });
 </script>

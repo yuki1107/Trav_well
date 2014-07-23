@@ -119,9 +119,10 @@ h1:first-letter{
     border:5px double #DDD;
 }
 
-.commentBox{
-    height:150px;
-    margin-bottom:10px;
+h1{
+  font-family:"Palatino Linotype";
+  font-size:50px;
+  font-weight:bold;
 }
 
 .commentArea{
@@ -135,4 +136,8 @@ h1:first-letter{
 .btnArea{
     margin-top:5px;
     text-align: justify;
+}
+
+.bigImage{
+	width:100%;
 }

@@ -13,6 +13,8 @@ class Home extends CI_Controller {
 			$this->load->model('place_model');
 			$this->load->model('friendship');
 			$this->load->model('friendship_model');
+			$this->load->model('comment');
+			$this->load->model('comment_model');
 			$this->load->helper('url');
 			session_start();
 	}
@@ -119,6 +121,10 @@ class Home extends CI_Controller {
 			$qPlace = $this->place_model->get_place_by_name(urldecode($placeName));
 			if($qPlace) {
 				$data = array('placeInfo' => $qPlace);
+				$qComment = $this->comment_model->get_comments_by_place(urldecode($placeName));
+				if($qComment){
+					$data['commentList'] = $qComment;
+				}
 			}
 			else {
 				$data = array('placeInfo' => array('name' => 'Error', 'desc' => 'Place not found1'));
@@ -148,10 +154,6 @@ class Home extends CI_Controller {
 	public function edit_info_page()
 	{
 		$this->load->view('edit_user');
-	}
-
-	public function home_page(){
-		$this->load->view('home_page');
 	}
 
 	public function search(){
