@@ -125,6 +125,9 @@ class Home extends CI_Controller {
 				if($qComment){
 					$data['commentList'] = $qComment;
 				}
+				else{
+					$data['commentList'] = array('name'=>'Error');
+				}
 			}
 			else {
 				$data = array('placeInfo' => array('name' => 'Error', 'desc' => 'Place not found1'));

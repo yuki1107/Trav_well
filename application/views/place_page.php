@@ -145,17 +145,19 @@
             $('#wannaGo').attr("href", "<?php echo base_url();?>interaction/wantToGo/" + place.placeID);
             $('#beenThere').attr("href", "<?php echo base_url();?>interaction/placeBeen/" + place.placeID);
 
-            if (commentList){
-
+            if (commentList.name == 'Error'){
+                var htmlText = "<p style='margin-left:15px;'>No comment yet! Say something!";
+            }
+            else{
                 $.each(commentList, function(i, item) {
                 var htmlText = "<img src= '<?= base_url()?>/" + item.picture_url + "' class='img-thumbnail col-xs-6 col-sm-3'/>"+
                                 "<div id='commentMsg' class='col-xs-6 col-sm-10'>"+
                                     "<span id='commentUser'>"+item.username+"</span>"+
                                     "<span id='commentTime'>"+item.time+"</span>"+
                                     "<p id='commentContent'>"+item.content+"</p></div>";
-                $('#commentCon').append(htmlText);
                 });
             }
+            $('#commentCon').append(htmlText);
         }
     });
 </script>
