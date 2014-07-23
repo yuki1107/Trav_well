@@ -117,8 +117,15 @@
                         </div>
                     </div> 
                     <div class="form-group commentArea">
-                        <textarea class="form-control" rows="5"></textarea>
-                        <button type="submit" class="btn btn-info">Submit</button>
+                        <?php
+							$user=$_SESSION['user'];
+							$user->userID;
+                            echo form_open('interaction/insertComment/'.$placeInfo['placeID'], "class='form-group' role='textarea' row='5'");
+                            echo form_textarea('content',set_value('content'), "class=form-control placeholder='Write your comments here...'", "required");
+                            echo "<br>";
+                            echo form_submit('submit', 'submit', "class = 'btn btn-info com_button'");
+                            echo form_close();
+                    ?> 
                     </div>
                 </div>
             </div>
