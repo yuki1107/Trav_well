@@ -118,8 +118,6 @@
                     </div> 
                     <div class="form-group commentArea">
                         <?php
-							$user=$_SESSION['user'];
-							$user->userID;
                             echo form_open('interaction/insertComment/'.$placeInfo['placeID'], "class='form-group' role='textarea' row='5'");
                             echo form_textarea('content',set_value('content'), "class=form-control placeholder='Write your comments here...'", "required");
                             echo "<br>";
