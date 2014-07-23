@@ -116,3 +116,21 @@ td { text-align: center; }
             </div><!-- headerSpace -->
         </div><!-- content -->
         <?=$this->load->view("Template/footer")?>
+<!-- JavaScript -->
+<script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
+<script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+      //var suggestFriends = ;
+      $.ajax({
+    // edit to add steve's suggestion.
+    //url: "/ControllerName/ActionName",
+    url: '<?php echo base_url();?>interaction/find_similar_users',
+    success: function(data) {
+         // your data could be a View or Json or what ever you returned in your action method
+         // parse your data here
+         alert(data);
+    }
+});
+    });
+</script>
