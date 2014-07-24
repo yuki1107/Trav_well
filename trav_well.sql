@@ -77,6 +77,9 @@ CREATE TABLE IF NOT EXISTS `comments` (
   KEY `placeID` (`placeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `comments` (`userID`, `placeID`, `content`, `commentID`, `time`) VALUES
+(1, 11, "This place is great!", 1, '2003-12-31 01:02:03');
+
 -- --------------------------------------------------------
 
 --
@@ -108,6 +111,9 @@ CREATE TABLE IF NOT EXISTS `messages` (
   KEY `sender` (`sender`),
   KEY `receiver` (`receiver`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+INSERT INTO `messages` (`messageID`, `sender`, `receiver`, `content`, `time`, `read`) VALUES
+(1, 3, 1, 'Hello!', '2003-12-31 01:02:03', 0);
 
 -- --------------------------------------------------------
 
@@ -202,6 +208,9 @@ CREATE TABLE IF NOT EXISTS `rating` (
   KEY `placeID` (`placeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `rating` (`userID`, `placeID`, `rating`) VALUES
+(1, 11, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -230,7 +239,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`userID`, `username`, `first_name`, `last_name`, `email`, `password`, `phone`, `age`, `gender`, `location`, `picture_url`, `interest`, `bio`) VALUES
-(1, 'abc', NULL, NULL, 'abc@def.com', '123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'abc', NULL, NULL, 'abc@def.com', '123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'cde', NULL, NULL, 'cde@fgh.com', '123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'efg', NULL, NULL, 'efg@hij.com', '123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -244,6 +255,10 @@ CREATE TABLE IF NOT EXISTS `wantToGoCity` (
   PRIMARY KEY (`userID`,`cityID`),
   KEY `cityID` (`cityID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `wantToGoCity` (`userID`, `cityID`) VALUES
+(1, 1),
+(3, 1);
 
 -- --------------------------------------------------------
 

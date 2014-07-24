@@ -1,6 +1,9 @@
 Trav_Well
 =========
 
+####Repository
+[Repo Link](https://github.com/yuki1107/Trav_well)
+
 
 ###Installation
 Regardless of your OS you will need to set up a mysql database named "Trav_well". After this database is created, run the trav_well.sql script located in the root Trav_well directory to create the tables and input the data into the Trav_well database.
@@ -31,6 +34,11 @@ There are controllers in application/controllers that control various functional
 All database actions are controlled by models in the application/models folder. These files are pretty straightforwardly named, although it should be noted that the difference between a place and a city is that a place is contained within a city. (i.e. a certain restaurant).
 The actual layout of the web pages can be found in application/views. Again these should be pretty straightforwardly named.
 
+####Changes To Backlog
+We didn't really add any new features to the product/sprint backlog, although we did divide up some of the tasks to make the requirements more clear/more fine grained.
+
+####Testing
+There are some users in the database already for testing purposes. User abc has a message, and has posted a comment already. The password for abc is 123456.
 
 ###Homepage, Login Page
 On homepage, click the title on top-left corner; then the page can jump back to the homepage.
