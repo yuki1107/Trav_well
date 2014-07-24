@@ -73,11 +73,11 @@
     <div class="row headerSpace">
         <div id='sideNav' class="col-sm-3 col-md-2 navbar-collapse collapse sidebar">
             <ul class="nav nav-sidebar">
-                <li><?php echo anchor('sidebar/overviewPage', 'Overview')?></li>
-                <li><?php echo anchor('sidebar/restaurantPage', 'Restaurants')?></li>
-                <li><a href="#">Landmarks</a></li>
-                <li><a href="#">Shopping Malls</a></li>
-                <li><a href="#">Hotels</a></li>
+                <li id='overview' class='non-active'><a id='oLink' href="#">Overview</a></li>
+                <li id="restaurant" class='non-active'><a id='rLink' href='#'>Restaurants</a></li>
+                <li id="landmark" class='non-active'><a id='lLink' href="#">Landmarks</a></li>
+                <li id="shopping" class='non-active'><a id='sLink' href="#">Shopping Malls</a></li>
+                <li id="hotel" class='non-active'><a id='hLink' href="#">Hotels</a></li>
             </ul>
         </div>
 
@@ -108,14 +108,14 @@
                         <div class="row" id='commentCon'>
 <!--
                             <img src= '<?= base_url()?>/assets/images/profile.png' class="img-thumbnail col-xs-6 col-sm-3">
-                            <div id='commentMsg' class='col-xs-6 col-sm-10'> 
+                            <div id='commentMsg' class='col-xs-6 col-sm-10'>
                                 <span id="commentUser">abc</span>
                                 <span id="commentTime">2014-07-02</span>
                                 <p id="commentContent">This is a very good place! </p>
                             </div>
 -->
                         </div>
-                    </div> 
+                    </div>
                     <div class="form-group commentArea">
                         <?php
                             echo form_open('interaction/insertComment/'.$placeInfo['placeID'], "class='form-group' role='textarea' row='5'");
@@ -123,7 +123,7 @@
                             echo "<br>";
                             echo form_submit('submit', 'submit', "class = 'btn btn-info com_button'");
                             echo form_close();
-                    ?> 
+                    ?>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,8 @@
 <!-- JavaScript -->
 <script>
     $(document).ready(function() {
-        var place = <?php echo json_encode($placeInfo); ?>;
+        var place = <?php echo json_encode($placeInfo);?>;
+        var cn = <?php echo json_encode($cityName);?>;
         var commentList = <?php echo json_encode($commentList);?>;
         $('#placeName').html(place.name);
         $('#placeDesc').html(place.desc);
@@ -141,6 +142,13 @@
             $('#otherInfo').remove();
         }
         else {
+            /* Side Nav */
+            $('#oLink').attr('href',"<?php echo base_url('home'); ?>/view_city/" + cn);
+            $('#rLink').attr('href',"<?php echo base_url('home'); ?>/view_city/" + cn + "/restaurant");
+            $('#lLink').attr('href',"<?php echo base_url('home'); ?>/view_city/" + cn + "/landmark");
+            $('#sLink').attr('href',"<?php echo base_url('home'); ?>/view_city/" + cn + "/shopping");
+            $('#hLink').attr('href',"<?php echo base_url('home'); ?>/view_city/" + cn + "/hotel");
+
             $('#pType').html(place.type);
             $("#placeImg").attr("src", "<?php echo base_url();?>" + place.picURL);
             $('#placeAddress').html("<strong>Address: </strong><br>" + place.address);
