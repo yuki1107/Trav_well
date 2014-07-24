@@ -48,7 +48,7 @@ td { text-align: center; }
 
                         if ($friends == False && $requests == False)
                         {
-                          echo "<p>You don't have any friends</p>";
+                          echo "<p id='suggest'>You don't have any friends...</p>";
                         }
                         else
                         {
@@ -121,14 +121,18 @@ td { text-align: center; }
     $(document).ready(function() {
       //var suggestFriends = ;
       $.ajax({
-    // edit to add steve's suggestion.
-    //url: "/ControllerName/ActionName",
-    url: '<?php echo base_url();?>interaction/find_similar_users',
-    success: function(data) {
-         // your data could be a View or Json or what ever you returned in your action method
-         // parse your data here
-         alert(data);
-    }
-});
+          type: 'GET',
+          dataType: 'json',
+          url: "<?php echo base_url('interaction');?>/find_similar_users",
+          success: function(simUsers) {
+            if(Object.keys(simUsers).length > 0) {
+              var htmlText = '';
+              $.each(simUsers, function(i, item) {
+                htmlText += " <a href='<?php echo base_url('home');?>/profile/"+item+"'>"+item+"</a>,";
+              });
+              $('#suggest').append('These users want to go to the same places as you:' + htmlText);
+            }
+          }
+      });/* ajax */
     });
 </script>

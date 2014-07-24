@@ -286,7 +286,7 @@ class Interaction extends CI_Controller {
 
     public function find_similar_users() {
         $UID = $_SESSION['user']->userID;
-        echo $this->user_model->find_similar_users($UID);
+        echo json_encode($this->user_model->find_similar_users($UID));
     }
 }
 ?>
