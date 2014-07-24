@@ -16,7 +16,6 @@ class User_model extends CI_Model {
 		// row() for transfer first row into user object
 	}
 
-
 	function getWants($userID) {
 
 		$this->db->select('place.name AS pname, city.name AS cname');
@@ -30,7 +29,6 @@ class User_model extends CI_Model {
 		}
 
 		return $query->result();
-
 	}
 
 	function getComments($userID) {
@@ -66,7 +64,7 @@ class User_model extends CI_Model {
         	return True;
       	}
 
-      return False; 
+      return False;
 	}
 
 	function placeBeen($placeID) {
@@ -89,8 +87,7 @@ class User_model extends CI_Model {
         	return True;
       	}
 
-      return False; 
-
+      return False;
 	}
 
 	function addRating($placeID, $rating) {
@@ -107,20 +104,34 @@ class User_model extends CI_Model {
         	return True;
       	}
 
-      return False; 
-
+      return False;
 	}
 
-	function user_update($userID, $first_name, $last_name, $age, $interest, $bio){
-		
+	function user_update($userID, $first_name, $last_name, $age, $interest, $bio) {
+
 		$this->db->where('userID', $userID);
 		$this->db->update('user', array('first_name'=>$first_name, 'last_name'=>$last_name, 'age'=>$age,
 		'interest'=>$interest, 'bio'=>$bio));
 	}
-	
-	function user_pic_change($userID, $picture_url){
+
+	function user_pic_change($userID, $picture_url) {
 		$this->db->where('userID', $userID);
 		$this->db->update('user', array('picture_url'=>$picture_url));
+	}
+
+	function find_similar_users($userID) {
+		/* Find users who want to go to the same place */
+		$simPlaces = array();
+		$this->db->select('*')->from('wantToGoPlace myWTGP')->where('myWTGP.userID', $userID);
+		$this->db->join('wantToGoPlace', 'wantToGoPlace.placeID = myWTGP.placeID AND wantToGoPlace.userID != myWTGP.userID', 'inner');
+		$qSimPlace = $this->db->get();
+		if ($qSimPlace->num_rows() > 0)
+		{
+			foreach($qSimPlace->result() as $p) {
+	            $simPlaces[] = $p->userID;
+			}
+        }
+        return $simPlaces;
 	}
 }
 

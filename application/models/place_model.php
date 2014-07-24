@@ -72,11 +72,23 @@ class Place_model extends CI_Model {
 	 * @author Monica Li
 	 * @return array containing place information from {@link create_place_from_data()}
 	 */
-	function get_place_by_name($placeName)
+	function get_place_by_name($placeName){
+		$qPlace = $this->db->get_where('place', array('name'=>$placeName));
+		if ($qPlace && $qPlace->num_rows() > 0)
+		{
+			return $this->create_place_from_data($qPlace->row());
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function get_place_by_similar_name($placeName)
 	{
 		$this->db->like('name',$placeName);
 		$qPlace= $this->db->get('place');
-//		$qPlace = $this->db->get_where('place', array('name'=>$placeName));
+
 		if ($qPlace && $qPlace->num_rows() > 0)
 		{
 			foreach($qPlace->result() as $p){

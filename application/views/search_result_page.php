@@ -53,8 +53,6 @@ h1{
             </div><!-- headerSpace -->
       </div><!-- content -->
 <!-- JavaScript -->
-<script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
-<script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function() {
         var sRes = <?php echo json_encode($search_result);?>;

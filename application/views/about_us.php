@@ -7,7 +7,7 @@
 <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 <style>
 body {
-	background-color: #306;
+	background-color: rgba(55,45,118,0.7);
 }
 .photo{
 	width:200px;

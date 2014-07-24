@@ -14,6 +14,8 @@ class Interaction extends CI_Controller {
             $this->load->model('friendship_model');
 			$this->load->model('comment');
 			$this->load->model('comment_model');
+            $this->load->model('place');
+            $this->load->model('place_model');
             $this->load->helper(array('form', 'url', 'date'));
             session_start();
     }
@@ -22,7 +24,6 @@ class Interaction extends CI_Controller {
 
         $data['username'] = $username;
         $this->load->view('create_message_page', $data);
-
     }
 
     public function sendMessage() {
@@ -40,7 +41,7 @@ class Interaction extends CI_Controller {
             echo "<script>alert('Recipient does not exist. Please ensure the entered username is correct and try again.')</script>";
             $this->load->view('create_message_page');
         }
-        else 
+        else
         {
             //Get receiver userID from username
             $receiver = $this->user_model->getUser($this->input->post('receiver'));
@@ -123,7 +124,6 @@ class Interaction extends CI_Controller {
         }
 
         redirect( base_url() . 'interaction/getFriends/', 'refresh');
-
     }
 
     public function getMessages() {
@@ -133,7 +133,6 @@ class Interaction extends CI_Controller {
         $data['messages'] = $this->messages_model->getMessages($userID);
 
         $this->load->view('messages_page', $data);
-
     }
 
     public function deleteMessage($messageID) {
@@ -145,7 +144,6 @@ class Interaction extends CI_Controller {
         }
 
         redirect( base_url() . 'interaction/getMessages/', 'refresh');
-
     }
 
     public function getFriends() {
@@ -156,7 +154,6 @@ class Interaction extends CI_Controller {
         $data['requests'] = $this->friendship_model->getRequests($userID);
 
         $this->load->view('friends_page', $data);
-
     }
 
     public function removeFriend($friendID) {
@@ -171,7 +168,6 @@ class Interaction extends CI_Controller {
         }
 
         redirect( base_url() . 'interaction/getFriends/', 'refresh');
-
     }
 
     public function rejectFriend($friendID) {
@@ -185,7 +181,6 @@ class Interaction extends CI_Controller {
         }
 
         redirect( base_url() . 'interaction/getFriends/', 'refresh');
-
     }
 
     public function wantToGo($placeID) {
@@ -253,18 +248,18 @@ class Interaction extends CI_Controller {
 
         }
     }
-	
+
 	public function insertComment($placeID){
 		$this->form_validation->set_rules('content', 'Content', 'required|min_length[1]|max_length[2000]');
 
 		if ($this->form_validation->run() == FALSE)
 		{
 			echo "<script>alert('Please insert your comment.')</script>";
-			$this->load->view("place_page");
+			echo "<script> window.history.back(); </script>";
 		}
 		else
 		{
-            if (!isset($_SESSION['user']->userID)) 
+            if (!isset($_SESSION['user']->userID))
             {
                 echo "<script>alert('Please login first.')</script>";
                 $this->load->view('login_page');
@@ -277,10 +272,21 @@ class Interaction extends CI_Controller {
                 $com->placeID = $placeID;
                 $com->userID = $userID;
                 $com->time = date('Y-m-d H:i:s');
-                $error = $this->comment_model->addComment($com);
-                redirect('home/view_place/MillieCreerie');
+                $result = $this->comment_model->addComment($com);
+                if(!$result) {
+                    echo "<script>alert('There was an error saving your comment.')</script>";
+                }
+                else {
+                    echo "<script>alert('Your comment was successfully saved.')</script>";
+                }
+                echo "<script> window.history.back(); </script>";
             }
 		}
 	}
+
+    public function find_similar_users() {
+        $UID = $_SESSION['user']->userID;
+        echo $this->user_model->find_similar_users($UID);
+    }
 }
 ?>

@@ -43,7 +43,6 @@
         </div><!-- content -->
 
 <!-- JavaScript -->
-<script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         var listCities = <?php echo json_encode($cities); ?>;

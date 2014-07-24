@@ -59,7 +59,7 @@
 }
 
 #commentCon{
-
+    margin:auto 10px;
 }
 
 </style>
@@ -71,7 +71,7 @@
         <?=$this->load->view("Template/header")?>
         <div id='content'>
     <div class="row headerSpace">
-        <div id='sideNav' class="col-sm-3 col-md-2 sidebar">
+        <div id='sideNav' class="col-sm-3 col-md-2 navbar-collapse collapse sidebar">
             <ul class="nav nav-sidebar">
                 <li><?php echo anchor('sidebar/overviewPage', 'Overview')?></li>
                 <li><?php echo anchor('sidebar/restaurantPage', 'Restaurants')?></li>
@@ -119,7 +119,7 @@
                     <div class="form-group commentArea">
                         <?php
                             echo form_open('interaction/insertComment/'.$placeInfo['placeID'], "class='form-group' role='textarea' row='5'");
-                            echo form_textarea('content',set_value('content'), "class='form-control' placeholder='Write your comments here...'", "required");
+                            echo form_textarea('content',set_value(), "class='form-control' placeholder='Write your comments here...'", "required");
                             echo "<br>";
                             echo form_submit('submit', 'submit', "class = 'btn btn-info com_button'");
                             echo form_close();
@@ -131,8 +131,6 @@
         </div>
     </div>
 <!-- JavaScript -->
-<script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
-<script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function() {
         var place = <?php echo json_encode($placeInfo); ?>;
@@ -149,17 +147,20 @@
             $('#placeContact').html("<strong>Contact: </strong> " + place.contact);
             $('#wannaGo').attr("href", "<?php echo base_url();?>interaction/wantToGo/" + place.placeID);
             $('#beenThere').attr("href", "<?php echo base_url();?>interaction/placeBeen/" + place.placeID);
-            var htmlText;
+            var htmlText="";
             if (commentList.name == 'Error'){
                 htmlText = "<p style='margin-left:15px;'>No comment yet! Say something!";
             }
             else{
                 $.each(commentList, function(i, item) {
-                htmlText = "<img src= '<?= base_url()?>/" + item.picture_url + "' class='img-thumbnail col-xs-6 col-sm-3'/>"+
-                                "<div id='commentMsg' class='col-xs-6 col-sm-10'>"+
-                                    "<span id='commentUser'>"+item.username+"</span>"+
-                                    "<span id='commentTime'>"+item.time+"</span>"+
-                                    "<p id='commentContent'>"+item.content+"</p></div>";
+                    if(item.picture_url==null){
+                        item.picture_url = '/assets/images/profile.png';
+                    }
+                    htmlText = htmlText + "<div class='row'><img src= '<?= base_url()?>/" + item.picture_url + "' class='img-thumbnail col-xs-6 col-sm-3'/>"+
+                                    "<div id='commentMsg' class='col-xs-6 col-sm-10'>"+
+                                        "<span id='commentUser'>"+item.username+"</span>"+
+                                        "<span id='commentTime'>"+item.time+"</span>"+
+                                        "<p id='commentContent'>"+item.content+"</p></div></div><hr/>";
                 });
             }
             $('#commentCon').append(htmlText);

@@ -19,6 +19,18 @@ h3 { background-color: black;
 
 .placeholder { margin-left: 20px; }
 
+#fileBtn{
+  display:none;
+}
+
+#newfileBtn{
+  margin-right: 15px;
+}
+
+#profile_pic{
+  width:250px;
+  height: auto;
+}
 </style>
 
 </head>
@@ -28,7 +40,7 @@ h3 { background-color: black;
         <?=$this->load->view("Template/header")?>
         <div id='content'>
             <div class="row headerSpace">
-                <div class="col-sm-3 col-md-2">
+                <div id="homeSideBar" class="col-sm-3 col-md-2 navbar-collapse collapse sidebar">
                       <ul class="nav nav-sidebar">
                         <li id="home_li"><a id="home_a">Home</a></li>
                         <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
@@ -38,8 +50,7 @@ h3 { background-color: black;
 
                 <div class="cityInfoContainer">
                     <div class="col-xs-10">
-                      <h2>
-                        <h2 id='profile_h2'></h2>
+                        <h1 id='profile_h2'></h1><hr/>
                         <img id='profile_pic' align='center' width='200' height='200' />
                         <br>
                         <br>
@@ -48,8 +59,8 @@ h3 { background-color: black;
 									         if (strcmp($user->username, $_SESSION['user']->username) == 0)
                        		 {
                   				    echo form_open_multipart('authorize/change_pic');
-                  						echo "<input type='file' name='userimg' />";
-                  						echo form_submit('Submit', 'submit');
+                  						echo "<div id='newfileBtn' class='btn btn-info'>change profile picture</div><input type='file' name='userimg' id='fileBtn'/>";
+                  						echo form_submit('Submit', 'submit', "class = 'btn btn-info'");
                   						echo form_close();
 									         }
                           echo "<br>";
@@ -174,8 +185,6 @@ h3 { background-color: black;
         </div><!-- content -->
 
 <!-- JavaScript -->
-<script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>
-<script src="<?php echo base_url();?>assets/bootstrap/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function() {
         var userInfo = <?php echo json_encode($user);?>;
@@ -214,6 +223,7 @@ h3 { background-color: black;
           document.getElementById('profile_h2').innerHTML = userInfo.username + "'s Profile";
           $('#edit_button').hide();
         }
+        $('#newfileBtn').bind("click",function(){ $('#fileBtn').click()});
     });
 </script>
 
