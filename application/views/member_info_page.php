@@ -59,8 +59,8 @@ h3 { background-color: black;
 									         if (strcmp($user->username, $_SESSION['user']->username) == 0)
                        		 {
                   				    echo form_open_multipart('authorize/change_pic');
-                  						echo "<div id='newfileBtn' class='btn btn-info'>change profile picture</div><input type='file' name='userimg' id='fileBtn'/>";
-                  						echo form_submit('Submit', 'submit', "class = 'btn btn-info'");
+                  						echo "<div id='newfileBtn' class='btn btn-info'>Change Picture</div><input type='file' name='userimg' id='fileBtn'/>";
+                  						echo form_submit('Submit', 'Submit', "class = 'btn btn-info'");
                   						echo form_close();
 									         }
                           echo "<br>";
@@ -147,12 +147,12 @@ h3 { background-color: black;
                                   foreach ($comments as $row)
                                   {
                                     //only show 5 most recent comments
-                                    if ($count = 5)
+                                    if ($count == 5)
                                     {
                                       break;
                                     }
 
-                                    echo "<li>" . $row->content . "</li>";
+                                    echo "<li>" . $row->pname . ", " . $row->cname . " - " . $row->content . "</li>";
                                     $count++;
 
                                   }

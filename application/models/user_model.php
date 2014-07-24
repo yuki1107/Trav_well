@@ -33,7 +33,10 @@ class User_model extends CI_Model {
 
 	function getComments($userID) {
 
+        $this->db->select('place.name AS pname, city.name AS cname, content');
 		$this->db->order_by('time', 'desc');
+        $this->db->join('place', 'comments.placeID = place.placeID');
+        $this->db->join('city', 'place.cityID = city.cityID');
 		$query = $this->db->get_where('comments', array('userID'=>$userID));
 
 		if ($query->num_rows() == 0)

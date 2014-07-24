@@ -126,7 +126,8 @@ class Authorize extends CI_Controller {
 			$this->user_model->user_pic_change($user->userID, '/assets/images/' .$pic['upload_data']['file_name']);
 			redirect('home/index');	
 		}else{
-			var_dump($this->upload->display_errors());
+			echo "<script>alert('" . $this->upload->display_errors('','') . "')</script>";
+			echo "<script>window.history.back();</script>";
 
 		}
 	}

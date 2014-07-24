@@ -88,8 +88,8 @@
                     <div id='otherInfo' class="col-xs-6 col-sm-4 placeholder ">
                         <img id='placeImg' class='placeDetailImg' src='' />
                         <div class='btnArea'>
-                            <a id="wannaGo" class="btn btn-info btn-this">Wanna go</a>
-                            <a id="beenThere" class="btn btn-info btn-this">Has been</a>
+                            <a id="wannaGo" class="btn btn-info btn-this">Wanna Go</a>
+                            <a id="beenThere" class="btn btn-info btn-this">Been There</a>
                         </div><br>
                         <div class='starRate'>
                             <?=anchor("interaction/addRating/".$placeInfo['placeID']."/5", "☆")?>
@@ -128,7 +128,7 @@
                             echo form_open('interaction/insertComment/'.$placeInfo['placeID'], "class='form-group' role='textarea' row='5'");
                             echo form_textarea('content',set_value(), "class='form-control' placeholder='Write your comments here...'", "required");
                             echo "<br>";
-                            echo form_submit('submit', 'submit', "class = 'btn btn-info com_button'");
+                            echo form_submit('submit', 'Submit', "class = 'btn btn-info com_button'");
                             echo form_close();
                     ?>
                     </div>
