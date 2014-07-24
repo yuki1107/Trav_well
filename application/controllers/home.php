@@ -170,6 +170,10 @@ class Home extends CI_Controller {
 		$data['search_result'] = $srch_res;
 		$this->load->view('search_result_page', $data);
 	}
+
+	public function addPlace(){
+		$this->load->view('add_place');
+	}
 }
 
 /* End of file welcome.php */

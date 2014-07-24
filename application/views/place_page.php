@@ -90,6 +90,13 @@
                         <div class='btnArea'>
                             <a id="wannaGo" class="btn btn-info btn-this">Wanna go</a>
                             <a id="beenThere" class="btn btn-info btn-this">Has been</a>
+                        </div><br>
+                        <div class='starRate'>
+                            <?=anchor("interaction/addRating/".$placeInfo['placeID']."/5", "☆")?>
+                            <?=anchor("interaction/addRating/".$placeInfo['placeID']."/4", "☆")?>
+                            <?=anchor("interaction/addRating/".$placeInfo['placeID']."/3", "☆")?>
+                            <?=anchor("interaction/addRating/".$placeInfo['placeID']."/2", "☆")?>
+                            <?=anchor("interaction/addRating/".$placeInfo['placeID']."/1", "☆")?>
                         </div>
                         <div id='placeInfo'>
                                 <p id='placeAddress'></p>
@@ -164,10 +171,14 @@
                     if(item.picture_url==null){
                         item.picture_url = '/assets/images/profile.png';
                     }
+                    if(item.rating==null){
+                        item.rating = 0;
+                    }
                     htmlText = htmlText + "<div class='row'><img src= '<?= base_url()?>/" + item.picture_url + "' class='img-thumbnail col-xs-6 col-sm-3'/>"+
                                     "<div id='commentMsg' class='col-xs-6 col-sm-10'>"+
                                         "<span id='commentUser'>"+item.username+"</span>"+
                                         "<span id='commentTime'>"+item.time+"</span>"+
+                                        "<p>" + Array(parseInt(item.rating)+1).join('★')+ "</p>" +
                                         "<p id='commentContent'>"+item.content+"</p></div></div><hr/>";
                 });
             }

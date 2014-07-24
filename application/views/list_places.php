@@ -14,23 +14,6 @@
 	padding-left:80px;
 }
 
-.starRate {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-  text-align: left;
-  font-size: 20;
-}
-.starRate > a {
-  display: inline-block;
-  position: relative;
-  width: 1.1em;
-}
-.starRate > a:hover:before,
-.starRate > a:hover ~ a:before {
-   content: "\2605";
-   position: absolute;
-}
-
 </style>
 </head>
 
@@ -51,7 +34,7 @@
 
               <div class="col-sm-9 col-md-10">
                 <div class="cityInfoContainer">
-                  <h1 id="typeName"></h1><hr />
+                  <h1 id="typeName"></h1><?=anchor('home/addPlace', 'recommend a new place', array('class'=>'btn btn-default pull-right'));?><hr/>
                   <div id="listPlaces" class='listContainer'></div><!--listContainer-->
                 </div><!-- cityInfoContainer -->
               </div><!-- col -->
@@ -83,11 +66,11 @@
                               "<div id='"+item.name+"' class='col-xs-6 col-sm-9 description'>"+
                                   "<address><h4><a href='<?php echo base_url('home'); ?>/view_place/" + item.name +"'>"+item.name+"</a></h4>"+item.address+"<br/><abbr>Contact: </abbr>"+item.contact+"</address>" +
                                    "<div class='starRate'>" +
-                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/1'>☆</a>" +
-                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/2'>☆</a>" +
-                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/3'>☆</a>" +
-                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/4'>☆</a>" +
                                       "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/5'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/4'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/3'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/2'>☆</a>" +
+                                      "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/1'>☆</a>" +
                               "</div>" +
                               "<br>" +
                                    "<div><a class='btn btn-info' href='<?php echo base_url(); ?>interaction/wantToGo/" + item.placeID + "'>Wanna Go</a> <a class='btn btn-info' href='<?php echo base_url(); ?>interaction/placeBeen/" + item.placeID + "'>Been There</a>" +
