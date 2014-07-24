@@ -7,10 +7,10 @@ Regardless of your OS you will need to set up a mysql database named "Trav_well"
 
 Also, ensure that the username and password of your Trav_well database match the username and password in applications/config/database.php
 
-##Windows
+####Windows
 To run our website, please go to Trav_well/application/controllers, and run the home.php
 
-##Linux
+####Linux
 To host the server simply enter the command: 'php -S localhost:<i>port</i> -t <i>path/to/rootdir</i>'
 
 
@@ -19,7 +19,15 @@ To host the server simply enter the command: 'php -S localhost:<i>port</i> -t <i
 We use codeigniter and bootstrap for this project.
 Images are stored in assets/images.
 All page layouts can be found in application/views.
-There are controllers in application/controllers that control various functionality. home.php controls functions related to page loading. interaction.php controls user interactions such as messaging or adding friends. authorize.php contains the login system, and search.php contains search functionality.
+There are controllers in application/controllers that control various functionality:
+
+| Controller      | Functions        |
+|-----------------|------------------|
+|   home.php      | page loading     |
+| interaction.php | user interactions (messaging, adding friends, etc) |
+| authorize.php   | login system, uploading pictures |
+| search.php      | search           |
+
 All database actions are controlled by models in the application/models folder. These files are pretty straightforwardly named, although it should be noted that the difference between a place and a city is that a place is contained within a city. (i.e. a certain restaurant).
 The actual layout of the web pages can be found in application/views. Again these should be pretty straightforwardly named.
 
@@ -41,7 +49,7 @@ This page is used to record member profile with some basic information.
 
 ###Friends
 You can send someone a friend request by clicking the "Add as friend" button on their profile. This friend will not be visible on the friends page until they confirm your request.
-If a user wishes to go to a similar location as another user, they will be suggested
+If a user wishes to go to a similar location as another user, they will be suggested as friends on the friends page.
 
 ###Messaging
 You can send any valid user a message. Messages can be up to 20,000 characters and will appear on that user's messages screen.
