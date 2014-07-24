@@ -119,19 +119,47 @@ class User_model extends CI_Model {
 		$this->db->update('user', array('picture_url'=>$picture_url));
 	}
 
+	/**
+	 * Creates an array of usernames of other users who want to go to the same places as
+	 * @author Monica Li
+	 * @return array containing usernames who want to go to the same places as you.
+	 */
 	function find_similar_users($userID) {
 		/* Find users who want to go to the same place */
 		$simPlaces = array();
 		$this->db->select('*')->from('wantToGoPlace myWTGP')->where('myWTGP.userID', $userID);
-		$this->db->join('wantToGoPlace', 'wantToGoPlace.placeID = myWTGP.placeID AND wantToGoPlace.userID != myWTGP.userID', 'inner');
+		$this->db->join('wantToGoPlace', 'wantToGoPlace.placeID = myWTGP.placeID AND wantToGoPlace.userID != myWTGP.userID', 'left');
+		$this->db->join('user', 'user.userID = wantToGoPlace.userID','left');
 		$qSimPlace = $this->db->get();
 		if ($qSimPlace->num_rows() > 0)
 		{
 			foreach($qSimPlace->result() as $p) {
-	            $simPlaces[] = $p->userID;
+				$simPlaces["$p->userID"] = $p->username;
 			}
         }
-        return $simPlaces;
+       	/* Find users who want to go to the same place */
+		$simCities = array();
+		$this->db->select('*')->from('wantToGoCity myWTGC')->where('myWTGC.userID', $userID);
+		$this->db->join('wantToGoCity', 'wantToGoCity.cityID = myWTGC.cityID AND wantToGoCity.userID != myWTGC.userID', 'left');
+		$this->db->join('user', 'user.userID = wantToGoCity.userID','left');
+		$qSimCity = $this->db->get();
+		if ($qSimCity->num_rows() > 0)
+		{
+			foreach($qSimCity->result() as $c) {
+				$simCities["$c->userID"] = $c->username;
+			}
+        }
+        /* Merge two arrays */
+        if(!$simPlaces) {
+        	$simUsers = $simCities;
+        }
+        else if (!$simCities) {
+        	$simUsers = $simPlaces;
+        }
+        else {
+        	$simUsers = $simPlaces + $simCities;
+        }
+        return $simUsers;
 	}
 }
 

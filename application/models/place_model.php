@@ -7,8 +7,8 @@ class Place_model extends CI_Model {
 		$this->load->database();
 	}
 
-	function insert_place() {
-		;
+	function get_place_name($placeID) {
+		return $this->db->select('name')->get_where('place', array('placeID'=>$placeID))->row()->name;
 	}
 
 	/**
