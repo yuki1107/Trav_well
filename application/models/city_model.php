@@ -11,6 +11,10 @@ class City_model extends CI_Model {
 		return $this->db->insert('city',$city);
 	}
 
+	function get_city_name($cityID) {
+		return $this->db->select('name')->get_where('city', array('cityID'=>$cityID))->row()->name;
+	}
+
 	/**
 	 * Creates an array of city information from the database
 	 * @author Monica Li

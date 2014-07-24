@@ -120,7 +120,8 @@ class Home extends CI_Controller {
 		if($placeName) {
 			$qPlace = $this->place_model->get_place_by_name(urldecode($placeName));
 			if($qPlace) {
-				$data = array('placeInfo' => $qPlace);
+				$qCity = $this->city_model->get_city_name($qPlace['cityID']);
+				$data = array('placeInfo' => $qPlace, 'cityName' => $qCity);
 				$qComment = $this->comment_model->get_comments_by_place(urldecode($placeName));
 				if($qComment){
 					$data['commentList'] = $qComment;
