@@ -272,7 +272,7 @@ class Interaction extends CI_Controller {
                 $com->placeID = $placeID;
                 $com->userID = $userID;
                 $com->time = date('Y-m-d H:i:s');
-                $result = $this->comment_model->addComment($com);
+                $result = $this->comment_model->addComment($com, $placeID, $userID);
                 if(!$result) {
                     echo "<script>alert('There was an error saving your comment.')</script>";
                 }

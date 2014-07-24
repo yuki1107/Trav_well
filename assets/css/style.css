@@ -140,6 +140,25 @@ h1{
 	margin-top:150px;
 }
 
-.sidebar{
-	width:235px;
+.sidebar:not(.in){
+	width:230px;
 }
+
+.starRate {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+  font-size: 25px;
+  line-height: 5px;
+}
+.starRate > a {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.starRate > a:hover:before,
+.starRate > a:hover ~ a:before {
+   content: "\2605";
+   position: absolute;
+}
+
