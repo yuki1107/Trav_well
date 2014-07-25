@@ -130,7 +130,7 @@ td { text-align: center; }
               $.each(simUsers, function(i, item) {
                 htmlText += " <a href='<?php echo base_url('home');?>/profile/"+item+"'>"+item+"</a>,";
               });
-              $('#suggest').append('These users want to go to the same places as you:' + htmlText);
+              $('#suggest').append('These users want to go to the same places as you:' + htmlText.slice(0, -1));
             }
           }
       });/* ajax */
