@@ -171,8 +171,44 @@ class Home extends CI_Controller {
 		$this->load->view('search_result_page', $data);
 	}
 
-	public function addPlace(){
+	public function add_place_page(){
 		$this->load->view('add_place');
+	}
+
+	public function add_place(){
+		$this->form_validation->set_rules('placeName', 'Name of the place', 'required');
+		$this->form_validation->set_rules('address', 'Address', 'required');
+		$this->form_validation->set_rules('contact', 'Contact');
+		$this->form_validation->set_rules('description', 'Description', 'required');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			echo "<script>alert('Please complete your infomation!')</script>";
+			$this->load->view("add_place_page");
+		}
+		else{
+			$place = new Place();
+			$place->name = $this->input->post('placeName');
+			$place->address = $this->input->post('address');
+			$place->contact = $this->input->post('contact');
+			$place->description = $this->input->post('description');
+			$place->type = $this->input->post('selectType');
+			$place->cityID = $this->city_model->get_cityID_by_name($this->input->post('city'));
+
+			$config['upload_path']          = './assets/images/';
+	        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+	        $config['max_width']            = 500;
+	        $config['max_height']           = 500;
+	        $this->load->library('upload', $config);
+	        if ($this->upload->do_upload('placeImg')){
+				$pic = array('upload_data' => $this->upload->data());
+				$place->picture_url = 'assets/images/' . $pic['upload_data']['file_name'];
+			}else{
+				$place->picture_url = 'assets/images/place.jpg';
+			}
+			$this->place_model->addPlace($place);
+			redirect('home/view_place/'.$place->name);
+		}
 	}
 }
 
