@@ -16,6 +16,12 @@ class User_model extends CI_Model {
 		// row() for transfer first row into user object
 	}
 
+    /**
+     * Creates an array of places a given user wishes to visit.
+     * @author Sean Gallagher
+     * @param int $userID, the user's ID
+     * @return an array of places the given user wishes to visit, or false if there are no results.
+     */
 	function getWants($userID) {
 
 		$this->db->select('place.name AS pname, city.name AS cname');
@@ -31,6 +37,12 @@ class User_model extends CI_Model {
 		return $query->result();
 	}
 
+    /**
+     * Creates an array of comments a given user has posted.
+     * @author Sean Gallagher
+     * @param int $userID, the user's ID
+     * @return an array of comments the given user has posted, or false if there are no results.
+     */
 	function getComments($userID) {
 
         $this->db->select('place.name AS pname, city.name AS cname, content');
@@ -48,6 +60,12 @@ class User_model extends CI_Model {
 
 	}
 
+    /**
+     * Marks that the currently logged in user wishes to go to a given place.
+     * @author Sean Gallagher
+     * @param int $placeID, the id of the place
+     * @return True if the user's desire has been recorded and False otherwise.
+     */
 	function wantToGo($placeID) {
 
 		$userID = $_SESSION['user']->userID;
@@ -70,6 +88,12 @@ class User_model extends CI_Model {
       return False;
 	}
 
+    /**
+     * Marks that the currently logged in user has been to a given place.
+     * @author Sean Gallagher
+     * @param int $placeID, the id of the place
+     * @return True if the information has been recorded and False otherwise.
+     */
 	function placeBeen($placeID) {
 
 		$userID = $_SESSION['user']->userID;
@@ -93,6 +117,13 @@ class User_model extends CI_Model {
       return False;
 	}
 
+    /**
+     * Records the currently logged in user's rating of a place.
+     * @author Sean Gallagher
+     * @param int $placeID, the id of the place
+     * @param int $rating, the rating the user assigned the place
+     * @return True if the information has been recorded and False otherwise.
+     */
 	function addRating($placeID, $rating) {
 
 		$userID = $_SESSION['user']->userID;

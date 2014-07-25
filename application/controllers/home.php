@@ -49,6 +49,11 @@ class Home extends CI_Controller {
 		$this->load->view('login_page');
 	}
 
+	/**
+     * Loads a given user's profile page.
+     * @author Sean Gallagher
+     * @param string $username, the user whose profile is to be loaded
+     */
 	public function profile($username)
 	{
 
@@ -140,16 +145,29 @@ class Home extends CI_Controller {
 		$this->load->view('place_page', $data);
 	}
 
+
+	/**
+     * Loads the messages page.
+     * @author Sean Gallagher
+     */
 	public function messages()
 	{
 		$this->load->view('messages_page');
 	}
 
+	/**
+     * Loads the friends page.
+     * @author Sean Gallagher
+     */
 	public function friends()
 	{
 		$this->load->view('friends_page');
 	}
 
+	/**
+     * Loads the create message page.
+     * @author Sean Gallagher
+     */
 	public function create_message()
 	{
 		$this->load->view('create_message_page');

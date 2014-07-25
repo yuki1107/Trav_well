@@ -7,6 +7,12 @@ class Messages_model extends CI_Model {
        $this->load->database();
      }
 
+    /**
+     * Checks that a given username exists in the database.
+     * @author Sean Gallagher
+     * @param string $receiver, the username to be checked
+     * @return True if the user exists, False otherwise
+     */
     function checkReceiver($receiver) {
 
       $query = $this->db->get_where('user', array('username'=>$receiver));
@@ -20,6 +26,12 @@ class Messages_model extends CI_Model {
 
     }
 
+    /**
+     * Inserts a given message into the database.
+     * @author Sean Gallagher
+     * @param message $message, the message to be inserted
+     * @return True if the operation was successful, False otherwise
+     */
     function sendMessage($message) {
 
       $query = $this->db->insert('messages', $message);
@@ -32,18 +44,12 @@ class Messages_model extends CI_Model {
       return False; 
     }
 
-    function readMessage($message) {
-
-      $query = $this->db->update('messages', array('read'=>1), array('messageID'=>$message->$messageID));
-
-      if ($this->db->affected_rows() > 0)
-      {
-        return True;
-      }
-
-      return False; 
-    }
-
+    /**
+     * Retrieves an array of messages for a given user.
+     * @author Sean Gallagher
+     * @param int $userID, the id of the user whose messages are to be retrieved
+     * @return an array of messages, or False if there was nothing to retrieve
+     */
     function getMessages($userID) {
 
       $this->db->join('user', 'user.userID = messages.sender');
@@ -58,6 +64,12 @@ class Messages_model extends CI_Model {
       return False;
     }
 
+    /**
+     * Deletes a given message from the database.
+     * @author Sean Gallagher
+     * @param int $messageID, the id of the message to be deleted
+     * @return True if the operation was successful, False otherwise
+     */
     function deleteMessage($messageID) {
 
       $query = $this->db->delete('messages', (array('messageID'=>$messageID)));

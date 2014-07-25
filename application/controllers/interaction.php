@@ -20,12 +20,22 @@ class Interaction extends CI_Controller {
             session_start();
     }
 
+    /**
+     * Load the create message page with the recipient username already populated.
+     * @author Sean Gallagher
+     * @param string $username, the username of the recipient
+     */
     public function sendTo($username) {
 
         $data['username'] = $username;
         $this->load->view('create_message_page', $data);
     }
 
+    /**
+     * Send a message from the currently logged in user.
+     * Information about the message to be sent is supplied from the create message view.
+     * @author Sean Gallagher 
+     */
     public function sendMessage() {
 
         $this->form_validation->set_rules('receiver', 'To', 'required|max_length[30]');
@@ -63,6 +73,12 @@ class Interaction extends CI_Controller {
         }
     }
 
+    /**
+     * Request that a user be added to the currently logged in user's friends list.
+     * @author Sean Gallagher
+     * @param int $friendID, the id of the user being added
+     * @return True if operation successful, False otherwise
+     */
     public function addFriend($friendID) {
 
         $user1 = $_SESSION['user']->userID;
@@ -103,6 +119,11 @@ class Interaction extends CI_Controller {
         }
     }
 
+    /**
+     * Confirm a friend request.
+     * @author Sean Gallagher
+     * @param int $friendID, the id of the user who initiated the request
+     */
     public function confirmFriend($friendID) {
 
         $user1 = $_SESSION['user']->userID;
@@ -126,6 +147,10 @@ class Interaction extends CI_Controller {
         redirect( base_url() . 'interaction/getFriends/', 'refresh');
     }
 
+    /**
+     * Get messages for the logged in user and go to the messages page.
+     * @author Sean Gallagher
+     */
     public function getMessages() {
 
         $userID = $_SESSION['user']->userID;
@@ -135,6 +160,11 @@ class Interaction extends CI_Controller {
         $this->load->view('messages_page', $data);
     }
 
+    /**
+     * Delete a message for the logged in user.
+     * @author Sean Gallagher
+     * @param int $messageID, the id of the message to be deleted
+     */
     public function deleteMessage($messageID) {
 
         $result = $this->messages_model->deleteMessage($messageID);
@@ -146,6 +176,10 @@ class Interaction extends CI_Controller {
         redirect( base_url() . 'interaction/getMessages/', 'refresh');
     }
 
+    /**
+     * Get the friends of the logged in user and go to the friends page.
+     * @author Sean Gallagher
+     */
     public function getFriends() {
 
         $userID = $_SESSION['user']->userID;
@@ -156,6 +190,11 @@ class Interaction extends CI_Controller {
         $this->load->view('friends_page', $data);
     }
 
+    /**
+     * Remove a friend for the logged in user.
+     * @author Sean Gallagher
+     * @param int $friendID, the user id of the friend to be removed
+     */
     public function removeFriend($friendID) {
 
         $userID = $_SESSION['user']->userID;
@@ -170,6 +209,11 @@ class Interaction extends CI_Controller {
         redirect( base_url() . 'interaction/getFriends/', 'refresh');
     }
 
+    /**
+     * Reject a friend request for the logged in user.
+     * @author Sean Gallagher
+     * @param int $friendID, the user id of the friend whose request is to be rejected
+     */
     public function rejectFriend($friendID) {
 
         $userID = $_SESSION['user']->userID;
@@ -183,6 +227,11 @@ class Interaction extends CI_Controller {
         redirect( base_url() . 'interaction/getFriends/', 'refresh');
     }
 
+   /**
+     * Mark that the logged in user wants to go somewhere.
+     * @author Sean Gallagher
+     * @param int $placeID, the id of the place the user wants to go
+     */
     public function wantToGo($placeID) {
 
         if (!isset($_SESSION['user']->userID))
@@ -205,6 +254,11 @@ class Interaction extends CI_Controller {
         }
     }
 
+   /**
+     * Mark that the logged in user has been somewhere.
+     * @author Sean Gallagher
+     * @param int $placeID, the id of the place the user has been
+     */
     public function placeBeen($placeID) {
 
         if (!isset($_SESSION['user']->userID))
@@ -227,6 +281,12 @@ class Interaction extends CI_Controller {
         }
     }
 
+   /**
+     * Add the currently logged in user's rating for a given place to the database.
+     * @author Sean Gallagher
+     * @param int $placeID, the id of the place the user has rated
+     * @param int $rating, the rating the user gave
+     */
     public function addRating($placeID, $rating) {
 
         if (!isset($_SESSION['user']->userID))

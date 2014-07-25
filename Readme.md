@@ -45,14 +45,14 @@ On homepage, click the title on top-left corner; then the page can jump back to 
 If click on the login button on top-right corner, the page will jump login page. On login page, the user can use the left section to login and use the right section to register an account. 
 Beside login button, there is a search bar and search button used for searching.
 
-###City info Page
+###City Info Page
 After selecting a specific city by clicking the image at the bottom of homepage, the page will jump to a city info page, whcih shows a brief introduction of the city the user selected.
 
-###Restaurant page
+###Place Page
 Having the same side bar as the Toronto page, the same function. If we click Overview button, we will go to the Toronto page. If we click Restaurants button, we will stay on the current page.
 This page has a list of restaurants with information, such as name, address, contact information, picture, has been there of want to go there. What’s more, you can rate these restaurants.
 
-###Member info Page
+###Member Info Page
 This page is used to record member profile with some basic information. 
 
 ###Friends
