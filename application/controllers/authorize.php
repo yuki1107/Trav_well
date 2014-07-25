@@ -81,6 +81,10 @@ class Authorize extends CI_Controller {
 		unset($_SESSION['user']);
 		redirect('home/index');
 	}
+		/**
+	 * pass the insert information to this function and call user_update function to renew information.
+	 * @author FuJun Shen
+	 */
 	
 	public function update(){
 		$this->form_validation->set_rules('fir_name', 'firstname', 'required');
@@ -109,7 +113,10 @@ class Authorize extends CI_Controller {
 			$this->load->view('edit_user');
 		}
 	}
-	
+		/**
+	 * create rules for uploading picture and upload the picture
+	 * @author FuJun Shen
+	 */
 	public function change_pic(){
 
 		$config['upload_path']          = './assets/images/';

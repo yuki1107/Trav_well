@@ -140,14 +140,22 @@ class User_model extends CI_Model {
 
       return False;
 	}
-
+	
+		/**
+	 * replace old user information by new entered infor.
+	 * @author FuJun Shen
+	 */
 	function user_update($userID, $first_name, $last_name, $age, $interest, $bio) {
 
 		$this->db->where('userID', $userID);
 		$this->db->update('user', array('first_name'=>$first_name, 'last_name'=>$last_name, 'age'=>$age,
 		'interest'=>$interest, 'bio'=>$bio));
 	}
-
+	
+		/**
+	 * add new user profile picture.
+	 * @author FuJun Shen
+	 */
 	function user_pic_change($userID, $picture_url) {
 		$this->db->where('userID', $userID);
 		$this->db->update('user', array('picture_url'=>$picture_url));
