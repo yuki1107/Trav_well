@@ -30,6 +30,10 @@ class Comment_model extends CI_Model {
 		return $commentInfo;
 	}
 
+	/**
+	 * Creates an array of comment information from the database
+	 * @return array containing comment information
+	 */
 	function create_comment_for_place_page($comment){
 		$commentInfo = array(
 					'commentID' => $comment->commentID,
