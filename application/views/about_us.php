@@ -32,7 +32,7 @@ body {
             	<div class="intro">
                     <div class="jumbotron row">
                     	<div class="col-xs-6 col-sm-3 placeholder">
-                            <img class="photo" src="<?php echo base_url();?>assets/images/1.gif"/>
+                            <img class="photo img-rounded img-rounded" src="<?php echo base_url();?>assets/images/1.gif"/>
                         </div>
                         <div class="col-xs-6 col-sm-9 description">
                         	<p><b>Fujun Shen</b></p>
@@ -42,7 +42,7 @@ body {
 
                     <div class ="jumbotron row">
                         <div class="col-xs-6 col-sm-3 placeholder">
-                            <img class="photo" src="<?php echo base_url();?>assets/images/2.gif"/>
+                            <img class="photo img-rounded" src="<?php echo base_url();?>assets/images/2.gif"/>
                         </div>
                         <div class="col-xs-6 col-sm-9 description">
                         	<p><b>Sean Gallagher</b></p>
@@ -52,7 +52,7 @@ body {
 
                     <div class="jumbotron row">
                         <div class="col-xs-6 col-sm-3 placeholder">
-                            <img class="photo" src="<?php echo base_url();?>assets/images/3.gif"/>
+                            <img class="photo img-rounded" src="<?php echo base_url();?>assets/images/3.gif"/>
                         </div>
                         <div class="col-xs-6 col-sm-9 description">
                         	<p><b>Feifei Ding (Sophie)</b></p>
@@ -62,7 +62,7 @@ body {
 
                     <div class="jumbotron row">
                         <div class="col-xs-6 col-sm-3 placeholder">
-                            <img class="photo" src="<?php echo base_url();?>assets/images/4.gif"/>
+                            <img class="photo img-rounded" src="<?php echo base_url();?>assets/images/4.gif"/>
                         </div>
                         <div class="col-xs-6 col-sm-9 description">
                         	<p><b>Yuxiu Wang (Emmy)</b></p>
@@ -72,7 +72,7 @@ body {
 
                     <div class="jumbotron row">
                         <div class="col-xs-6 col-sm-3 placeholder">
-                            <img class="photo" src="<?php echo base_url();?>assets/images/5.gif"/>
+                            <img class="photo img-rounded" src="<?php echo base_url();?>assets/images/5.gif"/>
                         </div>
                         <div class="col-xs-6 col-sm-9 description">
                         	<p><b>Ying qi He (Yuki) </b></p>
@@ -81,7 +81,7 @@ body {
                     </div>
                     <div class="jumbotron row">
                         <div class="col-xs-6 col-sm-3 placeholder">
-                            <img class="photo" src="<?php echo base_url();?>assets/images/6.jpg"/>
+                            <img class="photo img-rounded" src="<?php echo base_url();?>assets/images/6.jpg"/>
                         </div>
                         <div class="col-xs-6 col-sm-9 description">
                             <p><b>Monica Li </b></p>
