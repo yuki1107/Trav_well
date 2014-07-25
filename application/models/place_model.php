@@ -124,5 +124,8 @@ class Place_model extends CI_Model {
 		return $places;
 	}
 
+	function addPlace($place){
+		$this->db->insert('place', $place);
+	}
 }
 ?>

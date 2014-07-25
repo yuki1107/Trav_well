@@ -95,5 +95,10 @@ class City_model extends CI_Model {
 		}
 		return $cities;
 	}
+
+	function get_cityID_by_name($cityName){
+		$id = $this->db->select('cityID')->get_where('city', array('name'=>$cityName))->row(0);
+		return $id->cityID;
+	}
 }
 ?>

@@ -12,8 +12,7 @@ class Comment_model extends CI_Model {
 
 	function addComment($comment, $placeID, $userID) {
 		$qRating = $this->db->select('rating')->get_where('rating', array('placeID'=>$placeID, 'userID'=>$userID));
-		var_dump($qRating->result());
-		if($qRating==null){
+		if($qRating->num_rows()==0){
 			$this->user_model->addRating($placeID, 0);
 		}
 		return $this->db->insert('comments',$comment);
