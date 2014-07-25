@@ -249,9 +249,15 @@ class Interaction extends CI_Controller {
         }
     }
 
+    /**
+     * Add users' comments to database.
+     * On success, loads city_page with the saving comments
+     */
 	public function insertComment($placeID){
+        //Set rules for the comment box
 		$this->form_validation->set_rules('content', 'Content', 'required|min_length[1]|max_length[2000]');
 
+        //Check if user insert comment to the comment box
 		if ($this->form_validation->run() == FALSE)
 		{
 			echo "<script>alert('Please insert your comment.')</script>";
@@ -259,6 +265,7 @@ class Interaction extends CI_Controller {
 		}
 		else
 		{
+            //Get userID if the user login, otherwise load login_page to promote user login
             if (!isset($_SESSION['user']->userID))
             {
                 echo "<script>alert('Please login first.')</script>";
@@ -266,6 +273,7 @@ class Interaction extends CI_Controller {
             }
             else
             {
+                //Add userID, placeID and user comment to comment table
                 $userID = $_SESSION['user']->userID;
                 $com = new Comment();
                 $com->content = $this->input->post('content');
