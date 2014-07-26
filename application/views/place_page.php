@@ -85,7 +85,7 @@
             <div class="cityInfoContainer">
                 <h1 id='placeName'></h1><hr/>
                 <div class="row">
-                    <div id='otherInfo' class="col-xs-6 col-sm-4 placeholder ">
+                    <div id='otherInfo' class="col-xs-12 col-sm-4">
                         <img id='placeImg' class='placeDetailImg' src='' />
                         <div class='btnArea'>
                             <a id="wannaGo" class="btn btn-info btn-this">Wanna Go</a>
@@ -104,7 +104,7 @@
                         </div>
                     </div>
 
-                    <div id='mainInfo' class="col-xs-6 col-sm-8 description">
+                    <div id='mainInfo' class="col-xs-12 col-sm-8">
                         <p id='placeDesc'class="cityInfoFont"></p>
                     </div>
                 </div>
@@ -174,8 +174,8 @@
                     if(item.rating==null){
                         item.rating = 0;
                     }
-                    htmlText = htmlText + "<div class='row'><img src= '<?= base_url()?>/" + item.picture_url + "' class='img-thumbnail col-xs-6 col-sm-3'/>"+
-                                    "<div id='commentMsg' class='col-xs-6 col-sm-10'>"+
+                    htmlText = htmlText + "<div class='row'><img src= '<?= base_url()?>/" + item.picture_url + "' class='img-thumbnail col-xs-2'/>"+
+                                    "<div id='commentMsg' class='col-xs-9'>"+
                                         "<span id='commentUser'>"+item.username+"</span>"+
                                         "<span id='commentTime'>"+item.time+"</span>"+
                                         "<p>" + Array(parseInt(item.rating)+1).join('★')+ "</p>" +
