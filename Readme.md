@@ -43,7 +43,7 @@ There are some users in the database already for testing purposes. User abc has 
 ###What has been done:
 
 |Tasks | Assigned to Completed by |
-|      |                          |
+|-----------------|------------------|
 |Ability to send users messages |  Sean|
 |Ability to view messages    |    Sean|
 |Ability to add users as friends |    Sean|
