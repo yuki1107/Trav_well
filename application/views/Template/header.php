@@ -3,7 +3,6 @@
 <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/css/navg_style.css" rel="stylesheet">
-<link href="<?php echo base_url();?>assets/css/navg_style2.css" rel="stylesheet">
 
 <nav id='header' role="navigation" class="navbar navbar-inverse navbar-fixed-top">
     <!-- Title -->
@@ -57,7 +56,7 @@
           <div id='searchPlaces' class="input-group">
             <input name='query' type="text" class="form-control" placeholder="Search for a place to go">
             <span class="input-group-btn">
-              <button name='submit' type="submit" class="btn btn-success form-control"style='btn-radius:4px;'>
+              <button name='submit' type="submit" class="btn btn-success btn-custom"style='btn-radius:4px;'>
                 <span class='glyphicon glyphicon-search'></span>
                 <span class='hidden-xs'> Search</span>
               </button>
