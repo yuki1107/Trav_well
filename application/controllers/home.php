@@ -182,6 +182,13 @@ class Home extends CI_Controller {
 		$src_res = NULL;
 		$search = $this->input->post('query');
 		$srch_res = $this->place_model->get_places_by_city($search);
+
+		if ($search == NULL)
+		{
+			$ref = $this->input->server('HTTP_REFERER', TRUE);
+            redirect($ref, 'location');
+			return False;
+		}
 		if($srch_res==false){
 			$srch_res = $this->place_model->get_place_by_similar_name($search);
 		}

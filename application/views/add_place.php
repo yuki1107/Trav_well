@@ -36,7 +36,7 @@
 	                  					<option value='restaurant'".set_select('selectType', 'restaurant', TRUE).">restaurant</option>
 	                  					<option value='landmark'".set_select('selectType', 'landmark').">landmark</option>
 	                  					<option value='shopping'".set_select('selectType', 'shopping').">shopping</option>
-	                  					<option value='hotel'".set_select('selectType', 'hotle').">hotle</option>
+	                  					<option value='hotel'".set_select('selectType', 'hotel').">hotel</option>
 	                  				</select><br>";
 	                  				echo form_label("City", 'city');
                   					echo "<select name='city' class='form-control'>
@@ -53,7 +53,7 @@
 	                  				echo form_input('contact', set_value('contact'), "class='form-control' placeholder='Contact'");
 	                  				echo "<br>";
 	                  				echo form_label("Description", 'description');
-	                  				echo form_textarea('description',set_value('description'), "class='form-control' placeholder='Descript the place'", "required");
+	                  				echo form_textarea('description',set_value('description'), "class='form-control' placeholder='Describe the place'", "required");
 	                  				echo "<br>";
                   					echo form_submit('submit', 'Submit', "class='btn btn-info'");
                   					echo form_close();
