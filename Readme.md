@@ -40,6 +40,35 @@ We didn't really add any new features to the product/sprint backlog, although we
 ####Testing
 There are some users in the database already for testing purposes. User abc has a message, and has posted a comment already. The password for abc is 123456.
 
+###What has been done:
+
+|Tasks | Assigned to Completed by |
+|      |                          |
+|Ability to send users messages |  Sean|
+|Ability to view messages    |    Sean|
+|Ability to add users as friends |    Sean|
+|Ability to view friends |    Sean|
+|Add edit profile page   |    Shen|
+|Allow users to edit their profiles  |    Shen|
+|Ability to flag places you want to go   |    Sean|
+|Ability to say you've been to places    |    Sean|
+|Ability to find users who want to go to the same place as you   |  Monica|
+|Restructure and refactor existing code  |  Monica|
+|Make city page loading dynamic  |  Monica|
+|Make place page loading dynamic |  Monica|
+|Login system    |    Yuki|
+|Create database |   Sean/Yuki|
+|Registration system |    Yuki|
+|Give ratings on place pages |  Sean|
+|Give comments on place pages    |  Sophie/Emmy|
+|make comments display dynamic   |    Yuki|
+|Hookup profile page to database |    Sean|
+|Search Feature  |    Yuki|
+|Search Page |    Shen/Yuki/Monica|
+|Collapse menu into header for mobile; Login button disappears   |    Yuki/Monica|
+|Input Research into Database    | Sophie/Emmy|
+
+
 ###Homepage, Login Page
 On homepage, click the title on top-left corner; then the page can jump back to the homepage.
 If click on the login button on top-right corner, the page will jump login page. On login page, the user can use the left section to login and use the right section to register an account. 

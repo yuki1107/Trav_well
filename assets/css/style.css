@@ -26,6 +26,7 @@ body {
 	min-height:100%;
 	min-width:100%;
 	position:relative;
+	overflow:hidden;
 }
 #content{
 	padding:0;
@@ -204,8 +205,4 @@ h1{
 
 .navbar-btn {
 	background-color: #000;
-}
-
-.btn-custom {
-	height:34px;
 }
