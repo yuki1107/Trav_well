@@ -11,7 +11,7 @@
 	text-indent: 60px;
 }
 .description{
-	padding-left:80px;
+	margin-left:50px;
 }
 
 </style>
@@ -62,8 +62,8 @@
           $('#typeName').html(pt);
           $.each(placeInfo, function(i, item) {
             var htmlText = "<div id='place"+i+"' class='row placeholders listElement'>" +
-                              "<div class='col-xs-6 col-sm-3 placeholder'><img class='placeInfoImg' src='<?php echo base_url();?>"+item.picURL+"'/></div>" +
-                              "<div id='"+item.name+"' class='col-xs-6 col-sm-9 description'>"+
+                              "<div class='col-xs-6 col-sm-4'><img class='placeInfoImg' src='<?php echo base_url();?>"+item.picURL+"'/></div>" +
+                              "<div id='"+item.name+"' class='col-xs-5 col-sm-6 description'>"+
                                   "<address><h4><a href='<?php echo base_url('home'); ?>/view_place/" + item.name +"'>"+item.name+"</a></h4>"+item.address+"<br/><abbr>Contact: </abbr>"+item.contact+"</address>" +
                                    "<div class='starRate'>" +
                                       "<a href='<?php echo base_url();?>interaction/addRating/" + item.placeID + "/5'>☆</a>" +
