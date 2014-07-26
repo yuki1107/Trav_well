@@ -168,6 +168,9 @@ h1{
     width: 100%;
 }
 
+.btn-custom {
+	height:34px;
+}
 .custom-li {
 	margin-top: 5px;
 }
