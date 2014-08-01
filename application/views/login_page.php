@@ -39,9 +39,8 @@
 	margin-bottom:45px;
 }
 
-body {
-	background-color: #306;
-
+#container {
+	background-color: #2B2387;
 }
 
 </style>

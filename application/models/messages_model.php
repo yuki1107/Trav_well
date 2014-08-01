@@ -27,6 +27,28 @@ class Messages_model extends CI_Model {
     }
 
     /**
+     * Checks whether or not a given user has sent more than 3 messages in the last minute.
+     * @author Sean Gallagher
+     * @param string $sender, the user to be checked
+     * @return True if the user has sent too many messages, False otherwise
+     */
+    function checkSpamming($sender) {
+
+      //get time 1 minute ago
+      $timeSpan = date('Y-m-d H:i:s', time() - 60);
+
+      $query = $this->db->get_where('messages', array('sender'=>$sender, 'time >'=>$timeSpan));
+
+      if ($query->num_rows() >= 3)
+      {
+        return True;
+      }
+
+      return False;
+
+    }
+
+    /**
      * Inserts a given message into the database.
      * @author Sean Gallagher
      * @param message $message, the message to be inserted
@@ -38,7 +60,7 @@ class Messages_model extends CI_Model {
       $this->db->order_by('time');
       $num_msgs = $this->db->get_where('messages', array('receiver'=>$message->receiver));
 
-      if ($num_msgs->num_rows() >= 3)
+      if ($num_msgs->num_rows() >= 100)
       {
         $oldest = $num_msgs->row();
         $this->db->delete('messages', array('messageID'=>$oldest->messageID));

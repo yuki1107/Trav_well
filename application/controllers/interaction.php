@@ -53,21 +53,33 @@ class Interaction extends CI_Controller {
         }
         else
         {
-            //Get receiver userID from username
-            $receiver = $this->user_model->getUser($this->input->post('receiver'));
 
-            //Put message in database
-            $message = new Messages();
-            $message->sender = $_SESSION['user']->userID;
-            $message->receiver = $receiver->userID;
-            $message->content = $this->input->post('content');
-            $message->time = date('Y-m-d H:i:s');
+            $spamming = $this->messages_model->checkSpamming($_SESSION['user']->userID);
 
-            if(!$this->messages_model->sendMessage($message))
+            if ($spamming) {
+
+                echo "<script>alert('You have sent too many messages recently. Please try again in a few minutes.')</script>";
+
+            } 
+            else 
             {
-                echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
-            }
+                //Get receiver userID from username
+                $receiver = $this->user_model->getUser($this->input->post('receiver'));
 
+                //Put message in database
+                $message = new Messages();
+                $message->sender = $_SESSION['user']->userID;
+                $message->receiver = $receiver->userID;
+                $message->content = $this->input->post('content');
+                $message->time = date('Y-m-d H:i:s');
+
+                if(!$this->messages_model->sendMessage($message))
+                {
+                    echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+                }
+
+            }
+            
             redirect( base_url() . 'interaction/getMessages/', 'refresh');
 
         }
@@ -348,21 +360,38 @@ class Interaction extends CI_Controller {
             }
             else
             {
-                //Add userID, placeID and user comment to comment table
+
                 $userID = $_SESSION['user']->userID;
-                $com = new Comment();
-                $com->content = $this->input->post('content');
-                $com->placeID = $placeID;
-                $com->userID = $userID;
-                $com->time = date('Y-m-d H:i:s');
-                $result = $this->comment_model->addComment($com, $placeID, $userID);
-                if(!$result) {
-                    echo "<script>alert('There was an error saving your comment.')</script>";
+                $spamming = $this->comment_model->checkSpamming($userID);
+
+                if ($spamming) 
+                {
+                    echo "<script>alert('You have posted too many comments recently. Please try again in a few minutes.')</script>";
                 }
-                else {
-                    echo "<script>alert('Your comment was successfully saved.')</script>";
+                else
+                {
+
+                    //Add userID, placeID and user comment to comment table
+
+                    $com = new Comment();
+                    $com->content = $this->input->post('content');
+                    $com->placeID = $placeID;
+                    $com->userID = $userID;
+                    $com->time = date('Y-m-d H:i:s');
+
+                    $result = $this->comment_model->addComment($com, $placeID, $userID);
+
+                    if(!$result) {
+                        echo "<script>alert('There was an error saving your comment.')</script>";
+                    }
+                    else {
+                        echo "<script>alert('Your comment was successfully saved.')</script>";
+                    }
+
                 }
+
                 echo "<script> window.history.back(); </script>";
+
             }
 		}
 	}

@@ -18,6 +18,28 @@ class Comment_model extends CI_Model {
 		return $this->db->insert('comments',$comment);
 	}
     
+	/**
+     * Checks whether or not a given user has submitted more than 3 comments in the last minute.
+     * @author Sean Gallagher
+     * @param string $sender, the user to be checked
+     * @return True if the user has submitted too many comments, False otherwise
+     */
+    function checkSpamming($user) {
+
+      //get time 1 minute ago
+      $timeSpan = date('Y-m-d H:i:s', time() - 60);
+
+      $query = $this->db->get_where('comments', array('userID'=>$user, 'time >'=>$timeSpan));
+
+      if ($query->num_rows() >= 3)
+      {
+        return True;
+      }
+
+      return False;
+
+    }
+
     function create_comment_from_data($comment)
 	{
 		$commentInfo = array(
