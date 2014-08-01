@@ -34,6 +34,17 @@ class Messages_model extends CI_Model {
      */
     function sendMessage($message) {
 
+      //If a user has more than 100 messages, delete the oldest one before adding a new one
+      $this->db->order_by('time');
+      $num_msgs = $this->db->get_where('messages', array('receiver'=>$message->receiver));
+
+      if ($num_msgs->num_rows() >= 3)
+      {
+        $oldest = $num_msgs->row();
+        $this->db->delete('messages', array('messageID'=>$oldest->messageID));
+      }
+
+      //Insert message to database
       $query = $this->db->insert('messages', $message);
 
       if ($this->db->affected_rows() > 0)

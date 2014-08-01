@@ -37,6 +37,36 @@ class Friendship_model extends CI_Model {
     }
 
     /**
+     * Checks whether a user has exceeded the number of requests they may have, or the number of friends they may have.
+     * @author Sean Gallagher
+     * @param friendship $friendship, an object that contains the user ID of the two users
+     * @return 1 if the requestor has too many friends, 2 if the requestee has too many friends or requests,
+     *          3 otherwise
+     */
+    function checkLimits($friendship) {
+
+      //check if requestor has too many friends already
+      $query = $this->db->get_where('friendship', array('user1'=>$friendship->user1, 'confirmed'=>1));
+
+      if ($query->num_rows() >= 100)
+      {
+        return 1;
+      }
+
+      //check if requestee has too many friends or active requests
+      $friendLimit = $this->db->get_where('friendship', array('user1'=>$friendship->user2, 'confirmed'=>1));
+      $requestLimit = $this->db->get_where('friendship', array('user2'=>$friendship->user2, 'confirmed'=>0));
+
+      if ($friendLimit->num_rows() >= 100 || $requestLimit->num_rows() >= 10)
+      {
+        return 2;
+      }
+
+      return 3;
+
+    }
+
+    /**
      * Confirms a user's friend request in the database.
      * @author Sean Gallagher
      * @param friendship $friendship, an object that contains the user ID of the two users

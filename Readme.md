@@ -42,7 +42,29 @@ There are some users in the database already for testing purposes. User abc has 
 
 ###What has been done:
 
-|Tasks | Assigned to Completed by |
+####Phase 3:
+
+| Tasks | Completed by |
+|-------|--------------|        
+|Make the mobile nav bar float |    |
+|Localize sidebar code to a single location  |  |
+|Restrict access to source files   | |
+|Encrypt login information     | |
+|Fix login page background      | |
+|Limit user friends list size    | |   
+|Limit user inbox size       | |
+|Limit # of messages/comments in a short timeframe  | |     
+|Sort cities alphabetically on main page     | |
+|Make input fields resistant to SQL injections  | |    
+|Use multiple pages for listed restaurants, landmarks, etc | |    
+|Captchas when registering/logging in        | |
+|Prevent users from having “similar” usernames  | |     
+|Ensure inputs can only accept a limit # of characters | |      
+
+
+####Phase 2:
+
+|Tasks | Completed by |
 |-----------------|------------------|
 |Ability to send users messages |  Sean|
 |Ability to view messages    |    Sean|

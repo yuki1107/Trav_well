@@ -102,21 +102,36 @@ class Interaction extends CI_Controller {
         {
             return $this->confirmFriend($friendID);
         }
-        else
-        {
 
-            $result = $this->friendship_model->addFriend($friendship);
+        //ensure friend limit constraint is met
+        $limits = $this->friendship_model->checkLimits($friendship);
 
-            if (!$result) {
-                echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
-                return False;
-            }
+        if ($limits == 1) {
 
-            echo "<script>alert('Your friend request has been sent.')</script>";
+            echo "<script>alert('You currently have too many friends, please remove one and try again.')</script>";
             redirect( base_url() . 'interaction/getFriends/', 'refresh');
-            return True;
+            return False;
 
         }
+        elseif ($limits == 2)
+        {
+
+            echo "<script>alert('The user you tried to add has too many friends or active friends requests.')</script>";
+            redirect( base_url() . 'interaction/getFriends/', 'refresh');
+            return False;
+
+        }
+
+        $result = $this->friendship_model->addFriend($friendship);
+
+        if (!$result) {
+            echo "<script>alert('An unknown error occurred. Please try again later.')</script>";
+            return False;
+        }
+
+        echo "<script>alert('Your friend request has been sent.')</script>";
+        redirect( base_url() . 'interaction/getFriends/', 'refresh');
+        return True;
     }
 
     /**
