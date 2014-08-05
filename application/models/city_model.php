@@ -81,7 +81,7 @@ class City_model extends CI_Model {
 	function get_all_cities() {
 		/* TODO: This should be getting post data instead */
 		$cities = array();
-		$qCities = $this->db->select('*')->from('city')->get();
+		$qCities = $this->db->select('*')->from('city')->order_by('name', 'asc')->get();
 		if ($qCities->num_rows() > 0)
 		{
 			foreach($qCities->result() as $c)
