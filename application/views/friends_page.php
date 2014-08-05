@@ -19,8 +19,6 @@ th { text-align: center; }
 
 td { text-align: center; }
 
-.sidebar { bottom: 0px;}
-
 </style>
 
 </head>
@@ -30,20 +28,17 @@ td { text-align: center; }
         <?=$this->load->view("Template/header")?>
         <div id='content'>
             <div class="row headerSpace">
-                <div id='sideNav' class="col-xs-2 navbar-collapse collapse sidebar">
+                <div id='sideNav' class="col-sm-3 col-md-2 navbar-collapse collapse sidebar">
                       <ul class="nav nav-sidebar">
                         <li class="non-active"><a href="<?php echo base_url();?>home/profile/<?php echo $_SESSION['user']->username; ?>">Home</a></li>
                         <li class="active"><a href="">Friends</a></li>
                         <li class="non-active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
                       </ul>
                 </div>
-
+                <div class='col-md-offset-2 col-sm-9 col-md-10'>
                 <div class="cityInfoContainer">
-                    <div class="col-xs-10">
-                      <h1>Friends</h1>
-                    </div>
-
-                    <div class="col-xs-10 description">
+                      <h1>Friends</h1><hr/>
+                    <p>
                       <?php
 
                         if ($friends == False && $requests == False)
@@ -111,8 +106,9 @@ td { text-align: center; }
                           }
                         }
                       ?>
-                    </div>
+                    </p>
                 </div><!-- cityInfoContainer -->
+              </div>
             </div><!-- headerSpace -->
         </div><!-- content -->
         <?=$this->load->view("Template/footer")?>
