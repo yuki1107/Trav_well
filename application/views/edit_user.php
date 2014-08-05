@@ -24,7 +24,6 @@
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-        <div id='content'>
 			<div class="upInfoBar">
 			         <?php
 			            echo form_open('authorize/update', "role='form'");
@@ -43,6 +42,5 @@
 						echo "<br>";
 			            echo form_close();
 			         ?>
-			</div>
-		</div>
+			</div><!-- /upInfoBar -->
 <?=$this->load->view("Template/footer")?>

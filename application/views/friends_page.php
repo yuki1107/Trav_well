@@ -107,7 +107,10 @@ td { text-align: center; }
 <!-- JavaScript -->
 <script>
     $(document).ready(function() {
-      //var suggestFriends = ;
+      /* Side Nav */
+      $('#friends').attr('class','active');
+
+      /* Suggest Friends */
       $.ajax({
           type: 'GET',
           dataType: 'json',

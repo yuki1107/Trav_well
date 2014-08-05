@@ -18,9 +18,6 @@ h3 { background-color: black;
 th { text-align: center; }
 
 td { text-align: center; }
-
-.sidebar { bottom: 0px;}
-
 </style>
 
 </head>
@@ -28,20 +25,13 @@ td { text-align: center; }
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-            <div class="row headerSpace">
-                <div class="col-xs-2 navbar-collapse collapse sidebar">
-                      <ul class="nav nav-sidebar">
-                          <li class="non-active"><a href="<?php echo base_url();?>home/profile/<?php echo $_SESSION['user']->username; ?>">Home</a></li>
-                          <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
-                          <li class="active"><a href="">Messages</a></li>
-                      </ul>
-                </div>
+        <?=$this->load->view("Template/interactionSideNav")?>
 
+              <div id='cityCol' class="col-md-offset-2 col-sm-9 col-md-10">
                 <div class="cityInfoContainer">
-                    <div class="col-xs-10">
-                      <h1>Messages</h1>
+                      <h1>Messages</h1><hr/>
                       <a class="btn btn-info" href="<?php echo base_url('home');?>/create_message">Create Message</a>
-                    </div>
+
 
                     <div class="col-xs-10 description">
                       <br>
@@ -82,6 +72,15 @@ td { text-align: center; }
                       ?>
                     </div><!-- col -->
                 </div><!--cityInfoContainer-->
+              </div>
         </div><!-- content -->
-        <br>
+
         <?=$this->load->view("Template/footer")?>
+<!-- JavaScript -->
+<script>
+    $(document).ready(function() {
+      /* Side Nav */
+      $('#messages').attr('class','active');
+      $('#fLink').attr('href',"<?php echo site_url('interaction');?>/getFriends/");
+    });
+</script>

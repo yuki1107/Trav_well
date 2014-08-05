@@ -15,8 +15,6 @@ h3 { background-color: black;
      font-family:sans-serif;
      text-indent: 10px; }
 
-.sidebar { bottom: 0px;}
-
 .placeholder { margin-left: 20px; }
 
 #msg { height: 200px; }
@@ -28,16 +26,10 @@ h3 { background-color: black;
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-                <div id='sideNav' class="col-xs-2 navbar-collapse collapse sidebar">
-                      <ul class="nav nav-sidebar">
-                        <li class="non-active"><a href="<?php echo base_url();?>home/profile/<?php echo $_SESSION['user']->username; ?>">Home</a></li>
-                        <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
-                        <li class="active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
-                      </ul>
-                </div><!-- sideNav -->
-
+        <?=$this->load->view("Template/interactionSideNav")?>
+                <div id='cityCol' class="col-md-offset-2 col-sm-9 col-md-10">
                 <div class="cityInfoContainer">
-                    <div class="col-xs-4 description col-sm-4 description">
+                    <div><!-- class="col-xs-4 description col-sm-4 description">-->
                         <?php
                           echo form_open('interaction/sendMessage', "role='form'");
                           echo "<h2>Compose Message</h2>";
@@ -58,6 +50,15 @@ h3 { background-color: black;
                         <br>
                     </div>
                 </div><!-- cityInfoContainer -->
+              </div>
             </div><!-- headerSpace -->
         </div><!-- content -->
         <?=$this->load->view("Template/footer")?>
+<!-- JavaScript -->
+<script>
+    $(document).ready(function() {
+      /* Side Nav */
+      $('#messages').attr('class','active');
+      $('#fLink').attr('href',"<?php echo base_url('interaction');?>/getFriends/");
+    });
+</script>

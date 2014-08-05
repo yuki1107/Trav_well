@@ -15,7 +15,8 @@ p { font-family:sans-serif; }
 h3 { background-color: black;
      color: white;
      font-family:sans-serif;
-     text-indent: 10px; }
+     text-indent: 10px;
+     padding: 3px 0px; }
 
 .placeholder { margin-left: 20px; }
 
@@ -38,14 +39,9 @@ h3 { background-color: black;
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-            <div class="row headerSpace">
-                <div id="homeSideBar" class="col-sm-3 col-md-2 navbar-collapse collapse sidebar">
-                      <ul class="nav nav-sidebar">
-                        <li id="home_li"><a id="home_a">Home</a></li>
-                        <li class="non-active"><a href="<?php echo base_url();?>interaction/getFriends">Friends</a></li>
-                        <li class="non-active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
-                      </ul>
-                </div>
+        <?=$this->load->view("Template/interactionSideNav")?>
+
+              <div id='cityCol' class="col-md-offset-2 col-sm-9 col-md-10">
 
                 <div class="cityInfoContainer">
                     <div class="col-xs-10">
@@ -189,6 +185,8 @@ h3 { background-color: black;
         var userInfo = <?php echo json_encode($user);?>;
         var currentUser = <?php echo json_encode($_SESSION['user']->username);?>;
         var friends = <?php echo json_encode($friends);?>;
+        /* Side Nav */
+        $('#fLink').attr('href',"<?php echo site_url('interaction');?>/getFriends/");
 
         //Profile picture
         if (!userInfo.picture_url)
@@ -209,16 +207,13 @@ h3 { background-color: black;
 
         if (userInfo.username == currentUser)
         {
-          $('#home_li').attr('class', 'active');
-          $('#home_a').attr('href', "");
+          $('#profile').attr('class', 'active');
           document.getElementById('profile_h2').innerHTML = "My Profile";
           $('#add_button').hide();
           $('#message_button').hide();
         }
         else
         {
-          $('#home_li').attr('class', 'non-active');
-          $('#home_a').attr('href', "<?php echo base_url(); ?>home/profile/" + currentUser);
           document.getElementById('profile_h2').innerHTML = userInfo.username + "'s Profile";
           $('#edit_button').hide();
         }
