@@ -87,7 +87,7 @@ class Place_model extends CI_Model {
 	function get_place_by_similar_name($placeName)
 	{
 		$this->db->like('name',$placeName);
-		$qPlace= $this->db->get('place');
+		$qPlace= $this->db->order_by('name', 'asc')->get('place');
 
 		if ($qPlace && $qPlace->num_rows() > 0)
 		{
