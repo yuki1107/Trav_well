@@ -14,7 +14,7 @@ Also, ensure that the username and password of your Trav_well database match the
 To run our website, please go to Trav_well/application/controllers, and run the home.php
 
 ####Linux
-To host the server simply enter the command: 'php -S localhost:<i>port</i> -t <i>path/to/rootdir</i>'
+To host the server simply enter the command: `php -S localhost:<i>port</i> -t <i>path/to/rootdir</i>`
 
 
 
@@ -45,21 +45,21 @@ There are some users in the database already for testing purposes. User abc has 
 ####Phase 3:
 
 | Tasks | Completed by |
-|-------|--------------|        
+|-------|--------------|
 |Make the mobile nav bar float |    |
 |Localize sidebar code to a single location  |  |
 |Restrict access to source files   | |
 |Encrypt login information     | |
 |Fix login page background      | |
-|Limit user friends list size    | |   
+|Limit user friends list size    | |
 |Limit user inbox size       | |
-|Limit # of messages/comments in a short timeframe  | |     
+|Limit # of messages/comments in a short timeframe  | |
 |Sort cities alphabetically on main page     | |
-|Make input fields resistant to SQL injections  | |    
-|Use multiple pages for listed restaurants, landmarks, etc | |    
+|Make input fields resistant to SQL injections  | |
+|Use multiple pages for listed restaurants, landmarks, etc | |
 |Captchas when registering/logging in        | |
-|Prevent users from having “similar” usernames  | |     
-|Ensure inputs can only accept a limit # of characters | |      
+|Prevent users from having “similar” usernames  | |
+|Ensure inputs can only accept a limit # of characters | |
 
 
 ####Phase 2:
@@ -93,7 +93,7 @@ There are some users in the database already for testing purposes. User abc has 
 
 ###Homepage, Login Page
 On homepage, click the title on top-left corner; then the page can jump back to the homepage.
-If click on the login button on top-right corner, the page will jump login page. On login page, the user can use the left section to login and use the right section to register an account. 
+If click on the login button on top-right corner, the page will jump login page. On login page, the user can use the left section to login and use the right section to register an account.
 Beside login button, there is a search bar and search button used for searching.
 
 ###City Info Page
@@ -104,7 +104,7 @@ Having the same side bar as the Toronto page, the same function. If we click Ove
 This page has a list of restaurants with information, such as name, address, contact information, picture, has been there of want to go there. What’s more, you can rate these restaurants.
 
 ###Member Info Page
-This page is used to record member profile with some basic information. 
+This page is used to record member profile with some basic information.
 
 ###Friends
 You can send someone a friend request by clicking the "Add as friend" button on their profile. This friend will not be visible on the friends page until they confirm your request.
