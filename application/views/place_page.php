@@ -81,7 +81,7 @@
             </ul>
         </div>
 
-        <div id="mainBody" class="col-sm-9 col-md-10">
+        <div id="mainBody" class="col-md-offset-2 col-sm-9 col-md-10">
             <div class="cityInfoContainer">
                 <h1 id='placeName'></h1><hr/>
                 <div class="row">

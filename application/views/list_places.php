@@ -32,7 +32,7 @@
                 </ul>
               </div>
 
-              <div class="col-sm-9 col-md-10">
+              <div class="col-md-offset-2 col-sm-9 col-md-10">
                 <div class="cityInfoContainer">
                   <h1 id="typeName"></h1><?=anchor('home/add_place_page', 'recommend a new place', array('class'=>'btn btn-default pull-right'));?><hr/>
                   <div id="listPlaces" class='listContainer'></div><!--listContainer-->
