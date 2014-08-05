@@ -6,7 +6,7 @@ Trav_Well
 
 
 ###Installation
-Regardless of your OS you will need to set up a mysql database named "Trav_well". After this database is created, run the trav_well.sql script located in the root Trav_well directory to create the tables and input the data into the Trav_well database.
+Regardless of your OS you will need to set up a mysql database named "Trav_well". After this database is created, run the `trav_well.sql` script located in the root Trav_well directory to create the tables and input the data into the Trav_well database.
 
 Also, ensure that the username and password of your Trav_well database match the username and password in applications/config/database.php
 
@@ -14,7 +14,8 @@ Also, ensure that the username and password of your Trav_well database match the
 To run our website, please go to Trav_well/application/controllers, and run the home.php
 
 ####Linux
-To host the server simply enter the command: `php -S localhost:<i>port</i> -t <i>path/to/rootdir</i>`
+To host the server simply enter the command:
+`php -S localhost:<i>port</i> -t <i>path/to/rootdir</i>`
 
 
 
