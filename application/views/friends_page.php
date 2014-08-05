@@ -26,15 +26,7 @@ td { text-align: center; }
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-        <div id='content'>
-            <div class="row headerSpace">
-                <div id='sideNav' class="col-sm-3 col-md-2 navbar-collapse collapse sidebar">
-                      <ul class="nav nav-sidebar">
-                        <li class="non-active"><a href="<?php echo base_url();?>home/profile/<?php echo $_SESSION['user']->username; ?>">Home</a></li>
-                        <li class="active"><a href="">Friends</a></li>
-                        <li class="non-active"><a href="<?php echo base_url();?>interaction/getMessages">Messages</a></li>
-                      </ul>
-                </div>
+        <?=$this->load->view("Template/interactionSideNav")?>
                 <div class='col-md-offset-2 col-sm-9 col-md-10'>
                 <div class="cityInfoContainer">
                       <h1>Friends</h1><hr/>

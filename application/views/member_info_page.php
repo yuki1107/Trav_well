@@ -38,7 +38,6 @@ h3 { background-color: black;
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-        <div id='content'>
             <div class="row headerSpace">
                 <div id="homeSideBar" class="col-sm-3 col-md-2 navbar-collapse collapse sidebar">
                       <ul class="nav nav-sidebar">
@@ -208,7 +207,7 @@ h3 { background-color: black;
           $('#add_link').attr('href', "<?php echo base_url(); ?>interaction/addFriend/" + userInfo.userID);
         }
 
-        if (userInfo.username == currentUser) 
+        if (userInfo.username == currentUser)
         {
           $('#home_li').attr('class', 'active');
           $('#home_a').attr('href', "");

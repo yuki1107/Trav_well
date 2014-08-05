@@ -28,7 +28,6 @@ td { text-align: center; }
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-        <div id='content'>
             <div class="row headerSpace">
                 <div class="col-xs-2 navbar-collapse collapse sidebar">
                       <ul class="nav nav-sidebar">

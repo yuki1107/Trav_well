@@ -66,7 +66,6 @@
 <body>
 	<div id='container'>
 		<?=$this->load->view("Template/header")?>
-		<div id='content'>
 			<div class="row">
 				<div class="form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-3">
 					<?php

@@ -35,7 +35,6 @@
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-        <div id='content'>
             <div class="bigImageBar">
                 <img class="bigImage" src="<?php echo base_url();?>assets/images/TorontoImg.jpg"/>
             </div>

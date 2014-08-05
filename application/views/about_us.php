@@ -27,7 +27,6 @@ body {
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-        <div id='content'>
         	<div class="container">
             	<div class="intro">
                     <div class="jumbotron row">

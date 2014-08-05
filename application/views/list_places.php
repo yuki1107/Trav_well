@@ -20,18 +20,7 @@
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-        <div id='content'>
-            <div class="row headerSpace">
-              <div id='sideNav' class="col-sm-3 col-md-2 navbar-collapse collapse sidebar">
-                <ul class="nav nav-sidebar">
-                  <li id='overview' class='non-active'><a id='oLink' href="#">Overview</a></li>
-                  <li id="restaurant" class='non-active'><a id='rLink' href='#'>Restaurants</a></li>
-                  <li id="landmark" class='non-active'><a id='lLink' href="#">Landmarks</a></li>
-                  <li id="shopping" class='non-active'><a id='sLink' href="#">Shopping Malls</a></li>
-                  <li id="hotel" class='non-active'><a id='hLink' href="#">Hotels</a></li>
-                </ul>
-              </div>
-
+        <?=$this->load->view("Template/mainSideNav")?>
               <div class="col-md-offset-2 col-sm-9 col-md-10">
                 <div class="cityInfoContainer">
                   <h1 id="typeName"></h1><?=anchor('home/add_place_page', 'recommend a new place', array('class'=>'btn btn-default pull-right'));?><hr/>

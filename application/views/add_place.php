@@ -14,8 +14,6 @@
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-        <div id='content'>
-            <div class="headerSpace">
                 <div class="container">
                   	<h1>Recommend a new place</h1><hr />
                   	<div class='jumbotron'>

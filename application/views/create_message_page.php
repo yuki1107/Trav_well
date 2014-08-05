@@ -28,8 +28,6 @@ h3 { background-color: black;
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-        <div id='content'>
-            <div class="row headerSpace">
                 <div id='sideNav' class="col-xs-2 navbar-collapse collapse sidebar">
                       <ul class="nav nav-sidebar">
                         <li class="non-active"><a href="<?php echo base_url();?>home/profile/<?php echo $_SESSION['user']->username; ?>">Home</a></li>
