@@ -19,7 +19,7 @@ class Authorize extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[20]|matches[passconf]');
 		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|min_length[6]|max_length[20]');
 		$this->form_validation->set_rules('email', 'Email', "required|is_unique[user.email]|valid_email");
-		$this->form_validation->set_rules('captcha', 'Captcha', 'required');
+		$this->form_validation->set_rules('captcha', 'Captcha', 'required|max_length[8]' );
 
 
 		if ($this->form_validation->run() == FALSE)
@@ -29,35 +29,43 @@ class Authorize extends CI_Controller {
 			$this->load->view("login_page", $data);
 		}
 		else
-		{
+		{	
+			
 			$user = new User();
 			$user->username = $this->input->post('username');
-			$user->password = $this->input->post('password');
-			$user->email = $this->input->post('email');
-			$user->phone = NULL;
-			$user->age = NULL;
-			$user->gender = NULL;
-			$user->location = NULL;
-			$user->bio = NULL;
-			$user->picture_url = NULL;
-			
-			$expiration = time()-120; // 2 Minute limit
-			$this->db->query("DELETE FROM captcha WHERE captcha_time < ".$expiration);
-			
-			$sql = "SELECT COUNT(*) AS count FROM captcha WHERE word = ? AND ip_address = ? AND captcha_time > ?";
-			$binds = array($_POST['captcha'], $this->input->ip_address(), $expiration);
-			$query = $this->db->query($sql, $binds);
-			$row = $query->row();
-
-			if ($row->count == 0)
-			{
-				echo "Please recheck your username, password or captcha.";
-			}
-			else
-			{
-				$error = $this->user_model->addUser($user);
+			if($this->user_model->getUser($user->username)){
 				
-				redirect('home/index');
+				$user->password = $this->input->post('password');
+				$user->email = $this->input->post('email');
+				$user->phone = NULL;
+				$user->age = NULL;
+				$user->gender = NULL;
+				$user->location = NULL;
+				$user->bio = NULL;
+				$user->picture_url = NULL;
+			
+				$expiration = time()-120; // 2 Minute limit
+				$this->db->query("DELETE FROM captcha WHERE captcha_time < ".$expiration);
+				
+				$sql = "SELECT COUNT(*) AS count FROM captcha WHERE word = ? AND ip_address = ? AND captcha_time > ?";
+				$binds = array($_POST['captcha'], $this->input->ip_address(), $expiration);
+				$query = $this->db->query($sql, $binds);
+				$row = $query->row();
+			
+	
+				if ($row->count == 0)
+				{
+					echo "Please recheck your captcha.";
+				}
+				else
+				{
+					$error = $this->user_model->addUser($user);
+					
+					redirect('home/index');
+				}
+			}
+			else{
+				echo "Username already exits, please change another one";
 			}
 		}
 	}
@@ -65,7 +73,7 @@ class Authorize extends CI_Controller {
 	public function login(){
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
-		$this->form_validation->set_rules('captcha', 'Captcha', 'required');
+		$this->form_validation->set_rules('captcha', 'Captcha', 'required|max_length[8]' );
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data['cap']=$this->capt2();
