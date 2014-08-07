@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2014 at 01:43 AM
--- Server version: 5.6.19
--- PHP Version: 5.5.12
+-- Generation Time: 2014-08-07 22:50:18
+-- 服务器版本： 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `city`
+-- 表的结构 `captcha`
+--
+
+CREATE TABLE IF NOT EXISTS `captcha` (
+  `captcha_id` bigint(13) unsigned NOT NULL AUTO_INCREMENT,
+  `captcha_time` int(10) unsigned NOT NULL,
+  `ip_address` varchar(16) NOT NULL DEFAULT '0',
+  `word` varchar(20) NOT NULL,
+  PRIMARY KEY (`captcha_id`),
+  KEY `word` (`word`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+
+--
+-- 转存表中的数据 `captcha`
+--
+
+INSERT INTO `captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VALUES
+(25, 1407438979, '::1', 'C4q9uT6X'),
+(26, 1407438990, '::1', 'psVhJTLX'),
+(27, 1407438999, '::1', 'OKubPeNv'),
+(28, 1407439082, '::1', 'CEs8LhoK'),
+(29, 1407439259, '::1', 'kf29AxQf'),
+(30, 1407439292, '::1', 'VbAIL67h'),
+(31, 1407442775, '::1', 'biAZ4N4b'),
+(32, 1407442805, '::1', '5GeYuvtD'),
+(33, 1407442886, '::1', 'sNWWXIfp');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `city`
 --
 
 CREATE TABLE IF NOT EXISTS `city` (
@@ -34,14 +64,14 @@ CREATE TABLE IF NOT EXISTS `city` (
   `icon_url` varchar(300) NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`cityID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `city`
+-- 转存表中的数据 `city`
 --
 
 INSERT INTO `city` (`cityID`, `name`, `country`, `picture_url`, `icon_url`, `description`) VALUES
-(1, 'Toronto', 'Canada', 'assets/images/cityToronto.jpg', 'assets/images/Toronto.gif', 'One of Canada’s best kept secrets, Toronto is on par with New York City, San Francisco, and Chicago when it comes to cultural attractions and urban endeavors.<br /><br />\r\n\r\nThe best place to start is at the top; and in Toronto, there’s no mistaking where that is. The landmark CN Tower is the tallest free-standing structure in the West (Malaysia has a taller free-standing structure), and also an important telecommunications hub. Take the elevator to the top for a breathtaking view of the city and its surrounding areas. <br /><br />\r\n\r\nThe CN Tower is situated close to Lake Ontario.  From there, you can work your way north and explore the rest of what Toronto has to offer. Right next door to the Tower, at the Rogers Centre (formerly SkyDome), you can catch a Blue Jays baseball game in the summer, or just walk around the massive stadium. Newly opened, the Ripley''s Aquarium of Canada sits at the base of the CN Tower and is ideal for families and aquatic lovers alike.<br /><br />\r\n\r\nAlso in and around the city, check out the Royal Ontario Museum, the largest in Canada, with fascinating archaeology and natural history exhibits. There’s also the Art Gallery of Ontario, with a fine collection of European and Canadian works. If you’re into shopping, don’t miss the wide array of funky stores, ethnic restaurants — and of course the Eaton Centre (one of the city''s largest indoor shopping malls) — all on Queen Street West. <br /><br />\r\n\r\nFor a relaxing experience, head back down to the waterfront and enjoy Toronto’s Harbourfront, a complex of unique shops and restaurants right on beautiful Lake Ontario. If you’re all shopped out, enjoy a nice stroll on the boardwalk and take in the great views of the city skyline.  From Harbourfront, you can escape the hustle and bustle of the city with a hop on the ferry to the Toronto Islands, an excellent spot for a picnic and some outdoor recreation. <br /><br />\r\n\r\nToronto is a great destination for singles, families and executives. It is an incredibly clean, safe and easy city to get around, either on foot or by public transportation.'),
+(1, 'Toronto', 'Canada', 'assets/images/cityToronto.jpg', 'assets/images/Toronto.gif', 'One of Canada’s best kept secrets, Toronto is on par with New York City, San Francisco, and Chicago when it comes to cultural attractions and urban endeavors.<br /><br />\r\n\r\nThe best place to start is at the top; and in Toronto, there’s no mistaking where that is. The landmark CN Tower is the tallest free-standing structure in the West (Malaysia has a taller free-standing structure), and also an important telecommunications hub. Take the elevator to the top for a breathtaking view of the city and its surrounding areas. <br /><br />\r\n\r\nThe CN Tower is situated close to Lake Ontario.  From there, you can work your way north and explore the rest of what T.O. (Toronto, Ontario) has to offer. Right next door to the Tower, at the Rogers Centre (formerly SkyDome), you can catch a Blue Jays baseball game in the summer, or just walk around the massive stadium. Newly opened, the Ripley''s Aquarium of Canada sits at the base of the CN Tower and is ideal for families and aquatic lovers alike.<br /><br />\r\n\r\nAlso in and around the city, check out the Royal Ontario Museum, the largest in Canada, with fascinating archaeology and natural history exhibits. There’s also the Art Gallery of Ontario, with a fine collection of European and Canadian works. If you’re into shopping, don’t miss the wide array of funky stores, ethnic restaurants — and of course the Eaton Centre (one of the city''s largest indoor shopping malls) — all on Queen Street West. <br /><br />\r\n\r\nFor a relaxing experience, head back down to the waterfront and enjoy Toronto’s Harbourfront, a complex of unique shops and restaurants right on beautiful Lake Ontario. If you’re all shopped out, enjoy a nice stroll on the boardwalk and take in the great views of the city skyline.  From Harbourfront, you can escape the hustle and bustle of the city with a hop on the ferry to the Toronto Islands, an excellent spot for a picnic and some outdoor recreation. <br /><br />\r\n\r\nToronto is a great destination for singles, families and executives. It is an incredibly clean, safe and easy city to get around, either on foot or by public transportation.'),
 (2, 'Ottawa', 'Canada', 'assets/images/cityOttawa.jpg', 'assets/images/Ottawa.gif', 'Ottawa is the capital of Canada and the fourth largest city in the country. The city stands on the south bank of the Ottawa River in the eastern portion of Southern Ontario. Ottawa borders Gatineau, Quebec, and together they form the National Capital Region (NCR).<br/><br/>\r\nFounded in 1826 as Bytown and incorporated as "Ottawa" in 1855, the city has evolved into a political and technological centre of Canada. Its original boundaries were expanded through numerous minor annexations and ultimately replaced by a new city incorporation and major amalgamation in 2001 which significantly increased its land area. The name "Ottawa" is derived from the Algonquin word adawe, meaning "to trade".<br/><br/>\r\n\r\n\r\nInitially an Irish and French Christian settlement, Ottawa has become a multicultural city with a diverse population. The 2011 census had the city''s population as 883,391, the census metropolitan area population as 1,236,324. The city is known as being among the most educated in Canada and hosts a number of post-secondary, research, and cultural institutions. Ottawa has a high standard of living and low unemployment.<br/><br/>\r\n\r\n\r\nOttawa is situated on the south bank of the Ottawa River and contains the mouths of the Rideau River and Rideau Canal. The older part of the city (including what remains of Bytown) is known as Lower Town, and occupies an area between the canal and the rivers. Across the canal to the west lies Centretown and Downtown Ottawa, which is the city''s financial and commercial hub. As of 29 June 2007, the Rideau Canal, which stretches 202 km to Kingston, Fort Henry and four Martello towers in the Kingston area was recognized as a UNESCO World Heritage Site.<br/><br/>\r\n\r\nLocated on a major, yet mostly dormant fault line, Ottawa is occasionally struck by earthquakes. Across the Ottawa River, which forms the border between Ontario and Quebec, lies the city of Gatineau, itself the result of amalgamation of the former Quebec cities of Hull and Aylmer together with Gatineau. Although formally and administratively separate cities in two separate provinces, Ottawa and Gatineau collectively constitute the National Capital Region, which is considered a single metropolitan area. One federal crown corporation has significant land holdings in both cities, including sites of historical and touristic importance. <br/><br/>'),
 (3, 'Vancouver', 'Canada', 'assets/images/cityVancouver.jpg', 'assets/images/Vancouver.gif', 'Ringed by snow-capped, forested mountains dropping down to miles of sandy beaches, Vancouver is a city where you can snowboard and sail on the same day. Against the stunning scenic backdrop, you''ll find a medley of sophisticated restaurants, leafy parks, and lively, earthy brew pubs. As Vancouver pulsates with a smug and sassy youthfulness, Victoria,British Columbia''s capital city, is more seasoned -- like that of an elder sister whose English beauty is more than skin deep.<br/><br/>\r\n\r\nGiant, colorfully carved totem poles tower above an impressive collection of First Nations masks and sculptures at the Museum of Anthropology. Visit the belugas, otters, and dolphins at the Vancouver Aquarium in Stanley Park, before seeing historic and modern art at the downtown Vancouver Art Gallery. To reach Granville Island''s plentiful Public Market,hop on a tiny ferry to cross False Creek. In Victoria, stroll the cobblestone streets of Old Town before taking traditional afternoon tea at the Fairmont Empress.<br/><br/>\r\n\r\nWhen the sun is shining, you''ll join a stampede of Vancouverites heading to the city''s beaches, hiking trails, and mountain slopes. Biking, running, or walking the Stanley Park Seawall rates highly for its at-your-own-pace vibe and panoramic views. In Victoria, you can take a jeep-safari through farms and vineyards, or spot harbor seals, whales, and dolphins on awhale-watching tour.<br/><br/>\r\n\r\nAmid a rich culinary region, seafood is king in Vancouver and Victoria. Try a six-course seafood medley, paired with a glass of wine from an Okanagan winery, at five-star Yaletown dining rooms. Dining options are plentiful and often cheap, be it delectable Thai in Kitsilano, a raw food menu near Main Street, or inventive Chinese tapas in Chinatown. In Victoria, you''ll find a variety of culinary styles downtown.<br/><br/>\r\nIn Vancouver, you can rub shoulders with the nightclub crowd on funky Granville Street downtown. Hip Yaletown offers up swanky cocktail bars and clubs. For more laid-back surrounds, join the relaxed beach crowd at a variety of watering holes in Kitsilano. In summer, picnic in Stanley Park and watch Theatre Under the Stars. In Victoria, stop for a pint at a convivial waterside brewpub, or visit the cool bar in the Fairmont Express for blue martinis with hot jazz.<br/><br/>\r\n'),
 (4, 'ShangHai', 'China', 'assets/images/cityShangHai.jpg', 'assets/images/ShangHai.gif', 'Shanghai is the largest Chinese city by population and the largest city proper by population in the world. It is one of the four direct-controlled municipalities, with a population of more than 24 million as of 2013. It is a global financial center, and a transport hub with the world''s busiest container port. The city is vital to the country''s future. No other city in the country is more vibrant and fascinating or has such a unique colonial past. Located in the Yangtze River Delta in East China, Shanghai, literally ''Above the Sea'', sits at the mouth of the Yangtze in the middle portion of the Chinese coast. The municipality borders the provinces of Jiangsu and Zhejiang to the north, south and west, and is bounded to the east by the East China Sea.<br/><br/>\r\n\r\n\r\nFor centuries a major administrative, shipping, and trading town, Shanghai grew in importance in the 19th century due to European recognition of its favorable port location and economic potential. The city was one of five opened to foreign trade following the British victory over China in the First Opium War while the subsequent 1842 Treaty of Nanking and 1844 Treaty of Whampoa allowed the establishment of the Shanghai International Settlement and the French Concession. The city then flourished as a center of commerce between east and west, and became the undisputed financial hub of the Asia Pacific in the 1930s. However, with the Communist Party takeover of the mainland in 1949, trade was reoriented to focus on socialist countries, and the city''s global influence declined. In the 1990s, the economic reforms introduced by Deng Xiaoping resulted in an intense re-development of the city, aiding the return of finance and foreign investment to the city.<br/><br/>\r\n\r\n\r\nShanghai is a popular tourist destination renowned for its historical landmarks such as The Bund, City God Temple and Yu Garden as well as the extensive Lujiazui skyline and major museums including the Shanghai Museum and the China Art Museum. It has been described as the "showpiece" of the booming economy of mainland China.<br/><br/>\r\n\r\n\r\nShanghai has a rich collection of buildings and structures of various architectural styles. The Bund, located by the bank of the Huangpu River, contains a rich collection of early 20th-century architecture, ranging in style from neoclassical HSBC Building to the art deco Sassoon House. A number of areas in the former foreign concessions are also well-preserved, the most notable ones being the French Concession.<br/><br/>\r\n'),
@@ -50,10 +80,10 @@ INSERT INTO `city` (`cityID`, `name`, `country`, `picture_url`, `icon_url`, `des
 -- --------------------------------------------------------
 
 --
--- Table structure for table `citybeen`
+-- 表的结构 `citybeen`
 --
 
-CREATE TABLE IF NOT EXISTS `cityBeen` (
+CREATE TABLE IF NOT EXISTS `citybeen` (
   `userID` int(30) NOT NULL,
   `cityID` int(30) NOT NULL,
   PRIMARY KEY (`userID`,`cityID`),
@@ -63,27 +93,24 @@ CREATE TABLE IF NOT EXISTS `cityBeen` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
+-- 表的结构 `comments`
 --
 
 CREATE TABLE IF NOT EXISTS `comments` (
   `userID` int(30) NOT NULL,
   `placeID` int(30) NOT NULL,
   `content` text NOT NULL,
-  `commentID` int(30) NOT NULL AUTO_INCREMENT,
+  `commentID` int(30) NOT NULL,
   `time` datetime NOT NULL,
   PRIMARY KEY (`commentID`),
   KEY `userID` (`userID`),
   KEY `placeID` (`placeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `comments` (`userID`, `placeID`, `content`, `commentID`, `time`) VALUES
-(1, 11, "This place is great!", 1, '2003-12-31 01:02:03');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `friendship`
+-- 表的结构 `friendship`
 --
 
 CREATE TABLE IF NOT EXISTS `friendship` (
@@ -97,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `friendship` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `messages`
+-- 表的结构 `messages`
 --
 
 CREATE TABLE IF NOT EXISTS `messages` (
@@ -112,13 +139,10 @@ CREATE TABLE IF NOT EXISTS `messages` (
   KEY `receiver` (`receiver`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO `messages` (`messageID`, `sender`, `receiver`, `content`, `time`, `read`) VALUES
-(1, 3, 1, 'Hello!', '2003-12-31 01:02:03', 0);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `place`
+-- 表的结构 `place`
 --
 
 CREATE TABLE IF NOT EXISTS `place` (
@@ -133,10 +157,10 @@ CREATE TABLE IF NOT EXISTS `place` (
   PRIMARY KEY (`placeID`),
   UNIQUE KEY `Contact` (`contact`),
   KEY `cityID` (`cityID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=153 ;
 
 --
--- Dumping data for table `place`
+-- 转存表中的数据 `place`
 --
 
 INSERT INTO `place` (`placeID`, `name`, `address`, `contact`, `type`, `cityID`, `description`, `picture_url`) VALUES
@@ -169,52 +193,56 @@ INSERT INTO `place` (`placeID`, `name`, `address`, `contact`, `type`, `cityID`, 
 (101, 'Pacific Place shopping mall ', '88 Queensway, Admiralty<br/>\r\nHong Kong Island<br/>\r\n', '852 2844 8900', 'shopping', 5, 'Pacific Place or Admiralty is situated in a top location at the centre of Hong Kong with views across the harbour. Close by are the Conrad, Shangri-La and JW Marriot giving the mall a decidedly upmarket feel. Inside the centre caters to a smattering of exclusive labels across four levels offering 130 outlets and three department stores. Brand names include Aquascutum, Brooks Brothers and Shanghai Tang; there are also plenty of fine jewellers including Chopard and Cartier.<br/> <br/>', 'assets/images/pacificpl.jpg'),
 (102, 'The Landmark', '15 Queen''s Road Central<br/>  \r\nCentral, Hong Kong Island<br/> \r\n', '852 2530 4725', 'shopping', 5, 'The Landmark, also known as “Central”, is one of the oldest and most prominent shopping malls in Hong Kong, positioned between the Mandarin Oriental Hotel and office towers. Five levels of chic designer shopping offer brands that are rarely showcased elsewhere in Asia, including Diane von Furstenberg and a glittering De Beers diamonds store.<br/> <br/>', 'assets/images/landmark.jpg'),
 (103, 'Harbour City', '3 - 27 Canton Road, Tsim Sha Tsui<br/>  \r\nKowloon, Hong Kong<br/>  \r\n', '852 2118 8666', 'shopping', 5, 'Harbour City at Tsim Sha Tsui, is a vast retail destination featuring more than 700 stores, 50 food and beverage outlets and a couple of cinemas over four levels. The mall is neatly divided up into four areas: Ocean Terminal, Marco Polo Hong Kong Hotel Arcade, Ocean Centre and Gateway Arcade. The Ocean Terminal is the place to shop for kids items and young fashion, plus sports outlets including Nike and PUMA are also located here.<br/> <br/> ', 'assets/images/harbour.jpg'),
-(111, 'CN Tower', '301 Front Street West<br/>\r\nToronto, ON, Canada<br/>', '416-282-1234', 'landmark', 1, '\r\nThe CN Tower is Toronto’s tallest and most defining landmark. Photos of Toronto are often defined by the building, which stretches more than 550 metres into the sky.<br/><br/>\r\nToday, aside from serving as a hub for telecommunications across the city, the CN Tower has become a major tourist destination. Visitors can test their courage by walking across the glass floor 113 stories above the ground. The first of its kind in the world, the glass floor gives you that dare-to-walk-on-air experience, with only 2.5 inches of glass holding you 342 metres in the air. The glass floor is actually stronger than most commercial floors and has the strength to hold 38,556 kg or 14 hippos! Or, if you dare, travel higher up the tower to the Sky Pod, another 33 storeys above ground.\r\nThe tower’s revolving 360 Restaurant offers an award-winning wine list and a spectacular view for romantic evenings. Horizons, an upscale bistro on the Look Out Level, seats 130 and is equipped with a dance floor. If you’re not wild about heights, the Far Coast Café is a fully licensed fresh market café that serves an array of international foods and there is plenty to shop for at the base of the tower. A 10,000 sq. ft. marketplace sells uniquely Canadian souvenirs.<br/><br/>', 'assets/images/Toronto-CNTower.jpg'),
+(111, 'CN Tower', '301 Front Street West<br/>\r\nToronto, ON, Canada<br/>', NULL, 'landmark', 1, '\r\nThe CN Tower is Toronto’s tallest and most defining landmark. Photos of Toronto are often defined by the building, which stretches more than 550 metres into the sky.<br/><br/>\r\nToday, aside from serving as a hub for telecommunications across the city, the CN Tower has become a major tourist destination. Visitors can test their courage by walking across the glass floor 113 stories above the ground. The first of its kind in the world, the glass floor gives you that dare-to-walk-on-air experience, with only 2.5 inches of glass holding you 342 metres in the air. The glass floor is actually stronger than most commercial floors and has the strength to hold 38,556 kg or 14 hippos! Or, if you dare, travel higher up the tower to the Sky Pod, another 33 storeys above ground.\r\nThe tower’s revolving 360 Restaurant offers an award-winning wine list and a spectacular view for romantic evenings. Horizons, an upscale bistro on the Look Out Level, seats 130 and is equipped with a dance floor. If you’re not wild about heights, the Far Coast Café is a fully licensed fresh market café that serves an array of international foods and there is plenty to shop for at the base of the tower. A 10,000 sq. ft. marketplace sells uniquely Canadian souvenirs.<br/><br/>', 'assets/images/Toronto-CNTower.jpg'),
 (112, 'Royal Ontario Museum', '100 Queens Park <br/>\r\nToronto, Ontario M5S 2C6<br/>', '416-586-8000', 'landmark', 1, 'Neighbourhood: University of toronto\r\nGenerations of children and adults have trooped through the museum since it first opened in 1914. With six million objects in its collections and 40 galleries of art, archaeology and natural science, the ROM offers a whole world to explore. Four giant carved totem poles rise in the centre of the stairwells; the largest is 24.5 metres tall. The hands-on Biodiversity gallery offers families a fun interactive experience about the interdependence of people, animals and plants.<br/><br/>\r\nThe dramatic Michael Lee-Chin Crystal expansion houses six permanent collection galleries that feature many objects never before displayed, along with some old favourites. They include dinosaurs and mammals, the cultures of South and Central Asia, Africa, the American continents, the Asia-Pacific region along with textiles and costumes from around the world.<br/><br/>\r\nTo commemorate the late Elizabeth Samuel, Liza’s Garden is a contemporary secret garden of greenness and sustainability, installed on the south portion of the Philosopher’s Walk wing. Created by PLANT Architect Inc, the nearly-10,000-square-foot area offers a dynamic haven of greenery.<br/><br/>\r\nThe ROM also features the Gallery of Gems and Gold, which is the final stage of the Teck Suite of Galleries. On level two, this gallery of Earth’s Treasures has about 600 rare gems, gem crystals, jewellery and gold pieces.<br/><br/>', 'assets/images/Toronto-ROM.jpg'),
 (113, 'Casa Loma ', '1 Austin Terrace <br/>\r\nToronto, ON M5R 1X8<br/>', '416-923-1171', 'landmark', 1, 'Casa Loma is a Gothic Revival style house and gardens in midtown Toronto, Ontario, Canada that is now a museum and landmark. It was originally a residence for financier Sir Henry Mill Pellatt. Casa Loma was constructed over a three-year period from 1911–1914. The architect of the mansion was E. J. Lennox, who was also responsible for the designs of several other city landmarks.<br/><br/>\r\nIn 1903, Sir Henry Pellatt purchased 25 lots from developers Kertland and Rolf. Sir Henry commissioned Canadian architect E. J. Lennox to design Casa Loma with construction beginning in 1911, starting with the massive stables, potting shed and Hunting Lodge a few hundred feet north of the main building. The Hunting Lodge is a two storey 4,380-square-foot house with servant''s quarters. As soon as the stable complex was completed, Sir Henry sold his summer house in Scarborough to his son and moved to the Hunting Lodge. The stables were used as a construction site for the castle (and also served as the quarters for the male servants), with some of the machinery still remaining in the rooms under the stables.<br/><br/>', 'assets/images/Toronto-CasaLoma.jpg'),
 (121, 'Parliament Hill', 'Wellington St, Ottawa, ON<br/>', '613-992-4793', 'landmark', 2, 'Parliament Hill, colloquially known as The Hill, is an area of Crown land on the southern banks of the Ottawa River in Downtown Ottawa, Ontario. Its Gothic revival suite of buildings serves as the home of the Parliament of Canada and contains a number of architectural elements of national symbolic importance. Parliament Hill attracts approximately 3 million visitors each year.<br/><br/>\r\n\r\nOriginally the site of a military base in the 18th and early 19th centuries, development of the area into a governmental precinct began in 1859, after Queen Victoria chose Bytown as the capital of the Province of Canada. Following a number of extensions to the parliament and departmental buildings and a fire in 1916 that destroyed the Centre Block, Parliament Hill took on its present form with the completion of the Peace Tower in 1927. Since 2002, an extensive $1 billion renovation and rehabilitation project has been underway throughout all of the precinct''s buildings; work is not expected to be complete until after 2020.<br/><br/>\r\n', 'assets/images/Parliament-Ottawa.jpg'),
 (122, 'Beechwood Cemetery', '280 Beechwood Ave<br/>\r\nOttawa, ON K1M 8E2<br/>', '613-741-9530', 'landmark', 2, 'Beechwood Cemetery, located in Ottawa, Ontario, is the National Cemetery of Canada. It is the final resting place for over 75,000 Canadians from all walks of life, such as important politicians like Governor General Ramon Hnatyshyn and Prime Minister Sir Robert Borden, Canadian Forces Veterans, War Dead, members of the Royal Canadian Mounted Police, and men and women who have made a mark on Canadian history. In addition to being Canada''s National Cemetery, it is also the National Military Cemetery of Canada and the Royal Canadian Mounted Police National Memorial Cemetery.<br/><br/>\r\n\r\nAn exceptional example of 19th-century rural cemetery design, containing a concentration of mausolea, monuments, and markers of significant importance to the history of Canada, Ontario and Ottawa; the cemetery was declared the national cemetery of Canada in 2009, and has served as the National Military Cemetery of the Canadian Forces since 1944 and the RCMP National Memorial Cemetery since 2004.<br/><br/>', 'assets/images/Ottawa-beechwoodcemetery.jpg'),
 (131, 'First Nations Art at Stanley', 'Pipeline Rd, Vancouver, BC <br/>', '604-921-1070', 'landmark', 3, 'The most visited tourist attraction in all of B.C., the Stanley Park Totem Poles at Brockton Point are one of the most famous Vancouver First Nations art works. Today, the nine totem poles are either replicas of originals that have been sent home or to a museum for preservation (the Skedans Mortuary Pole is a replica of an original that was returned to Haida Gwaii) or newer artworks (the most recent totem, carved by Robert Yelton of the Squamish Nation, was added to Brockton Point in 2009); they are still breathtaking to see in their incredible outdoor setting.<br/><br/>\r\nWhen you visit the Totem Poles, take note of the "People Amongst the People" Coast Salish gateways--three carved, red cedar portals that form the entrance to the Brockton Point Visitors Centre. The gateways were created by Coast Salish artist Susan Point and a team of Musqueam artists, and installed in 2008; they help acknowledge that Stanley Park was once Coast Salish land.<br/><br/>', 'assets/images/Van-Fist-Nation-Art-in-stanley-park.jpg'),
-(132, 'Lions Gate Bridge', 'Lions Gate Bridge<br/>\r\nVancouver, BC <br/>', '604-945-1234', 'landmark', 3, 'The Lions Gate Bridge is a suspension bridge that spans the First Narrows of Burrard Inlet. It has become a famous landmark of Vancouver, and links the downtown core to the cities of North and West Vancouver. <br/><br/>\r\nVisitors are usually in awe from the breathtaking views, and often drive slower just to take it in. Vancouverites have gotten used to these slow downs, which usually speed up in the middle of the bridge. <br/><br/>\r\nNot surprisingly, the Lions Gate bridge was designated as a National Historic Site in Canada in 2005. There are two lion statues on the bridge which symbolize the two ''lions'', a pair of mountain peaks located north of Vancouver. <br/><br/>', 'assets/images/Van-lions_gate_bridge.jpg'),
-(141, 'The Bund', 'Zhongshan East 1st Rd, Huangpu, <br/> \r\nShanghai, China <br/>', '86 021 5151 1234', 'landmark', 4, 'The Bund, also called Zhongshan Dong Yi Lu (East Zhongshan 1st Road), is a famous waterfront and regarded as the symbol of Shanghai for hundreds of years. It is on the west bank of Huangpu River from the Waibaidu Bridge to Nanpu Bridge and winds 1500 meters (0.93 mile) in length. The most famous and attractive sight which is at the west side of the Bund are the 26 various buildings of different architectural styles including Gothic, Baroque, Romanesque, Classicism and the Renaissance. The 1,700-meters (1,859 yards) long flood-control wall, known as ''the lovers'' wall'', located on the side of Huangpu River from Huangpu Park to Xinkai River and once was the most romantic corner in Shanghai in the last century. After renovation, the monotone concrete buildings that lovers leaned against in the past have been improved into hollowed-out railings full of romantic atmosphere. Standing by the railings, visitors can have a ''snap-shot'' view of the scenery of Pudong Area and Huangpu River.<br/><br/>\r\n', 'assets/images/SH-band.jpg'),
+(132, 'Lions Gate Bridge', 'Lions Gate Bridge<br/>\r\nVancouver, BC <br/>', NULL, 'landmark', 3, 'The Lions Gate Bridge is a suspension bridge that spans the First Narrows of Burrard Inlet. It has become a famous landmark of Vancouver, and links the downtown core to the cities of North and West Vancouver. <br/><br/>\r\nVisitors are usually in awe from the breathtaking views, and often drive slower just to take it in. Vancouverites have gotten used to these slow downs, which usually speed up in the middle of the bridge. <br/><br/>\r\nNot surprisingly, the Lions Gate bridge was designated as a National Historic Site in Canada in 2005. There are two lion statues on the bridge which symbolize the two ''lions'', a pair of mountain peaks located north of Vancouver. <br/><br/>', 'assets/images/Van-lions_gate_bridge.jpg'),
+(141, 'The Bund', 'Zhongshan East 1st Rd, Huangpu, <br/> \r\nShanghai, China <br/>', NULL, 'landmark', 4, 'The Bund, also called Zhongshan Dong Yi Lu (East Zhongshan 1st Road), is a famous waterfront and regarded as the symbol of Shanghai for hundreds of years. It is on the west bank of Huangpu River from the Waibaidu Bridge to Nanpu Bridge and winds 1500 meters (0.93 mile) in length. The most famous and attractive sight which is at the west side of the Bund are the 26 various buildings of different architectural styles including Gothic, Baroque, Romanesque, Classicism and the Renaissance. The 1,700-meters (1,859 yards) long flood-control wall, known as ''the lovers'' wall'', located on the side of Huangpu River from Huangpu Park to Xinkai River and once was the most romantic corner in Shanghai in the last century. After renovation, the monotone concrete buildings that lovers leaned against in the past have been improved into hollowed-out railings full of romantic atmosphere. Standing by the railings, visitors can have a ''snap-shot'' view of the scenery of Pudong Area and Huangpu River.<br/><br/>\r\n', 'assets/images/SH-band.jpg'),
 (142, 'ORIENTAL PEARL TV TOWER', '2 Lane 504 Jujiazui Road, Pu Dong<br/>\r\nShanghai, 200120, China<br/>', '86 021 5879 1888', 'landmark', 4, '\r\n\r\ntanding 468 meters / 1,535 feet tall, the Oriental Pearl TV Tower is one of Asia''s highest structures. Tourists can scale the tower for spectacular views of the city. There is a shopping area, café and an international city exhibit on the ground floor.<br/><br/>\r\nOn clear days, impressive panoramic views of the city can be had from the upper levels of this tower, which are no less than 263 meters / 862 feet high. The photo opportunities are excellent.<br/><br/>\r\nThe tower has fifteen observatory levels. The highest (known as the Space Module) is at 350 m (1148 ft). The lower levels are at 263 m (863 ft) (Sightseeing Floor) and at 90 m (295 ft) (Space City). There is a revolving restaurant at the 267 m (876 ft) level. The project also contains exhibition facilities, restaurants and a shopping mall. There is also a 20-room hotel called the Space Hotel between the two large spheres. The upper observation platform has an outside area with a glass floor. <br/><br/>\r\n', 'assets/images/SH-oriental-pearl-tv-tower.jpg'),
-(151, 'Victoria Harbour', 'Central and Western District, Hong Kong Island<br/>\r\nHong Kong 999077, China<br/>', '852 2543 1234', 'landmark', 5, 'The sight of Victoria Harbour and the Hong Kong skyline is something very unique and special that never fails to convey the essence of the city: exciting, glamorous, sparkling, stylish... It just blows you away the first time you see it, and every time after that…<br/><br/>\r\nVictoria Harbor is always bustling with activity whether day or night: the ferries that shuttle back and forth the Kowloon and the Hong Kong Island sides, the cruise ships entering and leaving port, the freighters and barges carrying their cargo and materials in and out one of the world''s busiest ports, and then, there''s the colorful sampans, junks and harbour cruisers that have been delighting sightseers for years.<br/><br/>\r\nAll that framed by striking architecture on both sides of the Harbour as Hong Kong is home to some of the world''s coolest buildings<br/><br/>.', 'assets/images/HK-victoria-harbour.jpg'),
+(151, 'Victoria Harbour', 'Central and Western District, Hong Kong Island<br/>\r\nHong Kong 999077, China<br/>', NULL, 'landmark', 5, 'The sight of Victoria Harbour and the Hong Kong skyline is something very unique and special that never fails to convey the essence of the city: exciting, glamorous, sparkling, stylish... It just blows you away the first time you see it, and every time after that…<br/><br/>\r\nVictoria Harbor is always bustling with activity whether day or night: the ferries that shuttle back and forth the Kowloon and the Hong Kong Island sides, the cruise ships entering and leaving port, the freighters and barges carrying their cargo and materials in and out one of the world''s busiest ports, and then, there''s the colorful sampans, junks and harbour cruisers that have been delighting sightseers for years.<br/><br/>\r\nAll that framed by striking architecture on both sides of the Harbour as Hong Kong is home to some of the world''s coolest buildings<br/><br/>.', 'assets/images/HK-victoria-harbour.jpg'),
 (152, 'Star Ferry', 'Star Ferry pier, Tsim Sha Tsui, Kowloon<br/>', '852 2367 7065', 'landmark', 5, 'The Star Ferry is THE Hong Kong Ferry, one of the beloved icons of the city and a lot more than just a means of transportation. It has been shuttling residents between Hong Kong Island and Kowloon in the mainland for over 120 years. Up to 1978 when the Cross-Harbour Tunnel opened, it was the only way to cross the harbour.<br/><br/>\r\nFor visitors, besides being a very convenient way to get around, the clunky double-deckers offer one of the world''s most spectacular views, all for less than a dollar a ride.<br/><br/>\r\nThere are around twelve distinct green and white vessels in operation with some dating from the 1950''s and 1960''s. With names like "Shining Star" and "Celestial Star" the Star Ferries traverse the waters of Victoria Harbour every day, you can count on one leaving every 10-12 minutes.<br/><br/>\r\n', 'assets/images/HK-star-ferry-1.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `placesbeen`
+-- 表的结构 `placesbeen`
 --
 
-CREATE TABLE IF NOT EXISTS `placesBeen` (
+CREATE TABLE IF NOT EXISTS `placesbeen` (
   `userID` int(30) NOT NULL,
   `placeID` int(30) NOT NULL,
   PRIMARY KEY (`userID`,`placeID`),
   KEY `placeID` (`placeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- 转存表中的数据 `placesbeen`
+--
+
+INSERT INTO `placesbeen` (`userID`, `placeID`) VALUES
+(2, 12);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating`
+-- 表的结构 `rating`
 --
 
 CREATE TABLE IF NOT EXISTS `rating` (
   `userID` int(30) NOT NULL,
   `placeID` int(30) NOT NULL,
-  `rating` float NOT NULL,
+  `Rating` float NOT NULL,
   PRIMARY KEY (`userID`,`placeID`),
   KEY `placeID` (`placeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `rating` (`userID`, `placeID`, `rating`) VALUES
-(1, 11, 5);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- 表的结构 `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -232,41 +260,36 @@ CREATE TABLE IF NOT EXISTS `user` (
   `interest` text,
   `bio` text,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `user`
+-- 转存表中的数据 `user`
 --
 
 INSERT INTO `user` (`userID`, `username`, `first_name`, `last_name`, `email`, `password`, `phone`, `age`, `gender`, `location`, `picture_url`, `interest`, `bio`) VALUES
-(1, 'abc', NULL, NULL, 'abc@def.com', '123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'cde', NULL, NULL, 'cde@fgh.com', '123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'efg', NULL, NULL, 'efg@hij.com', '123456', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'abc', 'q', 'w', 'abc@def.com', '123456', NULL, 1, NULL, NULL, '/assets/images/p181969921711.jpg', 'e', 'r'),
+(2, 'Shen', 'FJ', 'Shen', 'shen@123.com', '19921012', NULL, 22, NULL, NULL, '/assets/images/eb693a87e950352a1605afbb5343fbf2b3118bbc.jpg', 'abc', '456');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wanttogocity`
+-- 表的结构 `wanttogocity`
 --
 
-CREATE TABLE IF NOT EXISTS `wantToGoCity` (
+CREATE TABLE IF NOT EXISTS `wanttogocity` (
   `userID` int(30) NOT NULL,
   `cityID` int(30) NOT NULL,
   PRIMARY KEY (`userID`,`cityID`),
   KEY `cityID` (`cityID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `wantToGoCity` (`userID`, `cityID`) VALUES
-(1, 1),
-(3, 1);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wanttogoplace`
+-- 表的结构 `wanttogoplace`
 --
 
-CREATE TABLE IF NOT EXISTS `wantToGoPlace` (
+CREATE TABLE IF NOT EXISTS `wanttogoplace` (
   `userID` int(30) NOT NULL,
   `placeID` int(30) NOT NULL,
   PRIMARY KEY (`userID`,`placeID`),
@@ -274,68 +297,77 @@ CREATE TABLE IF NOT EXISTS `wantToGoPlace` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Constraints for dumped tables
+-- 转存表中的数据 `wanttogoplace`
+--
+
+INSERT INTO `wanttogoplace` (`userID`, `placeID`) VALUES
+(2, 11),
+(2, 63),
+(2, 111);
+
+--
+-- 限制导出的表
 --
 
 --
--- Constraints for table `citybeen`
+-- 限制表 `citybeen`
 --
-ALTER TABLE `cityBeen`
+ALTER TABLE `citybeen`
   ADD CONSTRAINT `cityBeen_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
   ADD CONSTRAINT `cityBeen_ibfk_2` FOREIGN KEY (`cityID`) REFERENCES `city` (`cityID`);
 
 --
--- Constraints for table `comments`
+-- 限制表 `comments`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
   ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`placeID`) REFERENCES `place` (`placeID`);
 
 --
--- Constraints for table `friendship`
+-- 限制表 `friendship`
 --
 ALTER TABLE `friendship`
   ADD CONSTRAINT `friendship_ibfk_1` FOREIGN KEY (`user1`) REFERENCES `user` (`userID`),
   ADD CONSTRAINT `friendship_ibfk_2` FOREIGN KEY (`user2`) REFERENCES `user` (`userID`);
 
 --
--- Constraints for table `messages`
+-- 限制表 `messages`
 --
 ALTER TABLE `messages`
   ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `user` (`userID`),
   ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`receiver`) REFERENCES `user` (`userID`);
 
 --
--- Constraints for table `place`
+-- 限制表 `place`
 --
 ALTER TABLE `place`
   ADD CONSTRAINT `place_ibfk_1` FOREIGN KEY (`cityID`) REFERENCES `city` (`cityID`);
 
 --
--- Constraints for table `placesbeen`
+-- 限制表 `placesbeen`
 --
-ALTER TABLE `placesBeen`
+ALTER TABLE `placesbeen`
   ADD CONSTRAINT `placesBeen_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
   ADD CONSTRAINT `placesBeen_ibfk_2` FOREIGN KEY (`placeID`) REFERENCES `place` (`placeID`);
 
 --
--- Constraints for table `rating`
+-- 限制表 `rating`
 --
 ALTER TABLE `rating`
   ADD CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
   ADD CONSTRAINT `rating_ibfk_2` FOREIGN KEY (`placeID`) REFERENCES `place` (`placeID`);
 
 --
--- Constraints for table `wanttogocity`
+-- 限制表 `wanttogocity`
 --
-ALTER TABLE `wantToGoCity`
+ALTER TABLE `wanttogocity`
   ADD CONSTRAINT `wantToGoCity_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
   ADD CONSTRAINT `wantToGoCity_ibfk_2` FOREIGN KEY (`cityID`) REFERENCES `city` (`cityID`);
 
 --
--- Constraints for table `wanttogoplace`
+-- 限制表 `wanttogoplace`
 --
-ALTER TABLE `wantToGoPlace`
+ALTER TABLE `wanttogoplace`
   ADD CONSTRAINT `wantToGoPlace_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`),
   ADD CONSTRAINT `wantToGoPlace_ibfk_2` FOREIGN KEY (`placeID`) REFERENCES `place` (`placeID`);
 
