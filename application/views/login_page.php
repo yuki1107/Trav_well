@@ -35,8 +35,9 @@
 }
 
 .reg_button{
-	margin-top:28px;
+	margin-top:18px;
 	margin-bottom:45px;
+	margin-left:50px;
 }
 
 #container {
@@ -96,7 +97,7 @@
 						echo form_password('passconf',set_value(),"id='pwd2' class=form-control placeholder='Confirm your password'","required oninput='checkPassword();'");
 						echo "<br>";
 						echo form_input('captcha', set_value(), "class =form-control placeholder = 'Submit the captcha'", "required");
-						echo "<br>";
+						
 						echo $cap['image'];
 						echo form_submit('submit', 'Register', "class = 'btn btn-info reg_button'");
 						echo form_close();
