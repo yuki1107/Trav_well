@@ -15,10 +15,10 @@ class Authorize extends CI_Controller {
 
 
 	public function register(){
-		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[user.username]');
+		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[20]|matches[passconf]');
 		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|min_length[6]|max_length[20]');
-		$this->form_validation->set_rules('email', 'Email', "required|is_unique[user.email]|valid_email");
+		$this->form_validation->set_rules('email', 'Email', "required|valid_email");
 		$this->form_validation->set_rules('captcha', 'Captcha', 'required|max_length[8]' );
 
 
