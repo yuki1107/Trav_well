@@ -94,6 +94,10 @@
 						echo form_password('password',set_value(),"id='pwd1' class=form-control placeholder='Password'","required");
 						echo "<br>";
 						echo form_password('passconf',set_value(),"id='pwd2' class=form-control placeholder='Confirm your password'","required oninput='checkPassword();'");
+						echo "<br>";
+						echo form_input('captcha', set_value(), "class =form-control placeholder = 'Submit the captcha'", "required");
+						echo "<br>";
+						echo $cap['image'];
 						echo form_submit('submit', 'Register', "class = 'btn btn-info reg_button'");
 						echo form_close();
 					?>
