@@ -258,7 +258,7 @@ CREATE TABLE `user` (
   `first_name` varchar(30) DEFAULT NULL,
   `last_name` varchar(30) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `phone` varchar(12) DEFAULT NULL,
   `age` int(3) DEFAULT NULL,
   `gender` bit(1) DEFAULT NULL,

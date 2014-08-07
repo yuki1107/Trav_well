@@ -11,6 +11,16 @@ class Authorize extends CI_Controller {
 			$this->load->helper(array('form','url'));
 			$this->load->helper('captcha');
 	    	session_start();
+	    /* Taken from PHP Login Project */
+		// checking for minimum PHP version
+		if (version_compare(PHP_VERSION, '5.3.7', '<')) {
+		    exit('Sorry, Simple PHP Login does not run on a PHP version smaller than 5.3.7 !');
+		} else if (version_compare(PHP_VERSION, '5.5.0', '<')) {
+		    // if you are using PHP 5.3 or PHP 5.4 you have to include the password_api_compatibility_library.php
+		    // (this library adds the PHP 5.5 password hashing functions to older versions of PHP)
+		    require_once('application/libraries/password_compatibility_library.php');
+		}
+		/* End code from PHP Login Project */
     }
 
 
@@ -29,13 +39,13 @@ class Authorize extends CI_Controller {
 			$this->load->view("login_page", $data);
 		}
 		else
-		{	
-			
+		{
+
 			$user = new User();
 			$user->username = $this->input->post('username');
 			if($this->user_model->getUser($user->username) == NULL){
-				
-				$user->password = $this->input->post('password');
+
+				$user->password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 				$user->email = $this->input->post('email');
 				if($this->user_model->getEmail($user->email) == NULL){
 					$user->phone = NULL;
@@ -45,17 +55,17 @@ class Authorize extends CI_Controller {
 					$user->bio = NULL;
 					$user->picture_url = NULL;
 
-				
-				
+
+
 					$expiration = time()-120; // 2 Minute limit
 					$this->db->query("DELETE FROM captcha WHERE captcha_time < ".$expiration);
-					
+
 					$sql = "SELECT COUNT(*) AS count FROM captcha WHERE word = ? AND ip_address = ? AND captcha_time > ?";
 					$binds = array($_POST['captcha'], $this->input->ip_address(), $expiration);
 					$query = $this->db->query($sql, $binds);
 					$row = $query->row();
-				
-		
+
+
 					if ($row->count == 0)
 					{
 						echo "<script>alert('Please check your captcha')</script>";
@@ -65,7 +75,7 @@ class Authorize extends CI_Controller {
 					else
 					{
 						$error = $this->user_model->addUser($user);
-						
+
 						redirect('home/index');
 					}
 				}
@@ -99,10 +109,10 @@ class Authorize extends CI_Controller {
 			$enterPwd = $this->input->post('password');
 
 			$user = $this->user_model->getUser($username);
-			
+
 			$expiration = time()-120; // 2 Minute limit
 			$this->db->query("DELETE FROM captcha WHERE captcha_time < ".$expiration);
-			
+
 			$sql = "SELECT COUNT(*) AS count FROM captcha WHERE word = ? AND ip_address = ? AND captcha_time > ?";
 			$binds = array($_POST['captcha'], $this->input->ip_address(), $expiration);
 			$query = $this->db->query($sql, $binds);
@@ -115,7 +125,7 @@ class Authorize extends CI_Controller {
 				$this->load->view("login_page", $data);
 			}
 
-			else if($user && $user->comparePassword($enterPwd)){
+			else if($user && password_verify($enterPwd, $user->password)){
 				$_SESSION['user'] = $user;
 				redirect('home/index');
 			}else{
@@ -142,7 +152,7 @@ class Authorize extends CI_Controller {
 	 * pass the insert information to this function and call user_update function to renew information.
 	 * @author FuJun Shen
 	 */
-	
+
 	public function update(){
 		$this->form_validation->set_rules('fir_name', 'firstname', 'required');
 		$this->form_validation->set_rules('las_name', 'lastname', 'required');
@@ -154,7 +164,7 @@ class Authorize extends CI_Controller {
 		$age = $this->input->post('age');
 		$interest = $this->input->post('interest');
 		$bio = $this->input->post('bio');
-		
+
 		if($this->form_validation->run()!= FALSE){
 			if(isset($_SESSION['user'])){
 				$user = $_SESSION['user'];
@@ -163,7 +173,7 @@ class Authorize extends CI_Controller {
 				$user_new = $this->user_model->getUser($user->username);
 				$_SESSION['user'] = $user_new;
 				redirect('home/profile/$user_new->username')*/
-				redirect('home/home_page');		
+				redirect('home/home_page');
 			}
 		}else{
 			echo "<script>alert('Fields cannot be empty!')</script>";
@@ -180,22 +190,22 @@ class Authorize extends CI_Controller {
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
         $config['max_width']            = 300;
         $config['max_height']           = 300;
-		
+
 		$this->load->library('upload', $config);
 		if ($this->upload->do_upload('userimg')){
 			$pic = array('upload_data' => $this->upload->data());
-		
+
 			$user= $_SESSION['user'];
-			
+
 			$this->user_model->user_pic_change($user->userID, '/assets/images/' .$pic['upload_data']['file_name']);
-			redirect('home/index');	
+			redirect('home/index');
 		}else{
 			echo "<script>alert('" . $this->upload->display_errors('','') . "')</script>";
 			echo "<script>window.history.back();</script>";
 
 		}
 	}
-	
+
 	public function capt2()
 	{
 		$vals = array(
@@ -206,22 +216,22 @@ class Authorize extends CI_Controller {
 		'img_height' => 30,
 		'expiration' => 7200
     	);
-		
-		$cap = create_captcha($vals);	
-		
+
+		$cap = create_captcha($vals);
+
 		$data = array(
 		'captcha_time' => $cap['time'],
 		'ip_address' => $this->input->ip_address(),
 		'word' => $cap['word']
-		);	
-		
-		
+		);
+
+
 		$query = $this->db->insert_string('captcha', $data);
 		$this->db->query($query);
-		
+
 		return $cap;
 	}
-		
+
 
 
 }
