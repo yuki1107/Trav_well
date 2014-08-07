@@ -44,6 +44,8 @@ class Authorize extends CI_Controller {
 					$user->location = NULL;
 					$user->bio = NULL;
 					$user->picture_url = NULL;
+
+				
 				
 					$expiration = time()-120; // 2 Minute limit
 					$this->db->query("DELETE FROM captcha WHERE captcha_time < ".$expiration);
