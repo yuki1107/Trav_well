@@ -14,7 +14,7 @@
 <body>
     <div id='container'>
         <?=$this->load->view("Template/header")?>
-                <div class="container">
+                <div class="container headerSpace">
                   	<h1>Recommend a new place</h1><hr />
                   	<div class='jumbotron'>
                   		<div class="row marketing">
