@@ -25,6 +25,10 @@
                 <div class="cityInfoContainer">
                   <h1 id="typeName"></h1><?=anchor('home/add_place_page', 'recommend a new place', array('class'=>'btn btn-default pull-right'));?><hr/>
                   <div id="listPlaces" class='listContainer'></div><!--listContainer-->
+                    <ul class="pager">
+                      <li id='previous' class="previous"><a href="#">&larr; Previous</a></li>
+                      <li id='next' class="next"><a href="#">Next &rarr;</a></li>
+                    </ul>
                 </div><!-- cityInfoContainer -->
               </div><!-- col -->
             </div><!-- headerSpace -->
@@ -49,8 +53,12 @@
         else
         {
           $('#typeName').html(pt);
+          var htmlText = '';
           $.each(placeInfo, function(i, item) {
-            var htmlText = "<div id='place"+i+"' class='row placeholders listElement'>" +
+            if(i%5==0){
+              htmlText = htmlText + "<div id='page"+i/5+"' >";
+            }
+            htmlText = htmlText+"<div id='place"+i+"' class='row placeholders listElement'>" +
                               "<div class='col-xs-6 col-sm-4'><img class='placeInfoImg' src='<?php echo base_url();?>"+item.picURL+"'/></div>" +
                               "<div id='"+item.name+"' class='col-xs-5 col-sm-6 description'>"+
                                   "<address><h4><a href='<?php echo base_url('home'); ?>/view_place/" + item.name +"'>"+item.name+"</a></h4>"+item.address+"<br/><abbr>Contact: </abbr>"+item.contact+"</address>" +
@@ -64,10 +72,57 @@
                               "<br>" +
                                    "<div><a class='btn btn-info' href='<?php echo base_url(); ?>interaction/wantToGo/" + item.placeID + "'>Wanna Go</a> <a class='btn btn-info' href='<?php echo base_url(); ?>interaction/placeBeen/" + item.placeID + "'>Been There</a>" +
                                    "</div></div><!--description--></div><!--row-->";
-            $('#listPlaces').append(htmlText);
+            //$('#listPlaces').append(htmlText);
+          if(i%5==4){
+              htmlText = htmlText + "</div>";
+            }
           });
+          if (placeInfo.length%5!=0){
+            htmlText = htmlText + "</div>";
+          }
+        $('#listPlaces').append(htmlText);
         }
-    });
+
+        /* Pagination */ 
+        $('#page0').attr('class','onPage');
+        for(i=1; i<=(placeInfo.length/5); i++){
+          var hidePage = '#page'+i;
+          $(hidePage).hide();
+        }
+
+        $('#next').click(function(){
+          var current = document.getElementsByClassName('onPage')[0];
+          var hidePage = '#' + current.id;
+          var nextPage = current.id.match('[0-9]');
+          var showPage = '#page' + (parseInt(nextPage)+1);
+          if ($(showPage).length == 0){
+            alert('This is the last page!')
+          }
+          else{
+            $(hidePage).hide();
+            $(hidePage).removeClass('onPage');
+            $(showPage).show();
+            $(showPage).attr('class','onPage');
+          }
+        })
+
+        $('#previous').click(function(){
+          var current = document.getElementsByClassName('onPage')[0];
+          var hidePage = '#' + current.id;
+          var nextPage = current.id.match('[0-9]');
+          var showPage = '#page' + (parseInt(nextPage)-1);
+          if ($(showPage).length == 0){
+            alert('This is the first page!')
+          }
+          else{
+            $(hidePage).hide();
+            $(hidePage).removeClass('onPage');
+            $(showPage).show();
+            $(showPage).attr('class','onPage');
+          }
+        })
+
+      });
 </script>
 
 <?=$this->load->view("Template/footer")?>
