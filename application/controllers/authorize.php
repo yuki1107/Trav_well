@@ -15,10 +15,10 @@ class Authorize extends CI_Controller {
 
 
 	public function register(){
-		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[user.username]');
+		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[20]|matches[passconf]');
 		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|min_length[6]|max_length[20]');
-		$this->form_validation->set_rules('email', 'Email', "required|is_unique[user.email]|valid_email");
+		$this->form_validation->set_rules('email', 'Email', "required|valid_email");
 		$this->form_validation->set_rules('captcha', 'Captcha', 'required|max_length[8]' );
 
 
@@ -33,11 +33,11 @@ class Authorize extends CI_Controller {
 			
 			$user = new User();
 			$user->username = $this->input->post('username');
-			if($this->user_model->getUser($user->username)){
+			if($this->user_model->getUser($user->username) == NULL){
 				
 				$user->password = $this->input->post('password');
 				$user->email = $this->input->post('email');
-				if($this->user_model->getEmail($user->email)){
+				if($this->user_model->getEmail($user->email) == NULL){
 					$user->phone = NULL;
 					$user->age = NULL;
 					$user->gender = NULL;
@@ -58,7 +58,7 @@ class Authorize extends CI_Controller {
 		
 					if ($row->count == 0)
 					{
-						echo "Please recheck your captcha.";
+						echo "<script>alert('Please check your captcha')</script>";
 						$data['cap']=$this->capt2();
 						$this->load->view("login_page", $data);
 					}
@@ -110,7 +110,9 @@ class Authorize extends CI_Controller {
 
 			if ($row->count == 0)
 			{
-				echo "Please recheck your username, password or captcha.";
+				echo "<script>alert('Please check your captcha')</script>";
+				$data['cap']=$this->capt2();
+				$this->load->view("login_page", $data);
 			}
 
 			else if($user && $user->comparePassword($enterPwd)){
