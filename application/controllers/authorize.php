@@ -56,6 +56,8 @@ class Authorize extends CI_Controller {
 				if ($row->count == 0)
 				{
 					echo "Please recheck your captcha.";
+					$data['cap']=$this->capt2();
+					$this->load->view("login_page", $data);
 				}
 				else
 				{
@@ -65,7 +67,9 @@ class Authorize extends CI_Controller {
 				}
 			}
 			else{
-				echo "Username already exits, please change another one";
+				echo "<script>alert('Username already exists')</script>";
+				$data['cap']=$this->capt2();
+				$this->load->view("login_page", $data);
 			}
 		}
 	}
