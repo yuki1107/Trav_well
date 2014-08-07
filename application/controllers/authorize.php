@@ -33,11 +33,11 @@ class Authorize extends CI_Controller {
 			
 			$user = new User();
 			$user->username = $this->input->post('username');
-			if($this->user_model->getUser($user->username)){
+			if($this->user_model->getUser($user->username) == NULL){
 				
 				$user->password = $this->input->post('password');
 				$user->email = $this->input->post('email');
-				if($this->user_model->getEmail($user->email)){
+				if($this->user_model->getEmail($user->email) == NULL){
 					$user->phone = NULL;
 					$user->age = NULL;
 					$user->gender = NULL;
@@ -58,7 +58,7 @@ class Authorize extends CI_Controller {
 		
 					if ($row->count == 0)
 					{
-						echo "Please recheck your captcha.";
+						echo "<script>alert('Please check your captcha')</script>";
 						$data['cap']=$this->capt2();
 						$this->load->view("login_page", $data);
 					}
@@ -110,7 +110,9 @@ class Authorize extends CI_Controller {
 
 			if ($row->count == 0)
 			{
-				echo "Please recheck your username, password or captcha.";
+				echo "<script>alert('Please check your captcha')</script>";
+				$data['cap']=$this->capt2();
+				$this->load->view("login_page", $data);
 			}
 
 			else if($user && $user->comparePassword($enterPwd)){
