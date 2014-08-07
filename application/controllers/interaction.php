@@ -17,6 +17,7 @@ class Interaction extends CI_Controller {
             $this->load->model('place');
             $this->load->model('place_model');
             $this->load->helper(array('form', 'url', 'date'));
+			$this->load->helper('captcha');
             session_start();
     }
 
@@ -400,5 +401,7 @@ class Interaction extends CI_Controller {
         $UID = $_SESSION['user']->userID;
         echo json_encode($this->user_model->find_similar_users($UID));
     }
+		
+
 }
 ?>

@@ -9,6 +9,7 @@ class Authorize extends CI_Controller {
 			$this->load->model('user');
 			$this->load->model('user_model');
 			$this->load->helper(array('form','url'));
+			$this->load->helper('captcha');
 	    	session_start();
     }
 
@@ -23,7 +24,8 @@ class Authorize extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			echo "<script>alert('Please check your infomation!')</script>";
-			$this->load->view("login_page");
+			$data['cap']=$this->capt2();
+			$this->load->view("login_page", $data);
 		}
 		else
 		{
@@ -47,6 +49,7 @@ class Authorize extends CI_Controller {
 	public function login(){
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('captcha', 'Captcha', 'required');
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->load->view('login_page');
@@ -58,6 +61,20 @@ class Authorize extends CI_Controller {
 			$enterPwd = $this->input->post('password');
 
 			$user = $this->user_model->getUser($username);
+			
+			$expiration = time()-60; // One Minute limit
+			$this->db->query("DELETE FROM captcha WHERE captcha_time < ".$expiration);
+			
+			$sql = "SELECT COUNT(*) AS count FROM captcha WHERE word = ? AND ip_address = ? AND captcha_time > ?";
+			$binds = array($_POST['captcha'], $this->input->ip_address(), $expiration);
+			$query = $this->db->query($sql, $binds);
+			$row = $query->row();
+
+			if ($row->count == 0)
+			{
+				echo "You must submit the word that appears in the image";
+			}
+
 			if($user && $user->comparePassword($enterPwd)){
 				$_SESSION['user'] = $user;
 				redirect('home/index');
@@ -137,6 +154,32 @@ class Authorize extends CI_Controller {
 			echo "<script>window.history.back();</script>";
 
 		}
+	}
+	
+	public function capt2()
+	{
+		$vals = array(
+    	'word' => '',
+    	'img_path' => './assets/images/captcha/',
+		'img_url' => base_url().'/assets/images/captcha/',
+		'img_width' => '150',
+		'img_height' => 30,
+		'expiration' => 7200
+    	);
+		
+		$cap = create_captcha($vals);	
+		
+		$data = array(
+		'captcha_time' => $cap['time'],
+		'ip_address' => $this->input->ip_address(),
+		'word' => $cap['word']
+		);	
+		
+		
+		$query = $this->db->insert_string('captcha', $data);
+		$this->db->query($query);
+		
+		return $cap;
 	}
 		
 

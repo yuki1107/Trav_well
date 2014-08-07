@@ -28,7 +28,7 @@
 }
 
 .login_button {
-	margin-top:135px;
+	margin-top:50px;
 	margin-bottom:45px;
 	margin-right:200px;
 
@@ -69,11 +69,15 @@
 			<div class="row">
 				<div class="form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-3">
 					<?php
-						echo form_open('authorize/login', "role='form'");
+						echo form_open('index.php/authorize/login', "role='form'");
 						echo "<h2 class='signin_text'>Please sign in</h2>";
 						echo form_input('username',set_value('username'), "class=form-control placeholder='Username'", "required");
 						echo "<br>";
 						echo form_password('password',set_value(),"id='pwd1' class=form-control placeholder='Password'","required");
+						echo "<br>";
+						echo form_input('captcha', set_value(), "class =form-control placeholder = 'Submit the captcha'", "required");
+						echo "<br>";
+						echo $cap['image'];
 						echo form_submit('submit', 'Login', "class = 'btn btn-info login_button'");
 						echo form_close();
 					?>
