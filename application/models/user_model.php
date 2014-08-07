@@ -19,7 +19,8 @@ class User_model extends CI_Model {
 	function getEmail($email){
 		return $this->db->get_where('user', array('email'=>$email))->row(0, 'user');
 	}
-
+	
+		
     /**
      * Creates an array of places a given user wishes to visit.
      * @author Sean Gallagher
