@@ -70,9 +70,10 @@
 			<div class="row">
 				<div class="form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-3">
 					<?php
+						$num_of_word=30;
 						echo form_open('index.php/authorize/login', "role='form'");
 						echo "<h2 class='signin_text'>Please sign in</h2>";
-						echo form_input('username',set_value('username'), "class=form-control placeholder='Username'", "required");
+						echo form_input('username',set_value('username'), "class=form-control placeholder='Username' id='charcount'", "required");
 						echo "<br>";
 						echo form_password('password',set_value(),"id='pwd1' class=form-control placeholder='Password'","required");
 						echo "<br>";
@@ -82,15 +83,18 @@
 						echo form_submit('submit', 'Login', "class = 'btn btn-info login_button'");
 						echo form_close();
 					?>
+                    
 				</div>
 
 				<div class='form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-1 col-md-offset-1'>
 					<?php
+						$no_of_word=3;
+						$no_of_word_email=100;
 						echo form_open('authorize/register', "class='form-group' role='form'");
 						echo "<h2 class='signin_text'>If not a user yet...</h2>";
-						echo form_input('username',set_value('username'), "class=form-control placeholder='Username'", "required");
+						echo form_input('username',set_value('username'), "class=form-control placeholder='Username' id='wordcount'", "required");
 						echo "<br>";
-						echo form_input('email',set_value('email'), "class=form-control placeholder='Email'", "required");
+						echo form_input('email',set_value('email'), "class=form-control placeholder='Email' id='emwc'", "required");
 						echo "<br>";
 						echo form_password('password',set_value(),"id='pwd1' class=form-control placeholder='Password'","required");
 						echo "<br>";
@@ -102,7 +106,39 @@
 						echo form_submit('submit', 'Register', "class = 'btn btn-info reg_button'");
 						echo form_close();
 					?>
+                    
 				</div>
 			</div><!-- row -->
 		</div><!-- content -->
-		<?=$this->load->view("Template/footer")?>
+<script>
+$(document).ready(function(){
+	$('#charcount').keyup(function(){
+        var totalword = $(this).val().length;
+        if(totalword > <?php echo $num_of_word;?>){
+            alert('Max word exceeded');
+            $(this).attr('value',$(this).val().substr(0,<?php echo $num_of_word?>));
+        }else{
+            var remword = <?php echo $num_of_word;?> - totalword;
+        }
+    });
+	$('#wordcount').keyup(function(){
+		var totalword = $(this).val().length;
+        if(totalword > <?php echo $no_of_word;?>){
+            alert('Max word exceeded');
+            $(this).attr('value',$(this).val().substr(0,<?php echo $no_of_word?>));
+        }else{
+            var remword = <?php echo $no_of_word;?> - totalword;
+        }
+    });
+	$('#emwc').keyup(function(){
+        var totalword = $(this).val().length;
+        if(totalword > <?php echo $no_of_word_email;?>){
+            alert('Max word exceeded');
+            $(this).attr('value',$(this).val().substr(0,<?php echo $no_of_word_email?>));
+        }else{
+            var remword = <?php echo $no_of_word_email;?> - totalword;
+        }
+    });
+});
+</script>
+<?=$this->load->view("Template/footer")?>

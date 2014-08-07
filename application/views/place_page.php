@@ -114,9 +114,13 @@
                         </div>
                     </div>
                     <div class="form-group commentArea">
+                    	<h4>Add a comment:</h4>
+                    	<?php $no_of_word=600;?>
+                    	<span id='textrem'> <?php echo $no_of_word; ?></span>
                         <?php
+							echo "Chars Remaining";
                             echo form_open('interaction/insertComment/'.$placeInfo['placeID'], "class='form-group' role='textarea' row='5'");
-                            echo form_textarea('content',set_value(), "class='form-control' placeholder='Write your comments here...'", "required");
+                            echo form_textarea('content',set_value(), "class='form-control' placeholder='Write your comments here...' id='wordcount'", "required");
                             echo "<br>";
                             echo form_submit('submit', 'Submit', "class = 'btn btn-info com_button'");
                             echo form_close();
@@ -173,6 +177,17 @@
                 });
             }
             $('#commentCon').append(htmlText);
+			$('#wordcount').keyup(function(){
+				var totalword = $(this).val().length;
+				if(totalword > <?php echo $no_of_word;?>){
+					alert('Max word exceeded');
+					$(this).attr('value',$(this).val().substr(0,<?php echo $no_of_word?>));
+					$('#textrem').html(0);
+				}else{
+					var remword = <?php echo $no_of_word;?> - totalword;
+					$('#textrem').html(remword);
+				}
+			});
         }
     });
 </script>

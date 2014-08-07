@@ -66,3 +66,17 @@
     </div>
 </nav>
 <div id='content'>
+<?php $no_of_word = 100;?>
+<script>
+	$(document).ready(function(){
+		$("input").keyup(function(){
+        	var totalword = $(this).val().length;
+        	if(totalword > <?php echo $no_of_word;?>){
+            	alert('Max word exceeded');
+            	$(this).attr('value',$(this).val().substr(0,<?php echo $no_of_word?>));
+        	}else{
+            	var remword = <?php echo $no_of_word;?> - totalword;
+        	}
+    	});
+	});
+</script>
