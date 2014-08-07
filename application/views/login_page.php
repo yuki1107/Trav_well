@@ -83,12 +83,12 @@
 						echo form_submit('submit', 'Login', "class = 'btn btn-info login_button'");
 						echo form_close();
 					?>
-                    
+
 				</div>
 
 				<div class='form-signin col-lg-3 col-md-5 col-sm-12 col-lg-offset-1 col-md-offset-1'>
 					<?php
-						$no_of_word=3;
+						$no_of_word=30;
 						$no_of_word_email=100;
 						echo form_open('authorize/register', "class='form-group' role='form'");
 						echo "<h2 class='signin_text'>If not a user yet...</h2>";
@@ -101,12 +101,12 @@
 						echo form_password('passconf',set_value(),"id='pwd2' class=form-control placeholder='Confirm your password'","required oninput='checkPassword();'");
 						echo "<br>";
 						echo form_input('captcha', set_value(), "class =form-control placeholder = 'Submit the captcha'", "required");
-						
+
 						echo $cap['image'];
 						echo form_submit('submit', 'Register', "class = 'btn btn-info reg_button'");
 						echo form_close();
 					?>
-                    
+
 				</div>
 			</div><!-- row -->
 		</div><!-- content -->

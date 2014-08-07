@@ -2,23 +2,23 @@
 
 class Home extends CI_Controller {
 	function __construct() {
-			// Call the Controller constructor
-			parent::__construct();
-			$this->load->library('form_validation');
-			$this->load->model('user');
-			$this->load->model('user_model');
-			$this->load->model('city');
-			$this->load->model('city_model');
-			$this->load->model('place');
-			$this->load->model('place_model');
-			$this->load->model('friendship');
-			$this->load->model('friendship_model');
-			$this->load->model('comment');
-			$this->load->model('comment_model');
-			$this->load->helper('url');
-			$this->load->helper('captcha');
+		// Call the Controller constructor
+		parent::__construct();
+		$this->load->library('form_validation');
+		$this->load->model('user');
+		$this->load->model('user_model');
+		$this->load->model('city');
+		$this->load->model('city_model');
+		$this->load->model('place');
+		$this->load->model('place_model');
+		$this->load->model('friendship');
+		$this->load->model('friendship_model');
+		$this->load->model('comment');
+		$this->load->model('comment_model');
+		$this->load->helper('url');
+		$this->load->helper('captcha');
 
-			session_start();
+		session_start();
 	}
 	/**
 	 * Index Page for this controller.
@@ -48,12 +48,12 @@ class Home extends CI_Controller {
 
 	public function login_page()
 	{
-		
+
 		$data['cap']=$this->capt();
 		$this->load->view('login_page', $data);
-		
+
 	}
-	
+
 	public function capt()
 	{
 		$vals = array(
@@ -64,19 +64,19 @@ class Home extends CI_Controller {
 		'img_height' => 30,
 		'expiration' => 7200
     	);
-		
-		$cap = create_captcha($vals);	
-		
+
+		$cap = create_captcha($vals);
+
 		$data = array(
 		'captcha_time' => $cap['time'],
 		'ip_address' => $this->input->ip_address(),
 		'word' => $cap['word']
-		);	
-		
-		
+		);
+
+
 		$query = $this->db->insert_string('captcha', $data);
 		$this->db->query($query);
-		
+
 		return $cap;
 	}
 
