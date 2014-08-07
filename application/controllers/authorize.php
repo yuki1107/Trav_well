@@ -37,33 +37,42 @@ class Authorize extends CI_Controller {
 				
 				$user->password = $this->input->post('password');
 				$user->email = $this->input->post('email');
-				$user->phone = NULL;
-				$user->age = NULL;
-				$user->gender = NULL;
-				$user->location = NULL;
-				$user->bio = NULL;
-				$user->picture_url = '/assets/images/profile.png';
-			
-				$expiration = time()-120; // 2 Minute limit
-				$this->db->query("DELETE FROM captcha WHERE captcha_time < ".$expiration);
+				if($this->user_model->getEmail($user->email)){
+					$user->phone = NULL;
+					$user->age = NULL;
+					$user->gender = NULL;
+					$user->location = NULL;
+					$user->bio = NULL;
+					$user->picture_url = NULL;
+
 				
-				$sql = "SELECT COUNT(*) AS count FROM captcha WHERE word = ? AND ip_address = ? AND captcha_time > ?";
-				$binds = array($_POST['captcha'], $this->input->ip_address(), $expiration);
-				$query = $this->db->query($sql, $binds);
-				$row = $query->row();
-			
-	
-				if ($row->count == 0)
-				{
-					echo "Please recheck your captcha.";
+				
+					$expiration = time()-120; // 2 Minute limit
+					$this->db->query("DELETE FROM captcha WHERE captcha_time < ".$expiration);
+					
+					$sql = "SELECT COUNT(*) AS count FROM captcha WHERE word = ? AND ip_address = ? AND captcha_time > ?";
+					$binds = array($_POST['captcha'], $this->input->ip_address(), $expiration);
+					$query = $this->db->query($sql, $binds);
+					$row = $query->row();
+				
+		
+					if ($row->count == 0)
+					{
+						echo "Please recheck your captcha.";
+						$data['cap']=$this->capt2();
+						$this->load->view("login_page", $data);
+					}
+					else
+					{
+						$error = $this->user_model->addUser($user);
+						
+						redirect('home/index');
+					}
+				}
+				else{
+					echo "<script>alert('Email already be registered')</script>";
 					$data['cap']=$this->capt2();
 					$this->load->view("login_page", $data);
-				}
-				else
-				{
-					$error = $this->user_model->addUser($user);
-					
-					redirect('home/index');
 				}
 			}
 			else{
