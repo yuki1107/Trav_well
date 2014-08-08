@@ -125,12 +125,18 @@ class Authorize extends CI_Controller {
 				$this->load->view("login_page", $data);
 			}
 
-			else if($user && password_verify($enterPwd, $user->password)){
+			else
+			{ 
+			if($user && password_verify($enterPwd, $user->password)){
 				$_SESSION['user'] = $user;
 				redirect('home/index');
-			}else{
-				$errMsg = "Incorrect Username or Password!";
-				$this->load->view('login_page', $errMsg);
+			}
+			else{
+				echo "<script>alert('Incorrect Password or Username')</script>";
+				$data['cap']=$this->capt2();
+
+				$this->load->view('login_page', $data);
+			}
 			}
 		}
 	}
