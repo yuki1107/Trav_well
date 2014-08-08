@@ -1348,18 +1348,21 @@
 </tbody>
 </table>
 
+<p>In terms of scalability and user interface, there were very few changes done in this revision. Sophie implemented pagination on any pages that list locations. Yuki ensured the cities shown on the home page are in alphabetical order, making it much easier to navigate and find the desired city. Sean fixed the login screen background, as it was no longer displaying colour. Monica fixed some issues with the nav-bar on mobile, ensuring that it only appeared when a button is pressed.</p>
+
+<p><b>For more detail about the security aspects, please see "Security Measures" section</b><p>
 
 <h3>Load/Stress Testing</h3>
 <h3>Security Measures</h3>
 
-<p><b>Protection against code injections: </b>Codeigniter protects against sql and javascript injections, so the database is secure. Text fields are also limited to alpha-numeric characters so there should be no problems.</p>
-<p><b>Inputs have finite size: </b>Users can only enter a limited number of characters for all input. Pictures uploaded to the site must be less than 300x300.</p>
-<p><b>Spam Protection: </b>Although we do not protect against advertising/phishing in comments and messages, we do ensure that users can only post a limited number of comments and send a limited number of messages in a given time frame.</p>
-<p><b>User interactions are finite: </b>Users can only have a limited number of friends or messages in their inbox. Currently, for messages the oldest are deleted when a new one is sent if the user has too many . This could be inconvenient to the users.</p>
-<p><b>Protection against bots: </b>In order to login or create a new user, users must fill out a captcha to ensure they are human. Although this is a bit annoying, it should protect against bots.</p>
-<p><b>Spoofing: </b> Users cannot add spaces to their usernames, and usernames must be unique. This prevents users from spoofing other users for the most part. One possible workaround is to replace lower case 'l's with capital 'I's which may look the same in some fonts, but for the most part this should be sufficient.</p>
-<p><b>Code Protection: </b> A feature of codeigniter is that unautherized users cannot access website files.</p>
-<p><b>Login information is encrypted: </b>Should prevent packet sniffing.</p>
+<p><b>Protection against code injections: </b>Codeigniter protects against sql and javascript injections, so the database is secure. Text fields are also limited to alpha-numeric characters so there should be no problems. This was done by Yuki.</p>
+<p><b>Inputs have finite size: </b>Users can only enter a limited number of characters for all input. Pictures uploaded to the site must be less than 300x300. This was done by Emmy.</p>
+<p><b>Spam Protection: </b>Although we do not protect against advertising/phishing in comments and messages, we do ensure that users can only post a limited number of comments and send a limited number of messages in a given time frame. This was done by Sean.</p>
+<p><b>User interactions are finite: </b>Users can only have a limited number of friends or messages in their inbox. Currently, for messages the oldest are deleted when a new one is sent if the user has too many . This could be inconvenient to the users. This was also done by Sean.</p>
+<p><b>Protection against bots: </b>In order to login or create a new user, users must fill out a captcha to ensure they are human. Although this is a bit annoying, it should protect against bots. This was done by Shen.</p>
+<p><b>Spoofing: </b> Users cannot add spaces to their usernames, and usernames must be unique. This prevents users from spoofing other users for the most part. One possible workaround is to replace lower case 'l's with capital 'I's which may look the same in some fonts, but for the most part this should be sufficient. This was done by Shen.</p>
+<p><b>Code Protection: </b> A feature of codeigniter is that unautherized users cannot access website files. This was done by Monica.</p>
+<p><b>Login information is encrypted: </b>Should prevent packet sniffing. This was also done by Monica.</p>
 
 
 
