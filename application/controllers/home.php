@@ -58,14 +58,15 @@ class Home extends CI_Controller {
 	{
 		$vals = array(
     	'word' => '',
-    	'img_path' => './assets/images/captcha/',
-		'img_url' => base_url().'/assets/images/captcha/',
+    	'img_path' => base_url().'assets/images/captcha/',
+		'img_url' => base_url().'assets/images/captcha/',
 		'img_width' => '150',
 		'img_height' => 30,
 		'expiration' => 7200
     	);
 
 		$cap = create_captcha($vals);
+		var_dump($vals);
 
 		$data = array(
 		'captcha_time' => $cap['time'],
