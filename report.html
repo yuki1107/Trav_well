@@ -20,8 +20,10 @@
 <body>
 
 <h1>Trav_Well Report</h1>
-<h2>Project Name:</h2>
-<p>Trav_Well</p>
+<h2>Project Description:</h2>
+<p><b>Name: </b>Trav_Well</p>
+<p><b>Problem: </b> The problem we aimed to solve was that it is difficult to find information about where to visit at a given tourist destination.</p>
+<p><b>Idea: </b> The idea behind Trav_Well was to create a travelling website where users could get information about popular locations at a given destination. This information is mostly supplied by the users, adding a distinct social component to the site, and ensuring that locals can provide information about the best spots. In addition to being able to rate and share experiences at a particular location, users can also create a profile, add other users as friends, send messages to each other and even find people who wish to travel to similar places as them. </p>
 
 <h2>Team Description:</h2>
 
@@ -355,13 +357,8 @@
 <!-- ************************************************************************** -->
 
 <h3>Sprint Backlog:</h3>
-    <p>
-        <A HREF="#table0">Phase 1</A><br>
-        <A HREF="#table1">Phase 2</A><br>
-        <A HREF="#table2">Phase 3</A><br>
-        </p>
-<A NAME="table0"><h1>Sheet 1: <em>Phase 1</em></h1></A>
-<table cellspacing="0" border="0">
+<h4>Phase 1<h4>
+<table cellspacing="0" border="0" id="excel">
     <colgroup width="387"></colgroup>
     <colgroup span="12" width="85"></colgroup>
     <tr>
@@ -550,8 +547,8 @@
 </table>
 <!-- ************************************************************************** -->
 <hr>
-<A NAME="table1"><h1>Sheet 2: <em>Phase 2</em></h1></A>
-<table cellspacing="0" border="0">
+<h4>Phase 2<h4>
+<table cellspacing="0" border="0" id="excel">
     <colgroup width="390"></colgroup>
     <colgroup width="100"></colgroup>
     <colgroup width="123"></colgroup>
@@ -995,8 +992,8 @@
 </table>
 <!-- ************************************************************************** -->
 <hr>
-<A NAME="table2"><h1>Sheet 3: <em>Phase 3</em></h1></A>
-<table cellspacing="0" border="0">
+<h4>Phase 3<h4>
+<table cellspacing="0" border="0" id="excel">
     <colgroup width="355"></colgroup>
     <colgroup width="86"></colgroup>
     <colgroup width="97"></colgroup>
@@ -1275,6 +1272,97 @@
         <td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="right" sdval="0" sdnum="1033;">0</td>
     </tr>
 </table>
+
+<h3>Assignment 3: Who did what</h3>
+<table>
+<thead>
+<tr>
+<th>Tasks</th>
+<th>Completed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Make the mobile nav bar float</td>
+<td>Monica</td>
+</tr>
+<tr>
+<td>Localize sidebar code to a single location</td>
+<td>Monica</td>
+</tr>
+<tr>
+<td>Restrict access to source files</td>
+<td>Monica</td>
+</tr>
+<tr>
+<td>Encrypt login information</td>
+<td>Monica</td>
+</tr>
+<tr>
+<td>Fix login page background</td>
+<td>Sean</td>
+</tr>
+<tr>
+<td>Limit user friends list size</td>
+<td>Sean</td>
+</tr>
+<tr>
+<td>Limit user inbox size</td>
+<td>Sean</td>
+</tr>
+<tr>
+<td>Limit # of messages/comments in a short timeframe</td>
+<td>Sean</td>
+</tr>
+<tr>
+<td>Sort cities alphabetically on main page</td>
+<td>Yuki</td>
+</tr>
+<tr>
+<td>Make input fields resistant to SQL injections</td>
+<td>Yuki</td>
+</tr>
+<tr>
+<td>Use multiple pages for listed restaurants, landmarks, etc</td>
+<td>Sophie</td>
+</tr>
+<tr>
+<td>Captchas when registering/logging in</td>
+<td>Shen</td>
+</tr>
+<tr>
+<td>Prevent users from having “similar” usernames</td>
+<td>Shen</td>
+</tr>
+<tr>
+<td>Ensure inputs can only accept a limit # of characters</td>
+<td>Emmy</td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Load/Stress Testing</h3>
+<h3>Security Measures</h3>
+
+<p><b>Protection against code injections: </b>Codeigniter protects against sql and javascript injections, so the database is secure. Text fields are also limited to alpha-numeric characters so there should be no problems.</p>
+<p><b>Inputs have finite size: </b>Users can only enter a limited number of characters for all input. Pictures uploaded to the site must be less than 300x300.</p>
+<p><b>Spam Protection: </b>Although we do not protect against advertising/phishing in comments and messages, we do ensure that users can only post a limited number of comments and send a limited number of messages in a given time frame.</p>
+<p><b>User interactions are finite: </b>Users can only have a limited number of friends or messages in their inbox. Currently, for messages the oldest are deleted when a new one is sent if the user has too many . This could be inconvenient to the users.</p>
+<p><b>Protection against bots: </b>In order to login or create a new user, users must fill out a captcha to ensure they are human. Although this is a bit annoying, it should protect against bots.</p>
+<p><b>Spoofing: </b> Users cannot add spaces to their usernames, and usernames must be unique. This prevents users from spoofing other users for the most part. One possible workaround is to replace lower case 'l's with capital 'I's which may look the same in some fonts, but for the most part this should be sufficient.</p>
+<p><b>Code Protection: </b> A feature of codeigniter is that unautherized users cannot access website files.</p>
+
+
+
+<h3>Project Limitations</h3>
+
+<p><b>Content must be overseen: </b>We cannot trust users to add information about places. Any time a user adds a place to our database, we must verify that the information provided is legitimate. Ideally, we should be scraping the web to fill our database, or have some sort of process to automate information verification.</p>
+<p><b>Matching based on interests: </b>Right now, users are only shown similar users when they do not currently have any friends. Even then, it does not necessarily match based on intrests, only if both users wish to attend a similar place. Ideally, the matchmaking service would be more fleshed out and accessable at any time.</p>
+<p><b>Spoofing protection: </b> As stated above, there are still some potential issues with users spoofing other users. Ideally these would not exist</p>
+<p><b>Comments do not promote conversation: </b> Currently, comments are simply listed one after another, as it is assumed users would mostly be posting reviews. In future, it would be nice if the design allowed users to comment on other user's reviews and have more in depth discussion.</p>
+
+
 </body>
 
 </html>

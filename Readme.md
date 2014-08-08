@@ -36,7 +36,7 @@ All database actions are controlled by models in the application/models folder. 
 The actual layout of the web pages can be found in application/views. Again these should be pretty straightforwardly named.
 
 ####Changes To Backlog
-We didn't really add any new features to the product/sprint backlog, although we did divide up some of the tasks to make the requirements more clear/more fine grained.
+We made a bunch of additions to the backlog this iteration. Pretty well everything is new, as it was almost empty before. The reason for this is we wanted the project to be completed before we assessed how secure it would be and how it would scale. Also we needed to learn about scaling and security in class first.
 
 ####Testing
 There are some users in the database already for testing purposes. User abc has a message, and has posted a comment already. The password for abc is 123456.
@@ -47,20 +47,20 @@ There are some users in the database already for testing purposes. User abc has 
 
 | Tasks | Completed by |
 |-------|--------------|
-|Make the mobile nav bar float |    |
-|Localize sidebar code to a single location  |  |
-|Restrict access to source files   | |
-|Encrypt login information     | |
-|Fix login page background      | |
-|Limit user friends list size    | |
-|Limit user inbox size       | |
-|Limit # of messages/comments in a short timeframe  | |
-|Sort cities alphabetically on main page     | |
-|Make input fields resistant to SQL injections  | |
-|Use multiple pages for listed restaurants, landmarks, etc | |
-|Captchas when registering/logging in        | |
-|Prevent users from having “similar” usernames  | |
-|Ensure inputs can only accept a limit # of characters | |
+|Make the mobile nav bar float | Monica    |
+|Localize sidebar code to a single location  | Monica |
+|Restrict access to source files   | Monica |
+|Encrypt login information     | Monica |
+|Fix login page background      | Sean |
+|Limit user friends list size    |Sean |
+|Limit user inbox size       |Sean |
+|Limit # of messages/comments in a short timeframe  |Sean |
+|Sort cities alphabetically on main page     | Yuki|
+|Make input fields resistant to SQL injections  | Yuki |
+|Use multiple pages for listed restaurants, landmarks, etc | Sophie |
+|Captchas when registering/logging in        | Shen |
+|Prevent users from having “similar” usernames  | Shen |
+|Ensure inputs can only accept a limit # of characters | Emmy |
 
 
 ####Phase 2:
