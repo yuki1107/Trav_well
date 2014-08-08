@@ -1358,11 +1358,11 @@
 <p><b>Protection against code injections: </b>Codeigniter protects against sql and javascript injections, so the database is secure. Text fields are also limited to alpha-numeric characters so there should be no problems. This was done by Yuki.</p>
 <p><b>Inputs have finite size: </b>Users can only enter a limited number of characters for all input. Pictures uploaded to the site must be less than 300x300. This was done by Emmy.</p>
 <p><b>Spam Protection: </b>Although we do not protect against advertising/phishing in comments and messages, we do ensure that users can only post a limited number of comments and send a limited number of messages in a given time frame. This was done by Sean.</p>
-<p><b>User interactions are finite: </b>Users can only have a limited number of friends or messages in their inbox. Currently, for messages the oldest are deleted when a new one is sent if the user has too many . This could be inconvenient to the users. This was also done by Sean.</p>
+<p><b>User interactions are finite: </b>Users can only have a limited number of friends or messages in their inbox. Currently, for messages the oldest are deleted when a new one is sent if the user has too many . This could be inconvenient to the users. For friends, a user trying to add a new friend with a full friends list will get an error message. This was also done by Sean.</p>
 <p><b>Protection against bots: </b>In order to login or create a new user, users must fill out a captcha to ensure they are human. Although this is a bit annoying, it should protect against bots. This was done by Shen.</p>
-<p><b>Spoofing: </b> Users cannot add spaces to their usernames, and usernames must be unique. This prevents users from spoofing other users for the most part. One possible workaround is to replace lower case 'l's with capital 'I's which may look the same in some fonts, but for the most part this should be sufficient. This was done by Shen.</p>
-<p><b>Code Protection: </b> A feature of codeigniter is that unautherized users cannot access website files. This was done by Monica.</p>
-<p><b>Login information is encrypted: </b>Should prevent packet sniffing. This was also done by Monica.</p>
+<p><b>Spoofing: </b> Users cannot add spaces to their usernames, and usernames must be unique. This is enforced by Codeigniter. This prevents users from spoofing other users for the most part. One possible workaround is to replace lower case 'l's with capital 'I's which may look the same in some fonts, but for the most part this should be sufficient. This was done by Shen.</p>
+<p><b>Code Protection: </b> A feature of Codeigniter is that unautherized users cannot access website files. This was done by Monica.</p>
+<p><b>Login information is encrypted: </b>Should prevent packet sniffing. This was also done via Codeigniter and was also done by Monica.</p>
 
 
 
