@@ -31,8 +31,11 @@
     <p><b>Fujun Shen</b></p>
     <img class="photo img-rounded" src="assets/images/1.gif"/>
     <p><b>Bio: </b>I was born in Harbin, which located in the North-East of China. In 2008, I was first time landed in Canada. During my leisure time, I enjoy playing tennis, watching movies and also going for a trip.</p>
-    <p><b>Role: </b></p>
-    <p><b>What I learned: </b></p>
+    <p><b>Role: </b>In this assignment, i was working on user interface, and also some parts of back-end functions.</p>
+    <p><b>What I learned: </b>During past three months, the most important thing I learned is collaboration and working for a goal as a team, apparently, all of these are based on what we studied in this course, like javaScript, PHP, html and CSS. </p>
+
+
+
 </div>
 
 <div>
@@ -49,24 +52,24 @@
     <p><b>Feifei Ding (Sophie)</b></p>
     <img class="photo img-rounded" src="assets/images/3.gif"/>
     <p><b>Bio: </b>I was born in China moved to Canada few years ago. I have travelled some cities in both countries, such as Vancouver, Toronto, and Shanghai, and I really enjoy the moment of travelling. I like outdoor activities, psychology, and detective novel.</p>
-    <p><b>Role: </b></p>
-    <p><b>What I learned: </b></p>
+    <p><b>Role: </b>I did some work on backend of linking the database information with web page. In this project, I also worked on doing research of materials, such as restaurant information of each place, to provide some basic information that we need.</p>
+    <p><b>What I learned: </b>From this course, I learnt how to develop web applications by using technologies, such as javaScript, HTML, and CSS.</p>
 </div>
 
 <div>
     <p><b>Yuxiu Wang (Emmy)</b></p>
     <img class="photo img-rounded" src="assets/images/4.gif"/>
     <p><b>Bio: </b>I was born in china and moved to Canada four years ago. I am second year  student at University of Toronto. I am interested computer programing  environment science and designing and enjoy in learning them. when I am  free, I love to have small trip and also travel with my friends! </p>
-    <p><b>Role: </b></p>
-    <p><b>What I learned: </b></p>
+    <p><b>Role: </b>In the project, I worked on the research including the city info and landmarks etc. and inserted those data to the database, and also work on some backends for some web functions.</p>
+    <p><b>What I learned: </b>In this semester, I studied for creating and designing websites using technologies for static and dynamic content generation, including n--tiered architectures, mobile development and cloud computing. And applying the HTML, CSS, PHP, mySQL and Javascript, we are able to complete the project. CSS and bootstrap is used to maintain the designing for the website; mySQL is used to save the data for the website.</p>
 </div>
 
 <div>
     <p><b>Ying qi He (Yuki) </b></p>
     <img class="photo img-rounded" src="assets/images/5.gif"/>
     <p><b>Bio: </b>I am currently 2nd years Computer Science Student in U of T. I was born in China and moved to Canada few years ago. I like drawing and designing. I am familiar with using Adobe design software. Building website about traveling is fun, remains me about my hometown. </p>
-    <p><b>Role: </b></p>
-    <p><b>What I learned: </b></p>
+    <p><b>Role: </b>I was responsible for design aspects of the website.</p>
+    <p><b>What I learned: </b> I experienced the process of building a website in this course.  I learned HTML, CSS, jQuery in order to contribute the website into the outlook I want. This course introduced me about user responsive design too. Learning bootstrap is very helpful to me. For the backend, I also experienced how to link the database with website using PHP and Codeignter framework. REST API and some security issue was totally new to me. It was interesting to learn about them.</p>
 </div>
 
 <div>
@@ -1273,6 +1276,10 @@
     </tr>
 </table>
 
+<h3>Backlog Changes</h3>
+<p><b>Phase 2</b> - Not much added or removed, although some wording was rephrased and some tasks were made more fine grained/detailed. Asked Monica to help us restructure the project. </p>
+<p><b>Phase 3</b> - We made a bunch of additions to the backlog this iteration. Pretty well everything is new, as it was almost empty before. The reason for this is we wanted the project to be completed before we assessed how secure it would be and how it would scale. Also we needed to learn about scaling and security in class first.</p>
+
 <h3>Assignment 3: Who did what</h3>
 <table>
 <thead>
@@ -1352,6 +1359,7 @@
 <p><b>Protection against bots: </b>In order to login or create a new user, users must fill out a captcha to ensure they are human. Although this is a bit annoying, it should protect against bots.</p>
 <p><b>Spoofing: </b> Users cannot add spaces to their usernames, and usernames must be unique. This prevents users from spoofing other users for the most part. One possible workaround is to replace lower case 'l's with capital 'I's which may look the same in some fonts, but for the most part this should be sufficient.</p>
 <p><b>Code Protection: </b> A feature of codeigniter is that unautherized users cannot access website files.</p>
+<p><b>Login information is encrypted: </b>Should prevent packet sniffing.</p>
 
 
 
@@ -1359,10 +1367,8 @@
 
 <p><b>Content must be overseen: </b>We cannot trust users to add information about places. Any time a user adds a place to our database, we must verify that the information provided is legitimate. Ideally, we should be scraping the web to fill our database, or have some sort of process to automate information verification.</p>
 <p><b>Matching based on interests: </b>Right now, users are only shown similar users when they do not currently have any friends. Even then, it does not necessarily match based on intrests, only if both users wish to attend a similar place. Ideally, the matchmaking service would be more fleshed out and accessable at any time.</p>
-<p><b>Spoofing protection: </b> As stated above, there are still some potential issues with users spoofing other users. Ideally these would not exist</p>
+<p><b>Spoofing protection: </b> As stated above, there are still some potential issues with users spoofing other users. Ideally these would not exist.</p>
 <p><b>Comments do not promote conversation: </b> Currently, comments are simply listed one after another, as it is assumed users would mostly be posting reviews. In future, it would be nice if the design allowed users to comment on other user's reviews and have more in depth discussion.</p>
-
-
 </body>
 
 </html>

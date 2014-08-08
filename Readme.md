@@ -15,7 +15,7 @@ To run our website, please go to Trav_well/application/controllers, and run the 
 
 ####Linux
 To host the server simply enter the command:
-`php -S localhost:<i>port</i> -t <i>path/to/rootdir</i>`
+`php -S localhost: *port* -t *path/to/rootdir*`
 
 
 
